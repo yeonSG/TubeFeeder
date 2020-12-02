@@ -23,6 +23,7 @@
    - https://www.hnsts.co.kr/Hardware/Iec1000
    - https://www.icbanq.com/P005658680
    - Windows CE 6.0
+   - 에뮬레이터 : https://www.google.com/search?lr=lang_ko&tbs=lr:lang_1ko&q=%EC%9C%88%EB%8F%84%EC%9A%B0+CE+%EC%97%90%EB%AE%AC%EB%A0%88%EC%9D%B4%ED%84%B0&sa=X&ved=2ahUKEwj2p7es0q7tAhVuF6YKHZHWAzYQ1QIoAHoECAUQAQ&biw=1920&bih=934
   
  - 바코드 리더기 정보 
    - 3310G 하니웰(USB)
