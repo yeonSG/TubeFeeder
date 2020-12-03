@@ -22,10 +22,10 @@
 
 ## 참고
  - 임베디드 컴퓨터 정보 (IEC1000Lite-104B2)
-   - 단말기 통합 개요 : https://hnsts.co.kr//ReferenceRoom/ProductRelated#product5
-   - 단말기 메뉴얼 : https://hnsts.co.kr/UserFiles/attachment/data_down/1-iecseries.pdf
-   - 단말기 스타팅개발 가이드 : https://hnsts.co.kr/UserFiles/attachment/data_down/%EC%8A%A4%ED%83%80%ED%8C%85%EB%94%94%EB%B2%A8%EB%A1%9C%ED%8D%BC%EA%B0%80%EC%9D%B4%EB%93%9C-C.pdf
-   - 단말기 하드웨어 개요 : https://www.hnsts.co.kr/Hardware/Iec1000
+   - [단말기 통합 개요](https://hnsts.co.kr//ReferenceRoom/ProductRelated#product5)
+   - [단말기 메뉴얼](https://hnsts.co.kr/UserFiles/attachment/data_down/1-iecseries.pdf)
+   - [단말기 스타팅개발 가이드](https://hnsts.co.kr/UserFiles/attachment/data_down/%EC%8A%A4%ED%83%80%ED%8C%85%EB%94%94%EB%B2%A8%EB%A1%9C%ED%8D%BC%EA%B0%80%EC%9D%B4%EB%93%9C-C.pdf)
+   - [단말기 하드웨어 개요](https://www.hnsts.co.kr/Hardware/Iec1000)
    
    - https://www.hnsts.co.kr/Hardware/Iec1000
    - https://www.icbanq.com/P005658680
@@ -34,7 +34,9 @@
   
  - 바코드 리더기 정보 
    - 3310G 하니웰(USB)
-   - 인터페이스 : (usb 드라이버를 통한 comport통신, rs232통신 )
+   - 인터페이스 : (usb 드라이버를 통한 comport통신, rs232통신)
+   - [제품 정보](https://www.honeywellaidc.com/ko-kr/products/barcode-scanners/hands-free/vuquest-3310g)
+   - [공식 드라이버 다운로드(로그인 필요)](https://hsmftp.honeywell.com/en)
    - usb 드라이버 다운로드 : http://idnext.co.kr/bbs/board.php?bo_table=4010&wr_id=29
    - usb 드라이버(WinCE용 참고): http://m.ezdaq.com/board/?id=board3&popup=&iframe=&goods_seq=&perpage=&page=&category=%EB%93%9C%EB%9D%BC%EC%9D%B4%EB%B2%84&search_text=
    - 바코드 presentation 모드와, streaming presentation모드 차이 : https://www.l-trondirect.com/blog/what-does-presentation-mode-mean-on-a-barcode-scanner/
