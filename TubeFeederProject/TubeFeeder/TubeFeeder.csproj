@@ -69,7 +69,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ScanLoger.cs" />
+    <Compile Include="ControlBoard.cs" />
+    <Compile Include="ScanLogFileManager.cs" />
     <Compile Include="TubeFeeder.cs">
       <SubType>Form</SubType>
     </Compile>

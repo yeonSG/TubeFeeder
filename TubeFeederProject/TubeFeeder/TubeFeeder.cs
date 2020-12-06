@@ -12,7 +12,7 @@ namespace TubeFeeder
     public partial class Form1 : Form
     {
         SmartX.SmartUART smartUART1 = new SmartX.SmartUART();
-        ScanLoger m_ScanLoger = new ScanLoger();
+        ScanLogFileManager m_ScanLogFileManager = new ScanLogFileManager();
 
         public Form1()
         {
@@ -36,7 +36,7 @@ namespace TubeFeeder
             m_insertedItem = m_inputBuffer;
             AddLog(m_insertedItem);
 
-            if (m_ScanLoger.WriteValue(m_insertedItem) == false)
+            if (m_ScanLogFileManager.WriteValue(m_insertedItem) == false)
                 ErrorInfo("Scan Logger error");
             
             ClearInputBuffer();

@@ -7,14 +7,14 @@ using System.IO;
 namespace TubeFeeder
 {
     /* Scan한 내용을 파일에 저장하고 관리하는 클래스 */
-    class ScanLoger 
+    class ScanLogFileManager 
     {
         public const string DIR_DELIMITER = "\\";
         public const string LOGFILE_PATH = ".\\ScanLog";
 
         SmartX.SmartFile m_smartFile;
 
-        public ScanLoger()
+        public ScanLogFileManager()
         {
             this.m_smartFile = new SmartX.SmartFile();
         }
