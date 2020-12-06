@@ -34,7 +34,7 @@ namespace TubeFeeder
         private void InsertBufferStr()
         {
             m_insertedItem = m_inputBuffer;
-            label_inserted.Text = m_insertedItem;
+            AddLog(m_insertedItem);
 
             if (m_ScanLoger.WriteValue(m_insertedItem) == false)
                 ErrorInfo("Scan Logger error");
@@ -42,6 +42,13 @@ namespace TubeFeeder
             ClearInputBuffer();
         }
 
+        private void AddLog(string value)
+        {
+            smartListBox_log.AddItem(DateTime.Now.ToLongTimeString() + value);
+
+            if (smartListBox_log.Items.Count() > 10)  // 리스트박스 아이탬 개수에 따라 다르게 설정해야함
+                smartListBox_log.RemoveItem(0);
+        }
 
         private void smartButton1_Click(object sender, EventArgs e)
         {

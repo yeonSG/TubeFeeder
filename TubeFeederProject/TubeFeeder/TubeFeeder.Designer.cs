@@ -39,7 +39,8 @@
             this.buttonOPEN = new SmartX.SmartButton();
             this.buttonCLOSE = new SmartX.SmartButton();
             this.label_keybuffer = new System.Windows.Forms.Label();
-            this.label_inserted = new System.Windows.Forms.Label();
+            this.smartListBox_log = new SmartX.SmartListBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -247,17 +248,50 @@
             // 
             // label_keybuffer
             // 
-            this.label_keybuffer.Location = new System.Drawing.Point(315, 137);
+            this.label_keybuffer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.label_keybuffer.Location = new System.Drawing.Point(24, 402);
             this.label_keybuffer.Name = "label_keybuffer";
-            this.label_keybuffer.Size = new System.Drawing.Size(186, 50);
+            this.label_keybuffer.Size = new System.Drawing.Size(265, 25);
             this.label_keybuffer.Text = "label_keybuffer";
             // 
-            // label_inserted
+            // smartListBox_log
             // 
-            this.label_inserted.Location = new System.Drawing.Point(315, 187);
-            this.label_inserted.Name = "label_inserted";
-            this.label_inserted.Size = new System.Drawing.Size(186, 50);
-            this.label_inserted.Text = "label_inserted";
+            this.smartListBox_log.BackPictureBox = null;
+            this.smartListBox_log.BackPictureBox1 = null;
+            this.smartListBox_log.BackPictureBox2 = null;
+            this.smartListBox_log.ColumnAlign = SmartX.SmartListBox.COLUMNALIGNS.CENTER;
+            this.smartListBox_log.ColumnDelimiter = '\0';
+            this.smartListBox_log.ColumnOffsets = null;
+            this.smartListBox_log.FontColor = System.Drawing.Color.Black;
+            this.smartListBox_log.InitVisible = true;
+            this.smartListBox_log.ItemAddOrder = SmartX.SmartListBox.ITEMADDORDERS.BOTTOMADD;
+            this.smartListBox_log.ItemOffsetGap = 0;
+            this.smartListBox_log.ItemOffsetX = 0;
+            this.smartListBox_log.ItemOffsetY = 0;
+            this.smartListBox_log.Location = new System.Drawing.Point(23, 237);
+            this.smartListBox_log.MouseMoveEventSpace = 3;
+            this.smartListBox_log.MouseMoveSpace = 10;
+            this.smartListBox_log.Name = "smartListBox_log";
+            this.smartListBox_log.OutLineColor = System.Drawing.SystemColors.ControlText;
+            this.smartListBox_log.SelectColor = System.Drawing.Color.Blue;
+            this.smartListBox_log.SelectFilled = true;
+            this.smartListBox_log.SelectFontColor = System.Drawing.Color.DarkBlue;
+            this.smartListBox_log.SelectItemIndex = -1;
+            this.smartListBox_log.SeparationlineColor1 = System.Drawing.Color.Gray;
+            this.smartListBox_log.SeparationlineColor2 = System.Drawing.Color.LightGray;
+            this.smartListBox_log.SeparationLineStyle = SmartX.SmartListBox.SEPARATIONLINETYPES.FixedSingle;
+            this.smartListBox_log.SeparationlineVisibleBottom = true;
+            this.smartListBox_log.SeparationlineVisibleTop = true;
+            this.smartListBox_log.Size = new System.Drawing.Size(266, 162);
+            this.smartListBox_log.TabIndex = 51;
+            this.smartListBox_log.Text = "LogListBox";
+            // 
+            // label2
+            // 
+            this.label2.Location = new System.Drawing.Point(24, 214);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(265, 20);
+            this.label2.Text = "       DateTime                       Log";
             // 
             // Form1
             // 
@@ -265,7 +299,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(638, 455);
-            this.Controls.Add(this.label_inserted);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.smartListBox_log);
             this.Controls.Add(this.label_keybuffer);
             this.Controls.Add(this.buttonCLOSE);
             this.Controls.Add(this.buttonOPEN);
@@ -293,7 +328,8 @@
         private SmartX.SmartButton buttonOPEN;
         private SmartX.SmartButton buttonCLOSE;
         private System.Windows.Forms.Label label_keybuffer;
-        private System.Windows.Forms.Label label_inserted;
+        private SmartX.SmartListBox smartListBox_log;
+        private System.Windows.Forms.Label label2;
     }
 }
 
