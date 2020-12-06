@@ -12,6 +12,7 @@ namespace TubeFeeder
     public partial class Form1 : Form
     {
         SmartX.SmartUART smartUART1 = new SmartX.SmartUART();
+        ScanLoger m_ScanLoger = new ScanLoger();
 
         public Form1()
         {
@@ -35,6 +36,9 @@ namespace TubeFeeder
             m_insertedItem = m_inputBuffer;
             label_inserted.Text = m_insertedItem;
 
+            if (m_ScanLoger.WriteValue(m_insertedItem) == false)
+                ErrorInfo("Scan Logger error");
+            
             ClearInputBuffer();
         }
 
@@ -136,11 +140,6 @@ namespace TubeFeeder
                 }
                 return "open Success";
             }
-        }
-
-        private void smartButton2_Click(object sender, EventArgs e)
-        {
-            SmartX.SmartMessageBox.Show("message");
         }
 
         private void Form1_KeyPress(object sender, KeyPressEventArgs e)

@@ -38,7 +38,6 @@
             this.smartSerialPort1 = new SmartX.SmartSerialPort();
             this.buttonOPEN = new SmartX.SmartButton();
             this.buttonCLOSE = new SmartX.SmartButton();
-            this.smartButton2 = new SmartX.SmartButton();
             this.label_keybuffer = new System.Windows.Forms.Label();
             this.label_inserted = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -52,7 +51,7 @@
             // 
             // smartButton1
             // 
-            this.smartButton1.Location = new System.Drawing.Point(36, 17);
+            this.smartButton1.Location = new System.Drawing.Point(118, 17);
             this.smartButton1.Name = "smartButton1";
             this.smartButton1.Size = new System.Drawing.Size(171, 31);
             this.smartButton1.TabIndex = 1;
@@ -246,38 +245,6 @@
             this.buttonCLOSE.TextVAlign = SmartX.SmartButton.TextVerAlign.Middle;
             this.buttonCLOSE.UpImage = null;
             // 
-            // smartButton2
-            // 
-            this.smartButton2.BackPictureBox = null;
-            this.smartButton2.BackPictureBox1 = null;
-            this.smartButton2.BackPictureBox2 = null;
-            this.smartButton2.ButtonColor = System.Drawing.Color.Gray;
-            this.smartButton2.ButtonImageAutoSize = true;
-            this.smartButton2.ColorKeySamplePosition = new System.Drawing.Point(0, 0);
-            this.smartButton2.DisableImage = null;
-            this.smartButton2.DownImage = null;
-            this.smartButton2.GroupID = 0;
-            this.smartButton2.InitVisible = true;
-            this.smartButton2.Location = new System.Drawing.Point(507, 17);
-            this.smartButton2.Mode = SmartX.SmartButton.BUTTONMODE.NORMAL;
-            this.smartButton2.Name = "smartButton2";
-            this.smartButton2.NestedClickEventPrevent = false;
-            this.smartButton2.OutlinePixel = 1;
-            this.smartButton2.RepeatInterval = 200;
-            this.smartButton2.RepeatIntervalAccelerate = null;
-            this.smartButton2.SafeInterval = 200;
-            this.smartButton2.Size = new System.Drawing.Size(81, 63);
-            this.smartButton2.SpecialFunction = SmartX.SmartButton.SPECIALFUNC.NONE;
-            this.smartButton2.TabIndex = 49;
-            this.smartButton2.Text = "smartX_showBoxTest";
-            this.smartButton2.TextColor = System.Drawing.Color.Black;
-            this.smartButton2.TextDownColor = System.Drawing.Color.White;
-            this.smartButton2.TextHAlign = SmartX.SmartButton.TextHorAlign.Middle;
-            this.smartButton2.TextLocation = new System.Drawing.Point(0, 0);
-            this.smartButton2.TextVAlign = SmartX.SmartButton.TextVerAlign.Middle;
-            this.smartButton2.UpImage = null;
-            this.smartButton2.Click += new System.EventHandler(this.smartButton2_Click);
-            // 
             // label_keybuffer
             // 
             this.label_keybuffer.Location = new System.Drawing.Point(315, 137);
@@ -300,7 +267,6 @@
             this.ClientSize = new System.Drawing.Size(638, 455);
             this.Controls.Add(this.label_inserted);
             this.Controls.Add(this.label_keybuffer);
-            this.Controls.Add(this.smartButton2);
             this.Controls.Add(this.buttonCLOSE);
             this.Controls.Add(this.buttonOPEN);
             this.Controls.Add(this.comboBaud);
@@ -326,7 +292,6 @@
         private SmartX.SmartSerialPort smartSerialPort1;
         private SmartX.SmartButton buttonOPEN;
         private SmartX.SmartButton buttonCLOSE;
-        private SmartX.SmartButton smartButton2;
         private System.Windows.Forms.Label label_keybuffer;
         private System.Windows.Forms.Label label_inserted;
     }
