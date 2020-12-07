@@ -70,6 +70,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ControlBoard.cs" />
+    <Compile Include="MessageProtocol.cs" />
+    <Compile Include="MessageGenerator.cs" />
+    <Compile Include="MessageReciver.cs" />
     <Compile Include="ScanLogFileManager.cs" />
     <Compile Include="TubeFeeder.cs">
       <SubType>Form</SubType>
@@ -92,6 +95,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Wait.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CompactFramework.CSharp.targets" />
   <ProjectExtensions>
