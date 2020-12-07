@@ -9,14 +9,20 @@ using System.Windows.Forms;
 
 namespace TubeFeeder
 {
+    delegate void SetTextCallback(string Text);
+
     public partial class Form1 : Form
     {
-        SmartX.SmartUART smartUART1 = new SmartX.SmartUART();
         ScanLogFileManager m_ScanLogFileManager = new ScanLogFileManager();
+        ControlBoard m_ControlBoard = null;
 
         public Form1()
         {
             InitializeComponent();
+
+            SetTextCallback logCallback = new SetTextCallback(AddLog);
+            m_ControlBoard = new ControlBoard(serialPort1, logCallback);
+
         }
 
         private string m_inputBuffer = "";
@@ -40,52 +46,25 @@ namespace TubeFeeder
                 ErrorInfo("Scan Logger error");
             
             ClearInputBuffer();
+
+            AddLog( ControlBoard.m_controlBoardConnected.ToString() );
+            
         }
 
         private void AddLog(string value)
         {
-            smartListBox_log.AddItem(DateTime.Now.ToLongTimeString() + value);
-
-            if (smartListBox_log.Items.Count() > 10)  // 리스트박스 아이탬 개수에 따라 다르게 설정해야함
-                smartListBox_log.RemoveItem(0);
-        }
-
-        private void smartButton1_Click(object sender, EventArgs e)
-        {
-            smartSerialPort1.Baud_Rate = SmartX.SmartSerialPort.BAUDRATE._115200bps;
-
-            // SmartX.SmartMessageBox.Show("test");
-            string serialInfo = "serial info";
-            string strBaudrate = smartSerialPort1.RawSerialPort.ToString(); // getBaudrateString(smartSerialPort1.RawSerialPort);
-            string strDatabits = getDatabitsString(smartSerialPort1.RawSerialPort);
-            string strParity = getParityString(smartSerialPort1.RawSerialPort);
-            string strStopbits = getStopbitsString(smartSerialPort1.RawSerialPort);
-
-            smartSerialPort1.PortNo = SmartX.SmartSerialPort.COMPORTNO.COM3;
-
-            serialInfo += "\r\n" + smartSerialPort1.RawSerialPort.PortName;
-            serialInfo += "\r\n" + strBaudrate;
-            serialInfo += "\r\n" + strDatabits;
-            serialInfo += "\r\n" + strParity;
-            serialInfo += "\r\n" + strStopbits;
-            label1.Text = serialInfo;
-
-            /*
-            switch (smartSerialPort1.Baud_Rate)
+            if (this.smartListBox_log.InvokeRequired)
             {
-                case SmartX.SmartSerialPort.BAUDRATE._110bps:
-                    baudrate = "_110bps";
-                    break;
-            }*/
+                SetTextCallback dp = new SetTextCallback(AddLog);
+                this.Invoke(dp, new object[] { value });
+            }
+            else
+            {
+                smartListBox_log.AddItem("[" + DateTime.Now.ToLongTimeString() + "] " + value);
 
-            // smartSerialPort1.Open();
-
-            MessageBox.Show("test");
-        }
-
-        private void buttonOPEN_Click(object sender, EventArgs e)
-        {
-            label1.Text = "asdasd";
+                if (smartListBox_log.Items.Count() > 10)  // 리스트박스 아이탬 개수에 따라 다르게 설정해야함
+                    smartListBox_log.RemoveItem(0);
+            }
         }
 
         private string getBaudrateString(System.IO.Ports.SerialPort serialPort) 
@@ -95,58 +74,6 @@ namespace TubeFeeder
         private string getDatabitsString(System.IO.Ports.SerialPort serialPort)
         {
             return Convert.ToString(serialPort.DataBits);
-        }
-        private string getParityString(System.IO.Ports.SerialPort serialPort)
-        {
-            switch(serialPort.Parity)
-            {
-                case System.IO.Ports.Parity.Even:
-                    return "Even";
-                case System.IO.Ports.Parity.Mark:
-                    return "Mark";
-                case System.IO.Ports.Parity.None:
-                    return "None";
-                case System.IO.Ports.Parity.Odd:
-                    return "Odd";
-                case System.IO.Ports.Parity.Space:
-                    return "Space";
-                default: 
-                    return "Error";
-            }
-        }
-        private string getStopbitsString(System.IO.Ports.SerialPort serialPort)
-        {
-            switch (serialPort.StopBits)
-            {
-                case System.IO.Ports.StopBits.None:
-                    return "None";
-                case System.IO.Ports.StopBits.One:
-                    return "One";
-                case System.IO.Ports.StopBits.OnePointFive:
-                    return "OnePointFive";
-                case System.IO.Ports.StopBits.Two:
-                    return "Two";
-                default:
-                    return "Error";
-            }
-        }
-
-        private string openSerial(SmartX.SmartSerialPort smartSerialport)
-        {
-            if (smartSerialport.IsOpen == true)
-                return "port already opend";
-            else
-            {                
-                //COM7의 경우 USB Serial 통신을 위해 사용합니다. FTDI VCP드라이버가 없는 경우 COM7을 선택 후 Open()하면 에러가 발생합니다.
-                try { smartSerialPort1.Open(); }
-                catch (System.IO.IOException)
-                {
-                    string ret = smartSerialPort1.PortNo.ToString() + " 포트가 존재하지 않습니다.";
-                    smartSerialPort1.Close();
-                    return ret;
-                }
-                return "open Success";
-            }
         }
 
         private void Form1_KeyPress(object sender, KeyPressEventArgs e)
@@ -225,7 +152,50 @@ namespace TubeFeeder
             MessageBox.Show(errorMessage);
         }
 
-        private void smartButton1_Click_1(object sender, EventArgs e)
+        // comport로 메시지 수신함
+        private void serialPort1_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
+        {
+            if (m_ControlBoard.isOpen())
+            {
+                int recSize = serialPort1.BytesToRead;
+                string recString;
+
+                // AddLog("reciveed " + recSize);
+
+                //LogProcessing("Rec Called_" + recSize +"\r\n");
+                if (recSize >= 7)//(recSize != 0)
+                {
+                    recString = "[RX] ";
+                    byte[] buff = new byte[recSize];
+
+                    serialPort1.Read(buff, 0, recSize);
+                    for (int i = 0; i < recSize; i++)
+                    {
+                        recString += buff[i].ToString("X2") + " ";
+                    }
+                    AddLog(recString);
+                    
+                    m_ControlBoard.ProcessMessage(buff);
+                }
+            }
+        }
+
+        private void SendDeviceStart(byte[] value)
+        {
+            m_ControlBoard.SendMessage( MessageGenerator.Meesage_DeviceStart(true) );
+        }
+        private void SendPing()
+        {
+            m_ControlBoard.SendMessage( MessageGenerator.Meesage_Ping() );
+        }
+
+        private void buttonTest1_Click(object sender, EventArgs e)
+        {
+            AddLog("send");
+            SendPing();
+        }
+
+        private void buttonTest2_Click(object sender, EventArgs e)
         {
 
         }
