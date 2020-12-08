@@ -53,7 +53,7 @@ namespace TubeFeeder
             byte[] Message = new byte[7];
 
             Message[MessageProtocol.PROTOCOL_HEADER] = MessageProtocol.HEADER;
-            Message[MessageProtocol.PROTOCOL_CMD] = MessageProtocol.CMD_ORDER;
+            Message[MessageProtocol.PROTOCOL_CMD] = MessageProtocol.CMD_INFORM;
             Message[MessageProtocol.PROTOCOL_CMD_SUB] = inform;
             Message[MessageProtocol.PROTOCOL_DATA1] = 0x00;
             Message[MessageProtocol.PROTOCOL_DATA2] = 0x00;
@@ -71,7 +71,7 @@ namespace TubeFeeder
             byte[] Message = new byte[7];
 
             Message[MessageProtocol.PROTOCOL_HEADER] = MessageProtocol.HEADER;
-            Message[MessageProtocol.PROTOCOL_CMD] = MessageProtocol.CMD_ORDER;
+            Message[MessageProtocol.PROTOCOL_CMD] = MessageProtocol.CMD_WRITE;
             Message[MessageProtocol.PROTOCOL_CMD_SUB] = Reg;
             Message[MessageProtocol.PROTOCOL_DATA1] = (byte)(data>>8);
             Message[MessageProtocol.PROTOCOL_DATA2] = (byte)data;
@@ -89,7 +89,7 @@ namespace TubeFeeder
             byte[] Message = new byte[7];
 
             Message[MessageProtocol.PROTOCOL_HEADER] = MessageProtocol.HEADER;
-            Message[MessageProtocol.PROTOCOL_CMD] = MessageProtocol.CMD_ORDER;
+            Message[MessageProtocol.PROTOCOL_CMD] = MessageProtocol.CMD_READ;
             Message[MessageProtocol.PROTOCOL_CMD_SUB] = Reg;
             Message[MessageProtocol.PROTOCOL_DATA1] = 0x00;
             Message[MessageProtocol.PROTOCOL_DATA2] = 0x00;
