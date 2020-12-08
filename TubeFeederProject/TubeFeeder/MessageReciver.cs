@@ -40,7 +40,7 @@ namespace TubeFeeder
                     break;
                 case MessageProtocol.CMD_INFORM:
                     {
-                        switch (message[MessageProtocol.PROTOCOL_REG])
+                        switch (message[MessageProtocol.PROTOCOL_CMD_SUB])
                         {
                             case MessageProtocol.CMD_INFORM_ACK:
                                 return true;

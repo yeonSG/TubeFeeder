@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO.Ports;
 using System.Linq;
 using System.Collections.Generic;
@@ -11,7 +11,7 @@ namespace TubeFeeder
      * - Message 프로토콜과 처리 관련된 구현
      */
     
-    public const enum ControlBoardState
+    public enum ControlBoardState
     {
         UNKNOWN,        // 프로그램 시작 시 디폴트 상태
         READY,          // Comport 연결이 확인되고 아무것도 안하고 있는 상태
@@ -36,7 +36,7 @@ namespace TubeFeeder
 
         public static bool m_controlBoardConnected = false; // 컨트롤 보드 연결 성공 시 True
         
-        public static DialogResult m_state = ControlBoardState.UNKNOWN;
+        public static ControlBoardState m_state = ControlBoardState.UNKNOWN;
 
         private MessageReciver m_messageProcessor = null;
 
