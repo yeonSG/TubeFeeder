@@ -8,7 +8,7 @@ namespace TubeFeeder
     class MessageProtocol
     {
         // | byte[0]      | byte[1]   | byte[2]   | byte[3]   | byte[4]   | byte[5]   | byte[6]
-        // | HEADER(0xFA) | CMD       | REG       | DATA1     | DATA2     | CheckSum  | TAIL(0xFE)
+        // | HEADER(0xFA) | CMD       | CMDSub    | DATA1     | DATA2     | CheckSum  | TAIL(0xFE)
 
         public const byte PROTOCOL_HEADER    = 0;
         public const byte PROTOCOL_CMD       = 1;
@@ -35,8 +35,8 @@ namespace TubeFeeder
         public const byte CMD_ORDER_START = (byte)'S';
         public const byte CMD_ORDER_STOP = (byte)'T';
 
-        public const byte CMD_WRITE_SPEED = (byte)'M';
-        public const byte CMD_READ_SPEED = (byte)'M';    
+        public const byte CMD_WRITE_SPEED = (byte)'S';
+        public const byte CMD_READ_SPEED = (byte)'S';    
         
         public const byte CMD_INFORM_SCANNED = (byte)'S';
         public const byte CMD_INFORM_ACK = (byte)'A';
