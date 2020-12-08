@@ -46,8 +46,6 @@ namespace TubeFeeder
                 ErrorInfo("Scan Logger error");
             
             ClearInputBuffer();
-
-            AddLog( ControlBoard.m_controlBoardConnected.ToString() );
             
         }
 
@@ -93,7 +91,13 @@ namespace TubeFeeder
             if (e.KeyCode == Keys.Enter)
             {
                 //MessageBox.Show("enter");// Enter key pressed
+
+                // Check(); 버퍼내용이 바코드 형식에 부합하는지 검사
+                if (m_inputBuffer == "")
+                    return;
+
                 InsertBufferStr();
+                m_ControlBoard.SendMessage( MessageGenerator.Meesage_Infom(MessageProtocol.CMD_INFORM_SCANNED) );
             }
             else
             {

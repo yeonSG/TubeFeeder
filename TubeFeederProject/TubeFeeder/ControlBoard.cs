@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.IO.Ports;
 using System.Linq;
 using System.Collections.Generic;
@@ -23,8 +23,8 @@ namespace TubeFeeder
     class ControlBoard
     {
         /* 컴포트 설정 */
-        public const String CONTROLBOARD_COMPORT = "COM4";
-        public const int COM_BAUDRATE = 115200;
+        public const String CONTROLBOARD_COMPORT = "COM1";
+        public const int COM_BAUDRATE = 9600;
         public const int COM_DATABITS = 8;
         public const Parity COM_PARITY = Parity.None;
         public const StopBits COM_STOPBITS = StopBits.One;
@@ -32,20 +32,18 @@ namespace TubeFeeder
         private SetTextCallback LogFunction = null;
 
         private SerialPort m_serialPort = null;
-        private MessageReciver m_messageReciver = new MessageReciver();
+        private MessageReciver m_messageReciver = null;
 
         public static bool m_controlBoardConnected = false; // 컨트롤 보드 연결 성공 시 True
-        
+
         public static ControlBoardState m_state = ControlBoardState.UNKNOWN;
 
-        private MessageReciver m_messageProcessor = null;
 
         public ControlBoard(SerialPort serialPort, SetTextCallback logFunction)
         {
             this.m_serialPort = serialPort;
             this.LogFunction = logFunction;
-
-            this.m_messageProcessor = new MessageReciver();
+            this.m_messageReciver = new MessageReciver(logFunction);
 
             Init();
             
