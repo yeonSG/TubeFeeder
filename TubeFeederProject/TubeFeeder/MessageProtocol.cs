@@ -31,7 +31,7 @@ namespace TubeFeeder
         public const byte CMD_READ   = (byte)'R';    // 제어장치에게 특정 값 읽기 요청
         public const byte CMD_INFORM = (byte)'I';    // 제어장치에게 알림
 
-        // REG
+        // CMD_SUB
         public const byte CMD_ORDER_START = (byte)'S';
         public const byte CMD_ORDER_STOP = (byte)'T';
 
