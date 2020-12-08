@@ -8,11 +8,11 @@ namespace TubeFeeder
     class MessageProtocol
     {
         // | byte[0]      | byte[1]   | byte[2]   | byte[3]   | byte[4]   | byte[5]   | byte[6]
-        // | HEADER(0xFA) | CMD       | CMDSub    | DATA1     | DATA2     | CheckSum  | TAIL(0xFE)
+        // | HEADER(0xFA) | CMD       | CMD_SUB   | DATA1     | DATA2     | CheckSum  | TAIL(0xFE)
 
         public const byte PROTOCOL_HEADER    = 0;
         public const byte PROTOCOL_CMD       = 1;
-        public const byte PROTOCOL_REG       = 2;
+        public const byte PROTOCOL_CMD_SUB   = 2;
         public const byte PROTOCOL_DATA1     = 3;
         public const byte PROTOCOL_DATA2     = 4;
         public const byte PROTOCOL_CHECKSUM  = 5;
@@ -25,7 +25,7 @@ namespace TubeFeeder
         public const byte TAIL = 0xFE;
 
         // CMD
-        public const byte CMD_PING   = (byte)'P';    // 제어장치에게 Ping~
+        public const byte CMD_PING   = (byte)'P';    // 제어장치에게 Ping~     
         public const byte CMD_ORDER  = (byte)'O';    // 제어장치에게 명령함
         public const byte CMD_WRITE  = (byte)'W';    // 제어장치에게 특정 값 저장 요청
         public const byte CMD_READ   = (byte)'R';    // 제어장치에게 특정 값 읽기 요청
