@@ -10,7 +10,7 @@ namespace TubeFeeder
     class ScanLogFileManager 
     {
         public const string DIR_DELIMITER = "\\";
-        public const string LOGFILE_PATH = ".\\ScanLog";
+        public const string LOGFILE_PATH = "\\Flash Disk\\ScanLog";     // ** 저장장소 이름 정확해야함
 
         SmartX.SmartFile m_smartFile;
 
