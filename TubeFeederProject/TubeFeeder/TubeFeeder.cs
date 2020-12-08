@@ -203,6 +203,11 @@ namespace TubeFeeder
         {
 
         }
+
+        private void smartButton_StartReqest_Click(object sender, EventArgs e)
+        {
+            m_ControlBoard.SendMessage(MessageGenerator.Meesage_DeviceStart(true));
+        }
         // Ping
         // Value Write
         // Value Read
