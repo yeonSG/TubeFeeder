@@ -35,6 +35,9 @@ namespace TubeFeeder
         public const byte CMD_ORDER_START = (byte)'S';
         public const byte CMD_ORDER_STOP = (byte)'T';
 
+        public const byte CMD_ORDER_START_BARCODE_ON  = 0xF0;
+        public const byte CMD_ORDER_START_BARCODE_OFF = 0x0F;
+
         public const byte CMD_WRITE_SPEED = (byte)'S';
         public const byte CMD_READ_SPEED = (byte)'S';    
         
