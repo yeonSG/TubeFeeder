@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -223,12 +223,13 @@ namespace TubeFeeder
 
         private void btn_start_Click(object sender, EventArgs e)
         {
-            m_ControlBoard.SendMessage(MessageGenerator.Meesage_DeviceStart(true));
+            bool isBarcodeReadMode = true;
+            m_ControlBoard.SendMessage(MessageGenerator.Meesage_DeviceStart(isBarcodeReadMode));
         }
 
         private void btn_stop_Click(object sender, EventArgs e)
         {
-            m_ControlBoard.SendMessage(MessageGenerator.Meesage_DeviceStart(false));
+            m_ControlBoard.SendMessage(MessageGenerator.Meesage_DeviceStop());
         }
 
         private void smartTimer1_Tick(object sender, EventArgs e)

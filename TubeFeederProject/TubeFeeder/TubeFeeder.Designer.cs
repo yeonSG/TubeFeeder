@@ -37,7 +37,6 @@
             this.smartListBox_log = new SmartX.SmartListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
-            this.smartButton_StartReqest = new SmartX.SmartButton();
             this.smartForm1 = new SmartX.SmartForm();
             this.btn_start = new SmartX.SmartButton();
             this.btn_stop = new SmartX.SmartButton();
@@ -168,38 +167,6 @@
             // 
             this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_DataReceived);
             // 
-            // smartButton_StartReqest
-            // 
-            this.smartButton_StartReqest.BackPictureBox = null;
-            this.smartButton_StartReqest.BackPictureBox1 = null;
-            this.smartButton_StartReqest.BackPictureBox2 = null;
-            this.smartButton_StartReqest.ButtonColor = System.Drawing.Color.Gray;
-            this.smartButton_StartReqest.ButtonImageAutoSize = true;
-            this.smartButton_StartReqest.ColorKeySamplePosition = new System.Drawing.Point(0, 0);
-            this.smartButton_StartReqest.DisableImage = null;
-            this.smartButton_StartReqest.DownImage = null;
-            this.smartButton_StartReqest.GroupID = 0;
-            this.smartButton_StartReqest.InitVisible = true;
-            this.smartButton_StartReqest.Location = new System.Drawing.Point(590, 35);
-            this.smartButton_StartReqest.Mode = SmartX.SmartButton.BUTTONMODE.NORMAL;
-            this.smartButton_StartReqest.Name = "smartButton_StartReqest";
-            this.smartButton_StartReqest.NestedClickEventPrevent = false;
-            this.smartButton_StartReqest.OutlinePixel = 1;
-            this.smartButton_StartReqest.RepeatInterval = 200;
-            this.smartButton_StartReqest.RepeatIntervalAccelerate = null;
-            this.smartButton_StartReqest.SafeInterval = 200;
-            this.smartButton_StartReqest.Size = new System.Drawing.Size(93, 58);
-            this.smartButton_StartReqest.SpecialFunction = SmartX.SmartButton.SPECIALFUNC.NONE;
-            this.smartButton_StartReqest.TabIndex = 54;
-            this.smartButton_StartReqest.Text = "Start";
-            this.smartButton_StartReqest.TextColor = System.Drawing.Color.Black;
-            this.smartButton_StartReqest.TextDownColor = System.Drawing.Color.White;
-            this.smartButton_StartReqest.TextHAlign = SmartX.SmartButton.TextHorAlign.Middle;
-            this.smartButton_StartReqest.TextLocation = new System.Drawing.Point(0, 0);
-            this.smartButton_StartReqest.TextVAlign = SmartX.SmartButton.TextVerAlign.Middle;
-            this.smartButton_StartReqest.UpImage = null;
-            this.smartButton_StartReqest.Click += new System.EventHandler(this.smartButton_StartReqest_Click);
-            // 
             // smartForm1
             // 
             this.smartForm1.CenterLocation = false;
@@ -219,7 +186,7 @@
             this.btn_start.BackPictureBox = null;
             this.btn_start.BackPictureBox1 = null;
             this.btn_start.BackPictureBox2 = null;
-            this.btn_start.ButtonColor = System.Drawing.Color.Gray;
+            this.btn_start.ButtonColor = System.Drawing.Color.DimGray;
             this.btn_start.ButtonImageAutoSize = true;
             this.btn_start.ColorKeySamplePosition = new System.Drawing.Point(0, 0);
             this.btn_start.DisableImage = null;
@@ -251,7 +218,7 @@
             this.btn_stop.BackPictureBox = null;
             this.btn_stop.BackPictureBox1 = null;
             this.btn_stop.BackPictureBox2 = null;
-            this.btn_stop.ButtonColor = System.Drawing.Color.Gray;
+            this.btn_stop.ButtonColor = System.Drawing.Color.DimGray;
             this.btn_stop.ButtonImageAutoSize = true;
             this.btn_stop.ColorKeySamplePosition = new System.Drawing.Point(0, 0);
             this.btn_stop.DisableImage = null;
@@ -280,7 +247,7 @@
             // 
             // label_indicator
             // 
-            this.label_indicator.BackColor = System.Drawing.Color.Lime;
+            this.label_indicator.BackColor = System.Drawing.Color.Gray;
             this.label_indicator.BackPictureBox = null;
             this.label_indicator.BackPictureBox1 = null;
             this.label_indicator.BackPictureBox2 = null;
@@ -442,7 +409,6 @@
             this.Controls.Add(this.label_indicator);
             this.Controls.Add(this.btn_stop);
             this.Controls.Add(this.btn_start);
-            this.Controls.Add(this.smartButton_StartReqest);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.smartListBox_log);
             this.Controls.Add(this.label_keybuffer);
@@ -468,7 +434,6 @@
         private SmartX.SmartListBox smartListBox_log;
         private System.Windows.Forms.Label label2;
         private System.IO.Ports.SerialPort serialPort1;
-        private SmartX.SmartButton smartButton_StartReqest;
         private SmartX.SmartForm smartForm1;
         private SmartX.SmartButton btn_start;
         private SmartX.SmartButton btn_stop;
