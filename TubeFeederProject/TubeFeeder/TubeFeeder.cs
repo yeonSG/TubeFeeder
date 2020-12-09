@@ -16,6 +16,12 @@ namespace TubeFeeder
         ScanLogFileManager m_ScanLogFileManager = new ScanLogFileManager();
         ControlBoard m_ControlBoard = null;
 
+        private string m_inputBuffer = "";
+        private string m_insertedItem = "";
+
+        private DateTime m_runTime = DateTime.Now;
+        private UInt32 m_scanCount = 0;
+
         public Form1()
         {
             InitializeComponent();
@@ -23,10 +29,14 @@ namespace TubeFeeder
             SetTextCallback logCallback = new SetTextCallback(AddLog);
             m_ControlBoard = new ControlBoard(serialPort1, logCallback);
 
+            label_curTime.Text = DateTime.Now.ToLongTimeString();
+            label_runTime.Text = m_runTime.ToLongTimeString();
+
+
+            smartTimer1.Interval = 1000;    // 1000msec
+            smartTimer1.Start();
         }
 
-        private string m_inputBuffer = "";
-        private string m_insertedItem = "";
         private void AppendInputBuffer(string key)
         {
             m_inputBuffer += key;
@@ -60,7 +70,7 @@ namespace TubeFeeder
             {
                 smartListBox_log.AddItem("[" + DateTime.Now.ToLongTimeString() + "] " + value);
 
-                if (smartListBox_log.Items.Count() > 10)  // 리스트박스 아이탬 개수에 따라 다르게 설정해야함
+                if (smartListBox_log.Items.Count() > 35)  // 리스트박스 아이탬 개수에 따라 다르게 설정해야함
                     smartListBox_log.RemoveItem(0);
             }
         }
@@ -96,6 +106,7 @@ namespace TubeFeeder
                 if (m_inputBuffer == "")
                     return;
 
+                m_scanCount++;
                 InsertBufferStr();
                 m_ControlBoard.SendMessage( MessageGenerator.Meesage_Infom(MessageProtocol.CMD_INFORM_SCANNED) );
             }
@@ -167,7 +178,8 @@ namespace TubeFeeder
                 // AddLog("reciveed " + recSize);
 
                 //LogProcessing("Rec Called_" + recSize +"\r\n");
-                if (recSize >= 7)//(recSize != 0)
+                //if (recSize >= 7)//
+                if(recSize != 0)
                 {
                     recString = "[RX] ";
                     byte[] buff = new byte[recSize];
@@ -207,6 +219,25 @@ namespace TubeFeeder
         private void smartButton_StartReqest_Click(object sender, EventArgs e)
         {
             m_ControlBoard.SendMessage(MessageGenerator.Meesage_DeviceStart(true));
+        }
+
+        private void btn_start_Click(object sender, EventArgs e)
+        {
+            m_ControlBoard.SendMessage(MessageGenerator.Meesage_DeviceStart(true));
+        }
+
+        private void btn_stop_Click(object sender, EventArgs e)
+        {
+            m_ControlBoard.SendMessage(MessageGenerator.Meesage_DeviceStart(false));
+        }
+
+        private void smartTimer1_Tick(object sender, EventArgs e)
+        {
+            TimeSpan runTime = DateTime.Now.Subtract(m_runTime);
+            label_runTime.Text = runTime.Days + "일 " + runTime.Hours + "시간 " + runTime.Minutes + "분 " + runTime.Seconds + "초";
+            label_curTime.Text = DateTime.Now.ToLongTimeString();
+
+            label_scanCount.Text = m_scanCount + "개";
         }
         // Ping
         // Value Write
