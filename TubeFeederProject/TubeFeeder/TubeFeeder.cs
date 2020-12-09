@@ -30,6 +30,8 @@ namespace TubeFeeder
         private DateTime m_runTime = DateTime.Now;
         private UInt32 m_scanCount = 0;
 
+        private bool m_debugMode = false;   // 디버그모드
+
         private bool m_isOnError = false;
         private bool m_isBarcodeReadMode_On = true; // 바코드 읽기모드 On
 
@@ -37,7 +39,7 @@ namespace TubeFeeder
         {
             InitializeComponent();
 
-            SetTextCallback logCallback = new SetTextCallback(AddLog);
+            SetTextCallback logCallback = new SetTextCallback(AddLog_d);
             ReciveMsgCallback msgRecivCallback = new ReciveMsgCallback(msgRecive);
             m_ControlBoard = new ControlBoard(serialPort1, logCallback, msgRecivCallback);
 
@@ -65,7 +67,7 @@ namespace TubeFeeder
             AddLog(m_insertedItem);
 
             if (m_ScanLogFileManager.WriteValue(m_insertedItem) == false)
-                ErrorInfo("Scan Logger error");
+                ErrorInfo("로그파일 쓰기 error");
             
             ClearInputBuffer();
             
@@ -84,6 +86,22 @@ namespace TubeFeeder
 
                 if (smartListBox_log.Items.Count() > 35)  // 리스트박스 아이탬 개수에 따라 다르게 설정해야함
                     smartListBox_log.RemoveItem(0);
+            }
+        }
+
+        private void AddLog_d(string value)
+        {
+            if (m_debugMode != true)
+                return;
+                
+            if (this.smartListBox_log.InvokeRequired)
+            {
+                SetTextCallback dp = new SetTextCallback(AddLog_d);
+                this.Invoke(dp, new object[] { value });
+            }
+            else
+            {
+                AddLog(value);
             }
         }
 
@@ -280,7 +298,7 @@ namespace TubeFeeder
                     {
                         recString += buff[i].ToString("X2") + " ";
                     }
-                    AddLog(recString);
+                    AddLog_d(recString);
                     
                     m_ControlBoard.ProcessMessage(buff);
                 }
@@ -298,7 +316,7 @@ namespace TubeFeeder
 
         private void buttonTest1_Click(object sender, EventArgs e)
         {
-            AddLog("send");
+            AddLog_d("send");
             SendPing();
         }
 
