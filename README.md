@@ -34,7 +34,7 @@
  - [x] 바코드 숫자입력이 아닐 때 에러뜨는 것 제거
  - [x] 로그파일에 시간도 기록 (HH:MM:SS \t (data) )
  - [ ] 바코드 로그 뜨는곳 로그만 뜨도록 변경
- - [ ] 모든 폼 처리부분 invoke 처리(현재시간 출력 등등)
+ - [x] 모든 폼 처리부분 invoke 처리(현재시간 출력 등등)
  - [ ] 에러 시 비프음 나도록
  - [ ] [전역 예외처리](https://hnsts.co.kr/ReferenceRoom/TechNoteView/8)
  - [ ] 런타임모드 쓰지말구 바로가기 만들기[링크_9번](https://hnsts.co.kr/ReferenceRoom/SmartxRelated)

@@ -10,6 +10,7 @@ using System.Windows.Forms;
 namespace TubeFeeder
 {
     delegate void SetTextCallback(string Text);
+    delegate void SerColorCallback(Color Color);
 
     public partial class Form1 : Form
     {
@@ -311,13 +312,68 @@ namespace TubeFeeder
             m_ControlBoard.SendMessage(MessageGenerator.Meesage_DeviceStop());
         }
 
+        private void setIndicatorColor(Color color)
+        {
+            if (this.label_indicator.InvokeRequired)
+            {
+                SerColorCallback dp = new SerColorCallback(setIndicatorColor);
+                this.Invoke(dp, new object[] { color });
+            }
+            else
+            {
+                label_indicator.BackColor = color;
+        }
+        }
+
+        private void setRuntimeLabelText(string value)
+        {
+            if (this.label_runTime.InvokeRequired)
+            {
+                SetTextCallback dp = new SetTextCallback(setRuntimeLabelText);
+                this.Invoke(dp, new object[] { value });
+            }
+            else
+            {
+                label_runTime.Text = value;
+            }
+        }
+
+        private void setCurtimeLabelText(string value)
+        {
+            if (this.label_curTime.InvokeRequired)
+            {
+                SetTextCallback dp = new SetTextCallback(setCurtimeLabelText);
+                this.Invoke(dp, new object[] { value });
+            }
+            else
+            {
+                label_curTime.Text = value;
+            }
+        }
+
+        private void setScanCountLabelText(string value)
+        {
+            if (this.label_scanCount.InvokeRequired)
+            {
+                SetTextCallback dp = new SetTextCallback(setScanCountLabelText);
+                this.Invoke(dp, new object[] { value });
+            }
+            else
+            {
+                label_scanCount.Text = value;
+            }
+        }
+
         private void smartTimer1_Tick(object sender, EventArgs e)
         {
             TimeSpan runTime = DateTime.Now.Subtract(m_runTime);
-            label_runTime.Text = runTime.Days + "일 " + runTime.Hours + "시간 " + runTime.Minutes + "분 " + runTime.Seconds + "초";
-            label_curTime.Text = DateTime.Now.ToLongTimeString();
+            string strRunTime = runTime.Days + "일 " + runTime.Hours + "시간 " + runTime.Minutes + "분 " + runTime.Seconds + "초";
+            string strCurTime = DateTime.Now.ToLongTimeString();
+            setRuntimeLabelText(strRunTime);
+            setCurtimeLabelText(strCurTime);
+            setScanCountLabelText(m_scanCount + "개");
 
-            label_scanCount.Text = m_scanCount + "개";
+
         }
         // Ping
         // Value Write
