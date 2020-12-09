@@ -49,6 +49,8 @@
             this.smartLabel6 = new SmartX.SmartLabel();
             this.smartTimer1 = new SmartX.SmartTimer(this.components);
             this.label1 = new System.Windows.Forms.Label();
+            this.radioButton_BarcodeReadOn = new SmartX.SmartRadioButton();
+            this.radioButton_BarcodeReadOff = new SmartX.SmartRadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.smartForm1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -393,12 +395,62 @@
             this.label1.Size = new System.Drawing.Size(124, 20);
             this.label1.Text = "Data";
             // 
+            // radioButton_BarcodeReadOn
+            // 
+            this.radioButton_BarcodeReadOn.BackPictureBox = null;
+            this.radioButton_BarcodeReadOn.BackPictureBox1 = null;
+            this.radioButton_BarcodeReadOn.BackPictureBox2 = null;
+            this.radioButton_BarcodeReadOn.Checked = true;
+            this.radioButton_BarcodeReadOn.GroupID = 2;
+            this.radioButton_BarcodeReadOn.ImageCheckRadioButton = null;
+            this.radioButton_BarcodeReadOn.ImageUnCheckRadioButton = null;
+            this.radioButton_BarcodeReadOn.InitVisible = true;
+            this.radioButton_BarcodeReadOn.Location = new System.Drawing.Point(252, 35);
+            this.radioButton_BarcodeReadOn.Name = "radioButton_BarcodeReadOn";
+            this.radioButton_BarcodeReadOn.OutputOnly = false;
+            this.radioButton_BarcodeReadOn.RadioBackColor = System.Drawing.Color.White;
+            this.radioButton_BarcodeReadOn.RadioCheckColor = System.Drawing.Color.Green;
+            this.radioButton_BarcodeReadOn.RadioForeColor = System.Drawing.Color.Black;
+            this.radioButton_BarcodeReadOn.RadioSymbolSize = 14;
+            this.radioButton_BarcodeReadOn.Shadow = false;
+            this.radioButton_BarcodeReadOn.Size = new System.Drawing.Size(148, 31);
+            this.radioButton_BarcodeReadOn.TabIndex = 71;
+            this.radioButton_BarcodeReadOn.Text = "Barcode Read On";
+            this.radioButton_BarcodeReadOn.TextVAlign = SmartX.SmartRadioButton.TextVerAlign.Middle;
+            this.radioButton_BarcodeReadOn.Click += new System.EventHandler(this.radioButton_BarcodeReadOn_Click);
+            // 
+            // radioButton_BarcodeReadOff
+            // 
+            this.radioButton_BarcodeReadOff.BackPictureBox = null;
+            this.radioButton_BarcodeReadOff.BackPictureBox1 = null;
+            this.radioButton_BarcodeReadOff.BackPictureBox2 = null;
+            this.radioButton_BarcodeReadOff.Checked = false;
+            this.radioButton_BarcodeReadOff.GroupID = 2;
+            this.radioButton_BarcodeReadOff.ImageCheckRadioButton = null;
+            this.radioButton_BarcodeReadOff.ImageUnCheckRadioButton = null;
+            this.radioButton_BarcodeReadOff.InitVisible = true;
+            this.radioButton_BarcodeReadOff.Location = new System.Drawing.Point(252, 68);
+            this.radioButton_BarcodeReadOff.Name = "radioButton_BarcodeReadOff";
+            this.radioButton_BarcodeReadOff.OutputOnly = false;
+            this.radioButton_BarcodeReadOff.RadioBackColor = System.Drawing.Color.White;
+            this.radioButton_BarcodeReadOff.RadioCheckColor = System.Drawing.Color.Green;
+            this.radioButton_BarcodeReadOff.RadioForeColor = System.Drawing.Color.Black;
+            this.radioButton_BarcodeReadOff.RadioSymbolSize = 14;
+            this.radioButton_BarcodeReadOff.Shadow = false;
+            this.radioButton_BarcodeReadOff.Size = new System.Drawing.Size(148, 26);
+            this.radioButton_BarcodeReadOff.TabIndex = 72;
+            this.radioButton_BarcodeReadOff.Text = "Barcode Read Off";
+            this.radioButton_BarcodeReadOff.TextVAlign = SmartX.SmartRadioButton.TextVerAlign.Middle;
+            this.radioButton_BarcodeReadOff.Click += new System.EventHandler(this.radioButton_BarcodeReadOff_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.radioButton_BarcodeReadOff);
+            this.Controls.Add(this.radioButton_BarcodeReadOn);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label_runTime);
             this.Controls.Add(this.smartLabel6);
@@ -446,6 +498,8 @@
         private SmartX.SmartLabel smartLabel6;
         private SmartX.SmartTimer smartTimer1;
         private System.Windows.Forms.Label label1;
+        private SmartX.SmartRadioButton radioButton_BarcodeReadOn;
+        private SmartX.SmartRadioButton radioButton_BarcodeReadOff;
     }
 }
 

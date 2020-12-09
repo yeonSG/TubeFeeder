@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,6 +11,7 @@ using System.Runtime.InteropServices;
 namespace TubeFeeder
 {
     delegate void SetTextCallback(string Text);
+    delegate void SetBoolCallback(bool boolean);
     delegate void SetColorCallback(Color Color);
 
     delegate void ReciveMsgCallback(MessageProtocol.ReciveMessage message);
@@ -30,6 +31,7 @@ namespace TubeFeeder
         private UInt32 m_scanCount = 0;
 
         private bool m_isOnError = false;
+        private bool m_isBarcodeReadMode_On = true; // 바코드 읽기모드 On
 
         public Form1()
         {
@@ -307,8 +309,7 @@ namespace TubeFeeder
 
         private void btn_start_Click(object sender, EventArgs e)
         {
-            bool isBarcodeReadMode = true;
-            m_ControlBoard.SendMessage(MessageGenerator.Meesage_DeviceStart(isBarcodeReadMode));
+            m_ControlBoard.SendMessage(MessageGenerator.Meesage_DeviceStart(m_isBarcodeReadMode_On));
             setIndicatorColor(Color.Green);
             m_isOnError = false;
         }
@@ -385,6 +386,34 @@ namespace TubeFeeder
                     break;
 
             }
+        }
+
+        private void radioButton_BarcodeReadOn_Click(object sender, EventArgs e)
+        {
+            m_isBarcodeReadMode_On = true;
+        }
+
+        private void radioButton_BarcodeReadOff_Click(object sender, EventArgs e)
+        {
+            m_isBarcodeReadMode_On = false;
+        }
+
+        private void setComponentToStartedState(bool isStarted)    // start 도중 건들면 안되는 컴포넌트들 disable 용도
+        {
+
+            if (isStarted)  // 시작상태일때
+            {
+                // start버튼 disable
+                // stop버튼 enable
+                // 라디오버튼 disable
+            }
+            else
+            {
+                // start버튼 enable
+                // stop버튼 disable
+                // 라디오버튼 enable
+            }
+
         }
 
         private void smartTimer1_Tick(object sender, EventArgs e)
