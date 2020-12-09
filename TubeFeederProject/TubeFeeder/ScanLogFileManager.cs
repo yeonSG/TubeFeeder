@@ -6,11 +6,11 @@ using System.IO;
 
 namespace TubeFeeder
 {
-    /* ScanÇÑ ³»¿ëÀ» ÆÄÀÏ¿¡ ÀúÀåÇÏ°í °ü¸®ÇÏ´Â Å¬·¡½º */
+    /* Scanï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ */
     class ScanLogFileManager 
     {
         public const string DIR_DELIMITER = "\\";
-        public const string LOGFILE_PATH = "\\Flash Disk\\ScanLog";     // ** ÀúÀåÀå¼Ò ÀÌ¸§ Á¤È®ÇØ¾ßÇÔ
+        public const string LOGFILE_PATH = "\\Flash Disk\\ScanLog";     // ** ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ ï¿½ï¿½È®ï¿½Ø¾ï¿½ï¿½ï¿½
 
         SmartX.SmartFile m_smartFile;
 
@@ -25,7 +25,7 @@ namespace TubeFeeder
             m_smartFile.FilePathName = GetTargetFile();
             if (m_smartFile.Open() == true)
             {
-                m_smartFile.WriteString(value); 
+                m_smartFile.WriteString( GetCurrentTime() +"\t"+ value ); 
                 m_smartFile.Close();
                 return true;
             }
@@ -55,6 +55,11 @@ namespace TubeFeeder
         public string GetCurrentDate()
         {
             return DateTime.Now.ToString("yyyyMMdd");
+        }
+
+        public string GetCurrentTime()
+        {
+            return String.Format("{0,2:N0}:{1,2:N0}:{2,2:N0}", DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second);
         }
     }
 }
