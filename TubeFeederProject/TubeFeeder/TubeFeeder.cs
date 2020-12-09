@@ -154,8 +154,87 @@ namespace TubeFeeder
                     case Keys.NumPad0:
                         AppendInputBuffer("0");
                         break;                        
+                    case Keys.Q:
+                        AppendInputBuffer("Q");
+                        break;
+                    case Keys.W:
+                        AppendInputBuffer("W");
+                        break;
+                    case Keys.E:
+                        AppendInputBuffer("E");
+                        break;
+                    case Keys.R:
+                        AppendInputBuffer("R");
+                        break;
+                    case Keys.T:
+                        AppendInputBuffer("T");
+                        break;
+                    case Keys.Y:
+                        AppendInputBuffer("Y");
+                        break;
+                    case Keys.U:
+                        AppendInputBuffer("U");
+                        break;
+                    case Keys.I:
+                        AppendInputBuffer("I");
+                        break;
+                    case Keys.O:
+                        AppendInputBuffer("O");
+                        break;
+                    case Keys.P:
+                        AppendInputBuffer("P");
+                        break;
+                    case Keys.A:
+                        AppendInputBuffer("A");
+                        break;
+                    case Keys.S:
+                        AppendInputBuffer("S");
+                        break;
+                    case Keys.D:
+                        AppendInputBuffer("D");
+                        break;
+                    case Keys.F:
+                        AppendInputBuffer("F");
+                        break;
+                    case Keys.G:
+                        AppendInputBuffer("G");
+                        break;
+                    case Keys.H:
+                        AppendInputBuffer("H");
+                        break;
+                    case Keys.J:
+                        AppendInputBuffer("J");
+                        break;
+                    case Keys.K:
+                        AppendInputBuffer("K");
+                        break;
+                    case Keys.L:
+                        AppendInputBuffer("L");
+                        break;
+                    case Keys.Z:
+                        AppendInputBuffer("Z");
+                        break;
+                    case Keys.X:
+                        AppendInputBuffer("X");
+                        break;
+                    case Keys.C:
+                        AppendInputBuffer("C");
+                        break;
+                    case Keys.V:
+                        AppendInputBuffer("V");
+                        break;
+                    case Keys.B:
+                        AppendInputBuffer("B");
+                        break;
+                    case Keys.N:
+                        AppendInputBuffer("N");
+                        break;
+                    case Keys.M:
+                        AppendInputBuffer("M");
+                        break;
+                
                     default:
-                        ErrorInfo("Input is not number");
+                        // ErrorInfo("Input is not number");
                         ClearInputBuffer();
                         break;                        
                 }
