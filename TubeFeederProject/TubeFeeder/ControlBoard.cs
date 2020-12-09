@@ -23,7 +23,7 @@ namespace TubeFeeder
     class ControlBoard
     {
         /* 컴포트 설정 */
-        public const String CONTROLBOARD_COMPORT = "COM7";
+        public const String CONTROLBOARD_COMPORT = "COM4";
         public const int COM_BAUDRATE = 115200;
         public const int COM_DATABITS = 8;
         public const Parity COM_PARITY = Parity.None;

@@ -31,7 +31,7 @@ namespace TubeFeeder
         private DateTime m_runTime = DateTime.Now;
         private UInt32 m_scanCount = 0;
 
-        private bool m_debugMode = false;   // 디버그모드
+        private bool m_debugMode = true;   // 디버그모드
 
         private bool m_isOnError = false;
         private bool m_isBarcodeReadMode_On = true; // 바코드 읽기모드 On
@@ -332,18 +332,49 @@ namespace TubeFeeder
         {
             m_ControlBoard.SendMessage(MessageGenerator.Meesage_DeviceStart(m_isBarcodeReadMode_On));
             setIndicatorColor(Color.Green);
+            btn_barcodeOnEnable(false);
+            btn_barcodeOffEnable(false);
             m_isOnError = false;
         }
 
         private void btn_stop_Click(object sender, EventArgs e)
         {
-            btnStopClick();
-        }
-        private void btnStopClick()
-        {
             m_ControlBoard.SendMessage(MessageGenerator.Meesage_DeviceStop());
-            setIndicatorColor(Color.Gray);
+            btn_barcodeOnEnable(true);
+            btn_barcodeOffEnable(true);
             m_isOnError = false;
+            doStop();
+        }
+        private void doStop()
+        {
+            setIndicatorColor(Color.Gray);
+        }
+
+
+        public void btn_barcodeOnEnable(bool enable)
+        {
+            if (this.btn_BarcodeReadOn.InvokeRequired)
+            {
+                SetBoolCallback dp = new SetBoolCallback(btn_barcodeOnEnable);
+                this.Invoke(dp, new object[] { enable });
+            }
+            else
+            {
+                btn_BarcodeReadOn.Enabled = enable;
+            }
+        }
+
+        public void btn_barcodeOffEnable(bool enable)
+        {
+            if (this.btn_BarcodeReadOff.InvokeRequired)
+            {
+                SetBoolCallback dp = new SetBoolCallback(btn_barcodeOffEnable);
+                this.Invoke(dp, new object[] { enable });
+            }
+            else
+            {
+                btn_BarcodeReadOff.Enabled = enable;
+            }
         }
 
         private void setIndicatorColor(Color color)
@@ -412,7 +443,7 @@ namespace TubeFeeder
                 case MessageProtocol.ReciveMessage.order_Stop:
                     btnStop_buttonDown();
                     btnStart_buttonUp();
-                    btnStopClick();
+                    doStop();
                     break;
                 default:
                     break;

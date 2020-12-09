@@ -183,10 +183,12 @@
             // label2
             // 
             this.label2.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.label2.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.label2.Location = new System.Drawing.Point(9, 73);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(94, 20);
-            this.label2.Text = "    DateTime  ";
+            this.label2.Text = "DateTime";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // serialPort1
             // 
@@ -199,7 +201,7 @@
             this.smartForm1.LCDSize = SmartX.SmartForm.LCDRESOLUTION.LCD800X600;
             this.smartForm1.Location = new System.Drawing.Point(0, 0);
             this.smartForm1.MainForm = null;
-            this.smartForm1.Mode = SmartX.SmartForm.RUNMODE.RUNTIME;
+            this.smartForm1.Mode = SmartX.SmartForm.RUNMODE.DEVELOPER;
             this.smartForm1.MouseCursor = SmartX.SmartForm.OnOff.OFF;
             this.smartForm1.Name = "smartForm1";
             this.smartForm1.Size = new System.Drawing.Size(800, 600);
@@ -212,11 +214,11 @@
             this.btn_start.BackPictureBox1 = null;
             this.btn_start.BackPictureBox2 = null;
             this.btn_start.ButtonColor = System.Drawing.Color.DimGray;
-            this.btn_start.ButtonImageAutoSize = true;
+            this.btn_start.ButtonImageAutoSize = false;
             this.btn_start.ColorKeySamplePosition = new System.Drawing.Point(0, 0);
             this.btn_start.DisableImage = null;
             this.btn_start.DownImage = null;
-            this.btn_start.Font = new System.Drawing.Font("Arial", 40F, System.Drawing.FontStyle.Regular);
+            this.btn_start.Font = new System.Drawing.Font("Tahoma", 40F, System.Drawing.FontStyle.Bold);
             this.btn_start.GroupID = 1;
             this.btn_start.InitVisible = true;
             this.btn_start.Location = new System.Drawing.Point(400, 0);
@@ -249,7 +251,7 @@
             this.btn_stop.ColorKeySamplePosition = new System.Drawing.Point(0, 0);
             this.btn_stop.DisableImage = null;
             this.btn_stop.DownImage = null;
-            this.btn_stop.Font = new System.Drawing.Font("Arial", 40F, System.Drawing.FontStyle.Regular);
+            this.btn_stop.Font = new System.Drawing.Font("Tahoma", 40F, System.Drawing.FontStyle.Bold);
             this.btn_stop.GroupID = 1;
             this.btn_stop.InitVisible = true;
             this.btn_stop.Location = new System.Drawing.Point(400, 300);
@@ -298,6 +300,7 @@
             this.smartLabel2.BackPictureBox2 = null;
             this.smartLabel2.BorderColor = System.Drawing.Color.Black;
             this.smartLabel2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.smartLabel2.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.smartLabel2.InitVisible = true;
             this.smartLabel2.LineSpacing = 0F;
             this.smartLabel2.Location = new System.Drawing.Point(9, 564);
@@ -307,6 +310,7 @@
             this.smartLabel2.Text = "Scan count :";
             this.smartLabel2.TextHAlign = SmartX.SmartLabel.TextHorAlign.Middle;
             this.smartLabel2.TextVAlign = SmartX.SmartLabel.TextVerAlign.Middle;
+            this.smartLabel2.Visible = false;
             this.smartLabel2.Wordwrap = false;
             // 
             // label_scanCount
@@ -317,6 +321,7 @@
             this.label_scanCount.BackPictureBox2 = null;
             this.label_scanCount.BorderColor = System.Drawing.Color.Black;
             this.label_scanCount.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.label_scanCount.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.label_scanCount.InitVisible = true;
             this.label_scanCount.LineSpacing = 0F;
             this.label_scanCount.Location = new System.Drawing.Point(115, 564);
@@ -326,6 +331,7 @@
             this.label_scanCount.Text = "0개";
             this.label_scanCount.TextHAlign = SmartX.SmartLabel.TextHorAlign.Left;
             this.label_scanCount.TextVAlign = SmartX.SmartLabel.TextVerAlign.Middle;
+            this.label_scanCount.Visible = false;
             this.label_scanCount.Wordwrap = false;
             // 
             // label_curTime
@@ -336,6 +342,7 @@
             this.label_curTime.BackPictureBox2 = null;
             this.label_curTime.BorderColor = System.Drawing.Color.Black;
             this.label_curTime.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.label_curTime.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.label_curTime.InitVisible = true;
             this.label_curTime.LineSpacing = 0F;
             this.label_curTime.Location = new System.Drawing.Point(115, 12);
@@ -343,7 +350,7 @@
             this.label_curTime.Size = new System.Drawing.Size(125, 21);
             this.label_curTime.TabIndex = 65;
             this.label_curTime.Text = "0";
-            this.label_curTime.TextHAlign = SmartX.SmartLabel.TextHorAlign.Left;
+            this.label_curTime.TextHAlign = SmartX.SmartLabel.TextHorAlign.Middle;
             this.label_curTime.TextVAlign = SmartX.SmartLabel.TextVerAlign.Middle;
             this.label_curTime.Wordwrap = false;
             // 
@@ -355,6 +362,7 @@
             this.smartLabel4.BackPictureBox2 = null;
             this.smartLabel4.BorderColor = System.Drawing.Color.Black;
             this.smartLabel4.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.smartLabel4.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.smartLabel4.InitVisible = true;
             this.smartLabel4.LineSpacing = 0F;
             this.smartLabel4.Location = new System.Drawing.Point(9, 12);
@@ -374,6 +382,7 @@
             this.label_runTime.BackPictureBox2 = null;
             this.label_runTime.BorderColor = System.Drawing.Color.Black;
             this.label_runTime.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.label_runTime.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.label_runTime.InitVisible = true;
             this.label_runTime.LineSpacing = 0F;
             this.label_runTime.Location = new System.Drawing.Point(115, 35);
@@ -381,7 +390,7 @@
             this.label_runTime.Size = new System.Drawing.Size(125, 21);
             this.label_runTime.TabIndex = 67;
             this.label_runTime.Text = "0";
-            this.label_runTime.TextHAlign = SmartX.SmartLabel.TextHorAlign.Left;
+            this.label_runTime.TextHAlign = SmartX.SmartLabel.TextHorAlign.Middle;
             this.label_runTime.TextVAlign = SmartX.SmartLabel.TextVerAlign.Middle;
             this.label_runTime.Wordwrap = false;
             // 
@@ -393,6 +402,7 @@
             this.smartLabel6.BackPictureBox2 = null;
             this.smartLabel6.BorderColor = System.Drawing.Color.Black;
             this.smartLabel6.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.smartLabel6.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.smartLabel6.InitVisible = true;
             this.smartLabel6.LineSpacing = 0F;
             this.smartLabel6.Location = new System.Drawing.Point(9, 35);
@@ -416,10 +426,12 @@
             // label1
             // 
             this.label1.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.label1.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.label1.Location = new System.Drawing.Point(109, 73);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(131, 20);
-            this.label1.Text = "            Data";
+            this.label1.Text = "Data";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // btn_Exit
             // 
@@ -464,6 +476,7 @@
             this.btn_BarcodeReadOn.ColorKeySamplePosition = new System.Drawing.Point(0, 0);
             this.btn_BarcodeReadOn.DisableImage = null;
             this.btn_BarcodeReadOn.DownImage = null;
+            this.btn_BarcodeReadOn.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.btn_BarcodeReadOn.GroupID = 3;
             this.btn_BarcodeReadOn.InitVisible = true;
             this.btn_BarcodeReadOn.Location = new System.Drawing.Point(265, 35);
@@ -496,6 +509,7 @@
             this.btn_BarcodeReadOff.ColorKeySamplePosition = new System.Drawing.Point(0, 0);
             this.btn_BarcodeReadOff.DisableImage = null;
             this.btn_BarcodeReadOff.DownImage = null;
+            this.btn_BarcodeReadOff.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.btn_BarcodeReadOff.GroupID = 3;
             this.btn_BarcodeReadOff.InitVisible = true;
             this.btn_BarcodeReadOff.Location = new System.Drawing.Point(321, 35);
@@ -526,14 +540,15 @@
             this.smartLabel1.BackPictureBox2 = null;
             this.smartLabel1.BorderColor = System.Drawing.Color.Transparent;
             this.smartLabel1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.smartLabel1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.smartLabel1.InitVisible = true;
             this.smartLabel1.LineSpacing = 0F;
             this.smartLabel1.Location = new System.Drawing.Point(256, 16);
             this.smartLabel1.Name = "smartLabel1";
             this.smartLabel1.Size = new System.Drawing.Size(132, 18);
             this.smartLabel1.TabIndex = 76;
-            this.smartLabel1.Text = "Barcode Read Mode";
-            this.smartLabel1.TextHAlign = SmartX.SmartLabel.TextHorAlign.Left;
+            this.smartLabel1.Text = "Barcode Mode";
+            this.smartLabel1.TextHAlign = SmartX.SmartLabel.TextHorAlign.Middle;
             this.smartLabel1.TextVAlign = SmartX.SmartLabel.TextVerAlign.Top;
             this.smartLabel1.Wordwrap = false;
             // 
