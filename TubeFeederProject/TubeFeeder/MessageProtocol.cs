@@ -55,6 +55,8 @@ namespace TubeFeeder
             noTail,
             ping,
             order,
+            order_Start,
+            order_Stop,
             inform_Ack,
             inform_Scanned,
             inform_Error,

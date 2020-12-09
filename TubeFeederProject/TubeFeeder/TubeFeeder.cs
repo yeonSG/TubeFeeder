@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,6 +10,7 @@ using System.Runtime.InteropServices;
 
 namespace TubeFeeder
 {
+    delegate void SetCallback();
     delegate void SetTextCallback(string Text);
     delegate void SetBoolCallback(bool boolean);
     delegate void SetColorCallback(Color Color);
@@ -46,6 +47,7 @@ namespace TubeFeeder
             label_curTime.Text = DateTime.Now.ToLongTimeString();
             label_runTime.Text = m_runTime.ToLongTimeString();
 
+            btn_BarcodeReadOn.ButtonDown();
 
             smartTimer1.Interval = 1000;    // 1000msec
             smartTimer1.Start();
@@ -64,7 +66,7 @@ namespace TubeFeeder
         private void InsertBufferStr()
         {
             m_insertedItem = m_inputBuffer;
-            AddLog(m_insertedItem);
+            AddLog(m_insertedItem);   
 
             if (m_ScanLogFileManager.WriteValue(m_insertedItem) == false)
                 ErrorInfo("로그파일 쓰기 error");
@@ -299,8 +301,9 @@ namespace TubeFeeder
                         recString += buff[i].ToString("X2") + " ";
                     }
                     AddLog_d(recString);
-                    
-                    m_ControlBoard.ProcessMessage(buff);
+
+                    if (recSize == 7)
+                        m_ControlBoard.ProcessMessage(buff);
                 }
             }
         }
@@ -333,6 +336,10 @@ namespace TubeFeeder
         }
 
         private void btn_stop_Click(object sender, EventArgs e)
+        {
+            btnStopClick();
+        }
+        private void btnStopClick()
         {
             m_ControlBoard.SendMessage(MessageGenerator.Meesage_DeviceStop());
             setIndicatorColor(Color.Gray);
@@ -400,9 +407,42 @@ namespace TubeFeeder
                 case MessageProtocol.ReciveMessage.inform_Error:
                     m_isOnError = true;
                     break;
+                case MessageProtocol.ReciveMessage.order_Start:
+                    break;
+                case MessageProtocol.ReciveMessage.order_Stop:
+                    btnStop_buttonDown();
+                    btnStart_buttonUp();
+                    btnStopClick();
+                    break;
                 default:
                     break;
 
+            }
+        }
+
+        public void btnStart_buttonUp()
+        {
+            if (this.btn_start.InvokeRequired)
+            {
+                SetCallback dp = new SetCallback(btnStart_buttonUp);
+                this.Invoke(dp, new object[] { });
+            }
+            else
+            {
+                btn_start.ButtonUp();
+            }
+
+        }
+        public void btnStop_buttonDown()
+        {
+            if (this.btn_stop.InvokeRequired)
+            {
+                SetCallback dp = new SetCallback(btnStop_buttonDown);
+                this.Invoke(dp, new object[] { });
+            }
+            else
+            {
+                btn_stop.ButtonDown();
             }
         }
 
@@ -432,6 +472,11 @@ namespace TubeFeeder
                 // 라디오버튼 enable
             }
 
+        }
+
+        private void btn_Exit_Click(object sender, EventArgs e)
+        {
+            Close();
         }
 
         private void smartTimer1_Tick(object sender, EventArgs e)

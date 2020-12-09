@@ -49,6 +49,18 @@ namespace TubeFeeder
                     return MessageProtocol.ReciveMessage.ping;
                 case MessageProtocol.CMD_ORDER:
                     LogFunction("Recived : Order");
+                    {
+                        switch (message[MessageProtocol.PROTOCOL_CMD_SUB])
+                        {
+                            case MessageProtocol.CMD_ORDER_START:
+                                LogFunction("Recived : Order_Start");
+                                return MessageProtocol.ReciveMessage.order_Start;
+                            case MessageProtocol.CMD_ORDER_STOP:
+                                LogFunction("Recived : Order_Stop");
+                                return MessageProtocol.ReciveMessage.order_Stop;
+                        }
+
+                    }
                     return MessageProtocol.ReciveMessage.order;
                 case MessageProtocol.CMD_INFORM:
                     {
