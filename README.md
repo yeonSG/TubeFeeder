@@ -37,6 +37,7 @@
  - [ ] 모든 폼 처리부분 invoke 처리(현재시간 출력 등등)
  - [ ] 에러 시 비프음 나도록
  - [ ] [전역 예외처리](https://hnsts.co.kr/ReferenceRoom/TechNoteView/8)
+ - [ ] 런타임모드 쓰지말구 바로가기 만들기[링크_9번](https://hnsts.co.kr/ReferenceRoom/SmartxRelated)
  
 > 이외 구현 목록
  - [ ] 에러 처리 (컴포트 연결 실패, 바코드 연결 실패 등등)
