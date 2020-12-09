@@ -382,7 +382,7 @@
             this.label_runTime.BackPictureBox2 = null;
             this.label_runTime.BorderColor = System.Drawing.Color.Black;
             this.label_runTime.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.label_runTime.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.label_runTime.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
             this.label_runTime.InitVisible = true;
             this.label_runTime.LineSpacing = 0F;
             this.label_runTime.Location = new System.Drawing.Point(115, 35);

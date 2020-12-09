@@ -31,8 +31,9 @@ namespace TubeFeeder
         private DateTime m_runTime = DateTime.Now;
         private UInt32 m_scanCount = 0;
 
-        private bool m_debugMode = true;   // 디버그모드
+        private bool m_debugMode = false;   // 디버그모드
 
+        private bool m_isRecivedFromCom = false;
         private bool m_isOnError = false;
         private bool m_isBarcodeReadMode_On = true; // 바코드 읽기모드 On
 
@@ -304,6 +305,8 @@ namespace TubeFeeder
 
                     if (recSize == 7)
                         m_ControlBoard.ProcessMessage(buff);
+
+                    m_isRecivedFromCom = true;
                 }
             }
         }
@@ -530,6 +533,18 @@ namespace TubeFeeder
                 {
                     setIndicatorColor(Color.Red);
 
+                }
+            }
+            if (btn_start.ButtonStatus == SmartX.SmartButton.BUTSTATUS.DOWN)
+            {
+                if (m_isRecivedFromCom == true)
+                {
+                    setIndicatorColor(Color.Lime);
+                    m_isRecivedFromCom = false;
+                }
+                else
+                {
+                    setIndicatorColor(Color.Green);
                 }
             }
         }
