@@ -35,7 +35,7 @@
  - [x] 로그파일에 시간도 기록 (HH:MM:SS \t (data) )
  - [ ] 바코드 로그 뜨는곳 로그만 뜨도록 변경
  - [x] 모든 폼 처리부분 invoke 처리(현재시간 출력 등등)
- - [ ] 에러 시 비프음 나도록
+ - [x]] 에러 시 비프음 나도록
  - [ ] [전역 예외처리](https://hnsts.co.kr/ReferenceRoom/TechNoteView/8)
  - [ ] 런타임모드 쓰지말구 바로가기 만들기[링크_9번](https://hnsts.co.kr/ReferenceRoom/SmartxRelated)
  - [ ] 시작프로그램 등록하기 ->단말기 메뉴얼의 파트3-13번 레지스트리 등록,[시작프로그램 등록](https://periar.tistory.com/entry/WinCE-%EC%8B%9C%EC%9E%91%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8)

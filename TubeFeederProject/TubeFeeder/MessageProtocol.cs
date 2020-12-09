@@ -5,7 +5,7 @@ using System.Text;
 
 namespace TubeFeeder
 {
-    class MessageProtocol
+    public class MessageProtocol
     {
         // | byte[0]      | byte[1]   | byte[2]   | byte[3]   | byte[4]   | byte[5]   | byte[6]
         // | HEADER(0xFA) | CMD       | CMD_SUB   | DATA1     | DATA2     | CheckSum  | TAIL(0xFE)
@@ -49,6 +49,20 @@ namespace TubeFeeder
         public const Byte ERRORCODE_SOMETHING_WRONG = 0x01;
         public const Byte ERRORCODE_ANOTHER_WRONG = 0x02;
 
+        public enum ReciveMessage
+        {
+            noHead,
+            noTail,
+            ping,
+            order,
+            inform_Ack,
+            inform_Scanned,
+            inform_Error,
+            write,
+            read,
+            unknown
+
+        }
     }
 }
 

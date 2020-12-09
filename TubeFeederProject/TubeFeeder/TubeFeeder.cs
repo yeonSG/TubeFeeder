@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -6,14 +6,20 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace TubeFeeder
 {
     delegate void SetTextCallback(string Text);
-    delegate void SerColorCallback(Color Color);
+    delegate void SetColorCallback(Color Color);
+
+    delegate void ReciveMsgCallback(MessageProtocol.ReciveMessage message);
 
     public partial class Form1 : Form
     {
+        [DllImport("CoreDll.dll")]
+        public static extern void MessageBeep(int code);
+
         ScanLogFileManager m_ScanLogFileManager = new ScanLogFileManager();
         ControlBoard m_ControlBoard = null;
 
@@ -23,12 +29,15 @@ namespace TubeFeeder
         private DateTime m_runTime = DateTime.Now;
         private UInt32 m_scanCount = 0;
 
+        private bool m_isOnError = false;
+
         public Form1()
         {
             InitializeComponent();
 
             SetTextCallback logCallback = new SetTextCallback(AddLog);
-            m_ControlBoard = new ControlBoard(serialPort1, logCallback);
+            ReciveMsgCallback msgRecivCallback = new ReciveMsgCallback(msgRecive);
+            m_ControlBoard = new ControlBoard(serialPort1, logCallback, msgRecivCallback);
 
             label_curTime.Text = DateTime.Now.ToLongTimeString();
             label_runTime.Text = m_runTime.ToLongTimeString();
@@ -154,7 +163,7 @@ namespace TubeFeeder
                     case Keys.D0:
                     case Keys.NumPad0:
                         AppendInputBuffer("0");
-                        break;                        
+                        break;
                     case Keys.Q:
                         AppendInputBuffer("Q");
                         break;
@@ -296,35 +305,34 @@ namespace TubeFeeder
 
         }
 
-        private void smartButton_StartReqest_Click(object sender, EventArgs e)
-        {
-            m_ControlBoard.SendMessage(MessageGenerator.Meesage_DeviceStart(true));
-        }
-
         private void btn_start_Click(object sender, EventArgs e)
         {
             bool isBarcodeReadMode = true;
             m_ControlBoard.SendMessage(MessageGenerator.Meesage_DeviceStart(isBarcodeReadMode));
+            setIndicatorColor(Color.Green);
+            m_isOnError = false;
         }
 
         private void btn_stop_Click(object sender, EventArgs e)
         {
             m_ControlBoard.SendMessage(MessageGenerator.Meesage_DeviceStop());
+            setIndicatorColor(Color.Gray);
+            m_isOnError = false;
         }
 
         private void setIndicatorColor(Color color)
         {
             if (this.label_indicator.InvokeRequired)
             {
-                SerColorCallback dp = new SerColorCallback(setIndicatorColor);
+                SetColorCallback dp = new SetColorCallback(setIndicatorColor);
                 this.Invoke(dp, new object[] { color });
             }
             else
             {
                 label_indicator.BackColor = color;
+            }
         }
-        }
-
+        
         private void setRuntimeLabelText(string value)
         {
             if (this.label_runTime.InvokeRequired)
@@ -364,6 +372,21 @@ namespace TubeFeeder
             }
         }
 
+        public void msgRecive(MessageProtocol.ReciveMessage reciveMsg)
+        {
+            switch (reciveMsg)
+            {
+                case MessageProtocol.ReciveMessage.unknown:
+                    break;
+                case MessageProtocol.ReciveMessage.inform_Error:
+                    m_isOnError = true;
+                    break;
+                default:
+                    break;
+
+            }
+        }
+
         private void smartTimer1_Tick(object sender, EventArgs e)
         {
             TimeSpan runTime = DateTime.Now.Subtract(m_runTime);
@@ -373,7 +396,19 @@ namespace TubeFeeder
             setCurtimeLabelText(strCurTime);
             setScanCountLabelText(m_scanCount + "개");
 
+            if(m_isOnError==true)
+            {
+                MessageBeep(64);
+                if (label_indicator.BackColor == Color.Red) // 1초간격 점멸 
+                {
+                    setIndicatorColor(Color.Black);
+                }
+                else
+                {
+                    setIndicatorColor(Color.Red);
 
+                }
+            }
         }
         // Ping
         // Value Write

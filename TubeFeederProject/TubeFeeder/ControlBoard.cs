@@ -29,7 +29,8 @@ namespace TubeFeeder
         public const Parity COM_PARITY = Parity.None;
         public const StopBits COM_STOPBITS = StopBits.One;
 
-        private SetTextCallback LogFunction = null;
+        private SetTextCallback logFunctionCallback = null;
+        private ReciveMsgCallback reciveMsgCallback = null;
 
         private SerialPort m_serialPort = null;
         private MessageReciver m_messageReciver = null;
@@ -39,10 +40,11 @@ namespace TubeFeeder
         public static ControlBoardState m_state = ControlBoardState.UNKNOWN;
 
 
-        public ControlBoard(SerialPort serialPort, SetTextCallback logFunction)
+        public ControlBoard(SerialPort serialPort, SetTextCallback logFunction, ReciveMsgCallback reciveFunction)
         {
             this.m_serialPort = serialPort;
-            this.LogFunction = logFunction;
+            this.logFunctionCallback = logFunction;
+            this.reciveMsgCallback = reciveFunction;
             this.m_messageReciver = new MessageReciver(logFunction);
 
             Init();
@@ -65,15 +67,13 @@ namespace TubeFeeder
             try
             {
                 m_serialPort.Open();
-                LogFunction("Port "+ m_serialPort.PortName +" is Opend.");
+                logFunctionCallback("Port "+ m_serialPort.PortName +" is Opend.");
             }
             catch
             {
-                LogFunction("Port is already using.");
+                logFunctionCallback("Port is already using.");
                 return false;
             }
-
-            LogFunction("Port Opened");
             return true;
         }
 
@@ -113,12 +113,12 @@ namespace TubeFeeder
                 {
                     sendString += msg[i].ToString("X2") + " ";
                 }
-                LogFunction(sendString + "\r\n");
+                logFunctionCallback(sendString);
 
             }
             catch
             {
-                LogFunction("Error at SendMessage()");
+                logFunctionCallback("Error at SendMessage()");
                 return false;
             }
             return true;
@@ -126,9 +126,8 @@ namespace TubeFeeder
 
         public void ProcessMessage(byte[] msg)
         {
-            if (m_messageReciver.messageProcessing(msg) == false)
-                LogFunction("Error at messageProcessing");
-            
+            MessageProtocol.ReciveMessage ret = m_messageReciver.messageProcessing(msg);
+            reciveMsgCallback(ret);
         }
 
 

@@ -6,11 +6,11 @@ using System.IO;
 
 namespace TubeFeeder
 {
-    /* Scanï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ */
+    /* ScanÇÑ ³»¿ëÀ» ÆÄÀÏ¿¡ ÀúÀåÇÏ°í °ü¸®ÇÏ´Â Å¬·¡½º */
     class ScanLogFileManager 
     {
         public const string DIR_DELIMITER = "\\";
-        public const string LOGFILE_PATH = "\\Flash Disk\\ScanLog";     // ** ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ ï¿½ï¿½È®ï¿½Ø¾ï¿½ï¿½ï¿½
+        public const string LOGFILE_PATH = "\\Flash Disk\\ScanLog";     // ** ÀúÀåÀå¼Ò ÀÌ¸§ Á¤È®ÇØ¾ßÇÔ
 
         SmartX.SmartFile m_smartFile;
 
