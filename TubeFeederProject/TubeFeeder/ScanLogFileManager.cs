@@ -6,11 +6,10 @@ using System.IO;
 
 namespace TubeFeeder
 {
-    /* Scan한 내용을 파일에 저장하고 관리하는 클래스 */
     class ScanLogFileManager 
     {
         public const string DIR_DELIMITER = "\\";
-        public const string LOGFILE_PATH = "\\Flash Disk\\ScanLog";     // ** 저장장소 이름 정확해야함
+        public string LOGFILE_PATH = IniFileManager.GetLogFIle_Dir();     
 
         SmartX.SmartFile m_smartFile;
 
@@ -21,7 +20,7 @@ namespace TubeFeeder
 
         public bool WriteValue(string value)
         {
-            CheckDirectoryAndCreate(GetLogFIlePath());
+            EvaluatePath(GetLogFIlePath());
             m_smartFile.FilePathName = GetTargetFile();
             if (m_smartFile.Open() == true)
             {
@@ -35,13 +34,22 @@ namespace TubeFeeder
             }            
         }
 
-        public void CheckDirectoryAndCreate(string path)
+        private bool EvaluatePath(String path)
         {
-            DirectoryInfo dir = new DirectoryInfo(path);
-            if (dir.Exists != true)
+            try
             {
-                dir.Create();
+                if (!Directory.Exists(path))
+                {
+                    // Try to create the directory.
+                    DirectoryInfo di = Directory.CreateDirectory(path);
+                }
             }
+            catch (IOException ioex)
+            {
+                Console.WriteLine(ioex.Message);
+                return false;
+            }
+            return true;
         }
         public string GetLogFIlePath()
         {
