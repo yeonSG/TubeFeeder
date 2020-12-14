@@ -37,6 +37,8 @@ namespace TubeFeeder
         private bool m_isOnError = false;
         private bool m_isBarcodeReadMode_On = true; // 바코드 읽기모드 On
 
+        private Queue<byte> reciveQueue = new Queue<byte>();
+
         public Form1()
         {
             InitializeComponent();
@@ -287,12 +289,9 @@ namespace TubeFeeder
                 int recSize = serialPort1.BytesToRead;
                 string recString;
 
-                // AddLog("reciveed " + recSize);
-
-                //LogProcessing("Rec Called_" + recSize +"\r\n");
-                //if (recSize >= 7)//
                 if(recSize != 0)
                 {
+                    m_isRecivedFromCom = true;
                     recString = "[RX] ";
                     byte[] buff = new byte[recSize];
 
@@ -300,13 +299,52 @@ namespace TubeFeeder
                     for (int i = 0; i < recSize; i++)
                     {
                         recString += buff[i].ToString("X2") + " ";
+
+                        reciveQueue.Enqueue(buff[i]);
                     }
                     AddLog_d(recString);
 
-                    if (recSize == 7)
-                        m_ControlBoard.ProcessMessage(buff);
+                    // 큐의 첫번째것이 HEADER일때까지 버림
+                    while (reciveQueue.Count != 0)
+                    {
+                        if (reciveQueue.Peek() == MessageProtocol.HEADER)
+                            break;
+                        else
+                            reciveQueue.Dequeue();
+                    }
 
-                    m_isRecivedFromCom = true;
+                    // 큐의 아이템이 7이상이어야 함
+                    while(reciveQueue.Count >= MessageProtocol.PROTOCOL_MESSAGE_SIZE)
+                    {
+                        List<byte> message = new List<byte>();
+                        for (int i = 0; i < MessageProtocol.PROTOCOL_MESSAGE_SIZE; i++)
+                        {
+                            if (i != 0 && reciveQueue.Peek() == MessageProtocol.HEADER) // 인덱스0이 헤더가 아니면 거기서부터 다시
+                            {
+                                // Console.Write("broken Message!");
+                                break;
+                            }
+                            if (i==6 && reciveQueue.Peek() != MessageProtocol.TAIL) // 테일에러
+                            {
+                                // Console.Write("broken Message!");
+                                break;
+                            }
+                            else
+                                message.Add(reciveQueue.Dequeue());
+                        }
+
+                        if (message.Count == MessageProtocol.PROTOCOL_MESSAGE_SIZE)
+                        {
+                            if (message[6] != MessageProtocol.TAIL) // 테일에러
+                            {
+                                Console.Write("broken Message! - tail");
+                                continue;
+                            }
+                            
+                            byte[] myArryByte = message.ToArray();
+                            m_ControlBoard.ProcessMessage(myArryByte);
+                        }
+                    }
                 }
             }
         }

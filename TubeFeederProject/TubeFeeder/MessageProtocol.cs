@@ -10,6 +10,7 @@ namespace TubeFeeder
         // | byte[0]      | byte[1]   | byte[2]   | byte[3]   | byte[4]   | byte[5]   | byte[6]
         // | HEADER(0xFA) | CMD       | CMD_SUB   | DATA1     | DATA2     | CheckSum  | TAIL(0xFE)
 
+        public const byte PROTOCOL_MESSAGE_SIZE = 7;
         public const byte PROTOCOL_HEADER    = 0;
         public const byte PROTOCOL_CMD       = 1;
         public const byte PROTOCOL_CMD_SUB   = 2;
