@@ -23,8 +23,8 @@ namespace TubeFeeder
     class ControlBoard
     {
         /* 컴포트 설정 */
-        public const String CONTROLBOARD_COMPORT = "COM4";
-        public const int COM_BAUDRATE = 115200;
+        public String CONTROLBOARD_COMPORT = IniFileManager.GetComport_COM();
+        public int COM_BAUDRATE = IniFileManager.GetComport_BaudRate();
         public const int COM_DATABITS = 8;
         public const Parity COM_PARITY = Parity.None;
         public const StopBits COM_STOPBITS = StopBits.One;
