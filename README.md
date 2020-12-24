@@ -71,6 +71,7 @@
    - 인터페이스 : (usb 드라이버를 통한 comport통신, rs232통신 )
    - [메뉴얼-en](https://www.honeywellaidc.com/ko-kr/-/media/en/files-public/technical-publications/barcode-scanners/vuquest-3310g/3310-ug.pdf)
    - [퀵 메뉴얼-kr](https://aidc.honeywell.com/CatalogDocuments/3310-KO-QS%20Rev%20C%201-13.pdf)
+   - [공식 드라이버(USB Serial) 경로: Software/Barcode Scanners/Software/Drivers/Honeywell Scanning(HSM) USB Serial Driver/Current](https://hsmftp.honeywell.com/)
    - usb 드라이버 다운로드 : http://idnext.co.kr/bbs/board.php?bo_table=4010&wr_id=29
    - usb 드라이버(WinCE용 참고): http://m.ezdaq.com/board/?id=board3&popup=&iframe=&goods_seq=&perpage=&page=&category=%EB%93%9C%EB%9D%BC%EC%9D%B4%EB%B2%84&search_text=
    - 바코드 presentation 모드와, streaming presentation모드 차이 : https://www.l-trondirect.com/blog/what-does-presentation-mode-mean-on-a-barcode-scanner/
