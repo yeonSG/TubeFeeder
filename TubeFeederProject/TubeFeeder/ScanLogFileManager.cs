@@ -11,6 +11,8 @@ namespace TubeFeeder
         public const string DIR_DELIMITER = "\\";
         public string LOGFILE_PATH = IniFileManager.GetLogFIle_Dir();     
 
+        public static string mLastWriteValue = "";
+
         SmartX.SmartFile m_smartFile;
 
         public ScanLogFileManager()
@@ -20,6 +22,15 @@ namespace TubeFeeder
 
         public bool WriteValue(string value)
         {
+            if (mLastWriteValue.Equals(value) == true)
+            {
+                return true; //  Do not action, When Duplicated before Input value.
+            }
+            else
+            {
+                mLastWriteValue = value;
+            }
+
             EvaluatePath(GetLogFIlePath());
             m_smartFile.FilePathName = GetTargetFile();
             if (m_smartFile.Open() == true)
@@ -31,7 +42,7 @@ namespace TubeFeeder
             else
             {
                 return false;
-            }            
+            }
         }
 
         private bool EvaluatePath(String path)
