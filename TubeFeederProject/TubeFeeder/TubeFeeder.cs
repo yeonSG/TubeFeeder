@@ -68,7 +68,16 @@ namespace TubeFeeder
         }
         private void InsertBufferStr()
         {
-            m_insertedItem = m_inputBuffer;
+            if (m_inputBuffer.Equals(m_insertedItem) == true)
+            {
+                AddLog("(duplicated) " + m_insertedItem);   
+                return; //  Do not action, When Duplicated before Input value.
+            }
+            else
+            {
+                m_insertedItem = m_inputBuffer;
+            }
+
             AddLog(m_insertedItem);   
 
             if (m_ScanLogFileManager.WriteValue(m_insertedItem) == false)
