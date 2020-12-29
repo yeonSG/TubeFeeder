@@ -70,6 +70,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ControlBoard.cs" />
+    <Compile Include="dialogForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dialogForm.Designer.cs">
+      <DependentUpon>dialogForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="IniFile.cs" />
     <Compile Include="IniFileManager.cs" />
     <Compile Include="MessageProtocol.cs" />
@@ -84,6 +90,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="dialogForm.resx">
+      <DependentUpon>dialogForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TubeFeeder.resx">
       <DependentUpon>TubeFeeder.cs</DependentUpon>
     </EmbeddedResource>

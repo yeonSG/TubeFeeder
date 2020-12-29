@@ -366,6 +366,19 @@ namespace TubeFeeder
 
         private void buttonTest2_Click(object sender, EventArgs e)
         {
+            ValuesForSet values = new ValuesForSet();
+            values.value = 123;     // test Value
+            DialogForm dialog = new DialogForm(values);
+            DialogResult dr = dialog.ShowDialog();
+
+            if (dr == DialogResult.OK)
+            {
+                // 저장 메시지 전송함
+            }
+            else if (dr == DialogResult.Cancel)
+            {
+                ;
+            }
 
         }
 

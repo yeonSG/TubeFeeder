@@ -119,7 +119,7 @@
             this.buttonTest2.DownImage = null;
             this.buttonTest2.GroupID = 0;
             this.buttonTest2.InitVisible = true;
-            this.buttonTest2.Location = new System.Drawing.Point(504, 30);
+            this.buttonTest2.Location = new System.Drawing.Point(195, 564);
             this.buttonTest2.Mode = SmartX.SmartButton.BUTTONMODE.NORMAL;
             this.buttonTest2.Name = "buttonTest2";
             this.buttonTest2.NestedClickEventPrevent = false;
@@ -127,10 +127,10 @@
             this.buttonTest2.RepeatInterval = 200;
             this.buttonTest2.RepeatIntervalAccelerate = null;
             this.buttonTest2.SafeInterval = 200;
-            this.buttonTest2.Size = new System.Drawing.Size(80, 63);
+            this.buttonTest2.Size = new System.Drawing.Size(82, 29);
             this.buttonTest2.SpecialFunction = SmartX.SmartButton.SPECIALFUNC.NONE;
             this.buttonTest2.TabIndex = 47;
-            this.buttonTest2.Text = "test2";
+            this.buttonTest2.Text = "Option";
             this.buttonTest2.TextColor = System.Drawing.Color.Black;
             this.buttonTest2.TextDownColor = System.Drawing.Color.White;
             this.buttonTest2.TextHAlign = SmartX.SmartButton.TextHorAlign.Middle;
