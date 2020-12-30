@@ -11,10 +11,12 @@ namespace TubeFeeder
 {
     public partial class DialogForm : Form
     {
+        ControlBoard m_ControlBoard;
         SettingValues m_values;
 
-        public DialogForm(SettingValues values)
+        public DialogForm(ControlBoard controlBoard, SettingValues values)
         {
+            m_ControlBoard = controlBoard;
             m_values = values;
             InitializeComponent();
 
@@ -53,10 +55,11 @@ namespace TubeFeeder
 
         private void btn_OK_Click(object sender, EventArgs e)
         {
-            m_values.value_conveyorSpeed = int.Parse(comboBox_conveyorSpeed.SelectedItem.ToString());
-            m_values.value_XAxisDistance = int.Parse(comboBox_xXaisDistance.SelectedItem.ToString());
-            m_values.value_ConvererRollerSpeed = int.Parse(comboBox_converterRollerSpeed.SelectedItem.ToString());
-
+            // OK 눌럿을 때만 m_value 값을 실재로 변경함.
+            m_values.value_conveyorSpeed = comboBox_conveyorSpeed.SelectedIndex + 1;
+            m_values.value_XAxisDistance = comboBox_xXaisDistance.SelectedIndex + 1;
+            m_values.value_ConvererRollerSpeed = comboBox_converterRollerSpeed.SelectedIndex + 1;
+            
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
@@ -69,7 +72,23 @@ namespace TubeFeeder
 
         private void comboBox_conveyorSpeed_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // m_values.value_conveyorSpeed = comboBox_conveyorSpeed.SelectedIndex + 1;
+            int selectValue = comboBox_conveyorSpeed.SelectedIndex + 1;
+            m_ControlBoard.SendMessage(MessageGenerator.Meesage_Write(MessageProtocol.CMD_WRITE_BELTSPEED, (short)selectValue));
+        }
 
+        private void comboBox_xXaisDistance_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // m_values.value_XAxisDistance = comboBox_xXaisDistance.SelectedIndex + 1;
+            int selectValue = comboBox_xXaisDistance.SelectedIndex + 1;
+            m_ControlBoard.SendMessage(MessageGenerator.Meesage_Write(MessageProtocol.CMD_WRITE_XXAISDISTANCE, (short)selectValue));
+        }
+
+        private void comboBox_converterRollerSpeed_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // m_values.value_ConvererRollerSpeed = comboBox_converterRollerSpeed.SelectedIndex + 1;
+            int selectValue = comboBox_converterRollerSpeed.SelectedIndex + 1;
+            m_ControlBoard.SendMessage(MessageGenerator.Meesage_Write(MessageProtocol.CMD_WRITE_ROLLERSPEED, (short)selectValue));
         }
     }
 }

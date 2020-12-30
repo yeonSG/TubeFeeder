@@ -156,10 +156,14 @@
             this.comboBox_xXaisDistance.Items.Add("5");
             this.comboBox_xXaisDistance.Items.Add("6");
             this.comboBox_xXaisDistance.Items.Add("7");
+            this.comboBox_xXaisDistance.Items.Add("8");
+            this.comboBox_xXaisDistance.Items.Add("9");
+            this.comboBox_xXaisDistance.Items.Add("MAX");
             this.comboBox_xXaisDistance.Location = new System.Drawing.Point(246, 75);
             this.comboBox_xXaisDistance.Name = "comboBox_xXaisDistance";
             this.comboBox_xXaisDistance.Size = new System.Drawing.Size(132, 31);
             this.comboBox_xXaisDistance.TabIndex = 9;
+            this.comboBox_xXaisDistance.SelectedIndexChanged += new System.EventHandler(this.comboBox_xXaisDistance_SelectedIndexChanged);
             // 
             // comboBox_converterRollerSpeed
             // 
@@ -170,6 +174,7 @@
             this.comboBox_converterRollerSpeed.Name = "comboBox_converterRollerSpeed";
             this.comboBox_converterRollerSpeed.Size = new System.Drawing.Size(132, 31);
             this.comboBox_converterRollerSpeed.TabIndex = 10;
+            this.comboBox_converterRollerSpeed.SelectedIndexChanged += new System.EventHandler(this.comboBox_converterRollerSpeed_SelectedIndexChanged);
             // 
             // label4
             // 

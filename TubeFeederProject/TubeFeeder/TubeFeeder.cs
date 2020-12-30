@@ -10,12 +10,12 @@ using System.Runtime.InteropServices;
 
 namespace TubeFeeder
 {
-    delegate void SetCallback();
-    delegate void SetTextCallback(string Text);
-    delegate void SetBoolCallback(bool boolean);
-    delegate void SetColorCallback(Color Color);
+    public delegate void SetCallback();
+    public delegate void SetTextCallback(string Text);
+    public delegate void SetBoolCallback(bool boolean);
+    public delegate void SetColorCallback(Color Color);
 
-    delegate void ReciveMsgCallback(MessageProtocol.ReciveMessage message);
+    public delegate void ReciveMsgCallback(MessageProtocol.ReciveMessage message);
 
     public partial class Form1 : Form
     {
@@ -37,6 +37,8 @@ namespace TubeFeeder
         private bool m_isOnError = false;
         private bool m_isBarcodeReadMode_On = true; // 바코드 읽기모드 On
         private bool m_isAutoStopMode_On = true; // AutoStopMode On
+
+        private SettingValues m_settingValues;
 
         private Queue<byte> reciveQueue = new Queue<byte>();
 
@@ -80,13 +82,13 @@ namespace TubeFeeder
 
         private void SettingInit()
         {
-            SettingValues settingValues = new SettingValues();
-            settingValues.value_conveyorSpeed = IniFileManager.GetSetting_ConveyerSpeed();
-            settingValues.value_XAxisDistance = IniFileManager.GetSetting_XXaisDistance();
-            settingValues.value_ConvererRollerSpeed = IniFileManager.GetSetting_ConverterRollerSpeed();
+            m_settingValues = new SettingValues();
+            m_settingValues.value_conveyorSpeed = IniFileManager.GetSetting_ConveyerSpeed();
+            m_settingValues.value_XAxisDistance = IniFileManager.GetSetting_XXaisDistance();
+            m_settingValues.value_ConvererRollerSpeed = IniFileManager.GetSetting_ConverterRollerSpeed();
 
             // set for machine
-            SendSettingValues(settingValues);
+            //SendSettingValues(settingValues);
         }
 
         private void SendSettingValues(SettingValues valueData)
@@ -110,7 +112,7 @@ namespace TubeFeeder
         {
             if (m_inputBuffer.Equals(m_insertedItem) == true)
             {
-                AddLog("(duplicated) " + m_insertedItem);   
+                // AddLog("(duplicated) " + m_insertedItem);   
                 return; //  Do not action, When Duplicated before Input value.
             }
             else
@@ -138,7 +140,7 @@ namespace TubeFeeder
             {
                 smartListBox_log.AddItem("[" + DateTime.Now.ToLongTimeString() + "] " + value);
 
-                if (smartListBox_log.Items.Count() > 35)  // 리스트박스 아이탬 개수에 따라 다르게 설정해야함
+                if (smartListBox_log.Items.Count() > 31)  // 리스트박스 아이탬 개수에 따라 다르게 설정해야함
                     smartListBox_log.RemoveItem(0);
             }
         }
@@ -431,41 +433,43 @@ namespace TubeFeeder
 
         private void OptionSettingRuttin()
         {
-            SettingValues settingData = new SettingValues();
-            settingData.value_conveyorSpeed = IniFileManager.GetSetting_ConveyerSpeed();
-            settingData.value_XAxisDistance = IniFileManager.GetSetting_XXaisDistance();
-            settingData.value_ConvererRollerSpeed = IniFileManager.GetSetting_ConverterRollerSpeed();
-
-            DialogForm dialog = new DialogForm(settingData);
+            DialogForm dialog = new DialogForm(m_ControlBoard ,m_settingValues);
             DialogResult dr = dialog.ShowDialog();
 
             if (dr == DialogResult.OK)
             {
-                // 저장 메시지 전송함
-                MessageBox.Show( values.value_conveyorSpeed + " "
-                    + values.value_XAxisDistance 
-                    + values.value_ConvererRollerSpeed );
+                //MessageBox.Show(settingData.value_conveyorSpeed + " "
+                //    + settingData.value_XAxisDistance
+                //    + settingData.value_ConvererRollerSpeed);
 
                 // initFile에 저장
-                IniFileManager.SetSetting_ConveyerSpeed(settingData.value_conveyorSpeed);
-                IniFileManager.SetSetting_XXaisDistance(settingData.value_XAxisDistance);
-                IniFileManager.SetSetting_ConverterRollerSpeed(settingData.value_ConvererRollerSpeed);
+                IniFileManager.SetSetting_ConveyerSpeed(m_settingValues.value_conveyorSpeed);
+                IniFileManager.SetSetting_XXaisDistance(m_settingValues.value_XAxisDistance);
+                IniFileManager.SetSetting_ConverterRollerSpeed(m_settingValues.value_ConvererRollerSpeed);
 
-                SendSettingValues(settingData);
+                // 저장메시지 전송
+                // SendSettingValues(settingData);
                 
             }
             else if (dr == DialogResult.Cancel)
             {
                 ;
             }
+            m_ControlBoard.SendMessage(MessageGenerator.Meesage_Infom(MessageProtocol.CMD_INFORM_SETTING_CLOSE));
+            
         }
 
         private void btn_start_Click(object sender, EventArgs e)
         {
+            SendSettingValues(m_settingValues);     // setting값 보냄
+
             m_ControlBoard.SendMessage(MessageGenerator.Meesage_DeviceStart(m_isBarcodeReadMode_On, m_isAutoStopMode_On));
             setIndicatorColor(Color.Green);
             btn_barcodeOnEnable(false);
             btn_barcodeOffEnable(false);
+            btn_autoStopModeOnEnable(false);
+            btn_autoStopModeOffEnable(false);
+            btn_SettingsEnable(false);
             m_isOnError = false;
         }
 
@@ -474,6 +478,10 @@ namespace TubeFeeder
             m_ControlBoard.SendMessage(MessageGenerator.Meesage_DeviceStop());
             btn_barcodeOnEnable(true);
             btn_barcodeOffEnable(true);
+            btn_autoStopModeOnEnable(true);
+            btn_autoStopModeOffEnable(true);
+            btn_SettingsEnable(true);
+            
             m_isOnError = false;
             doStop();
         }
@@ -481,6 +489,44 @@ namespace TubeFeeder
         {
             setIndicatorColor(Color.Gray);
         }
+
+        public void btn_autoStopModeOnEnable(bool enable)
+        {
+            if (this.btn_AutoStopModeOn.InvokeRequired)
+            {
+                SetBoolCallback dp = new SetBoolCallback(btn_autoStopModeOnEnable);
+                this.Invoke(dp, new object[] { enable });
+            }
+            else
+            {
+                btn_AutoStopModeOn.Enabled = enable;
+            }
+        }
+        public void btn_autoStopModeOffEnable(bool enable)
+        {
+            if (this.btn_AutoStopModeOff.InvokeRequired)
+            {
+                SetBoolCallback dp = new SetBoolCallback(btn_autoStopModeOffEnable);
+                this.Invoke(dp, new object[] { enable });
+            }
+            else
+            {
+                btn_AutoStopModeOff.Enabled = enable;
+            }
+        }
+        public void btn_SettingsEnable(bool enable)
+        {
+            if (this.btn_setting.InvokeRequired)
+            {
+                SetBoolCallback dp = new SetBoolCallback(btn_SettingsEnable);
+                this.Invoke(dp, new object[] { enable });
+            }
+            else
+            {
+                btn_setting.Enabled = enable;
+            }
+        }
+
 
 
         public void btn_barcodeOnEnable(bool enable)

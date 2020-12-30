@@ -20,7 +20,7 @@ namespace TubeFeeder
         ERROR_JAM       // 재밍 에러가 난 상태
     }
     
-    class ControlBoard
+    public class ControlBoard
     {
         /* 컴포트 설정 */
         public String CONTROLBOARD_COMPORT = IniFileManager.GetComport_COM();

@@ -53,7 +53,8 @@ namespace TubeFeeder
         
         public const byte CMD_INFORM_SCANNED = (byte)'S';
         public const byte CMD_INFORM_ACK = (byte)'A';
-        public const byte CMD_INFORM_ERROR = (byte)'E';
+        public const byte CMD_INFORM_ERROR = (byte)'E';        
+        public const byte CMD_INFORM_SETTING_CLOSE = (byte)'C';
 
         // 에러코드
         public const Byte ERRORCODE_SOMETHING_WRONG = 0x01;
