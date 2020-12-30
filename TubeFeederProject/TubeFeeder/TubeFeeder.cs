@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -36,6 +36,7 @@ namespace TubeFeeder
         private bool m_isRecivedFromCom = false;
         private bool m_isOnError = false;
         private bool m_isBarcodeReadMode_On = true; // 바코드 읽기모드 On
+        private bool m_isAutoStopMode_On = true; // AutoStopMode On
 
         private Queue<byte> reciveQueue = new Queue<byte>();
 
@@ -50,10 +51,49 @@ namespace TubeFeeder
             label_curTime.Text = DateTime.Now.ToLongTimeString();
             label_runTime.Text = m_runTime.ToLongTimeString();
 
-            btn_BarcodeReadOn.ButtonDown();
+            // ModeInit();
+            ModeInit();
+
+            //SettingInit();
+            SettingInit();
+
 
             smartTimer1.Interval = 1000;    // 1000msec
             smartTimer1.Start();
+        }
+
+        private void ModeInit()
+        {
+            m_isBarcodeReadMode_On = IniFileManager.GetMode_BarcodeRead();
+            m_isAutoStopMode_On = IniFileManager.GetMode_AutoStop();
+
+            if(m_isBarcodeReadMode_On==true)
+                btn_BarcodeReadOn.ButtonDown();
+            else
+                btn_BarcodeReadOff.ButtonDown();
+
+            if(m_isAutoStopMode_On==true)
+                btn_AutoStopModeOn.ButtonDown();
+            else
+                btn_AutoStopModeOff.ButtonDown();
+        }
+
+        private void SettingInit()
+        {
+            SettingValues settingValues = new SettingValues();
+            settingValues.value_conveyorSpeed = IniFileManager.GetSetting_ConveyerSpeed();
+            settingValues.value_XAxisDistance = IniFileManager.GetSetting_XXaisDistance();
+            settingValues.value_ConvererRollerSpeed = IniFileManager.GetSetting_ConverterRollerSpeed();
+
+            // set for machine
+            SendSettingValues(settingValues);
+        }
+
+        private void SendSettingValues(SettingValues valueData)
+        {
+            m_ControlBoard.SendMessage(MessageGenerator.Meesage_Write(MessageProtocol.CMD_WRITE_BELTSPEED, (short)valueData.value_conveyorSpeed));
+            m_ControlBoard.SendMessage(MessageGenerator.Meesage_Write(MessageProtocol.CMD_WRITE_XXAISDISTANCE, (short)valueData.value_XAxisDistance));
+            m_ControlBoard.SendMessage(MessageGenerator.Meesage_Write(MessageProtocol.CMD_WRITE_ROLLERSPEED, (short)valueData.value_ConvererRollerSpeed));
         }
 
         private void AppendInputBuffer(string key)
@@ -358,10 +398,6 @@ namespace TubeFeeder
             }
         }
 
-        private void SendDeviceStart(byte[] value)
-        {
-            m_ControlBoard.SendMessage( MessageGenerator.Meesage_DeviceStart(true) );
-        }
         private void SendPing()
         {
             m_ControlBoard.SendMessage( MessageGenerator.Meesage_Ping() );
@@ -395,12 +431,12 @@ namespace TubeFeeder
 
         private void OptionSettingRuttin()
         {
-            SettingValues values = new SettingValues();
-            values.value_conveyorSpeed = IniFileManager.GetSetting_ConveyerSpeed();
-            values.value_XAxisDistance = IniFileManager.GetSetting_XXaisDistance();
-            values.value_ConvererRollerSpeed = IniFileManager.GetSetting_ConverterRollerSpeed();
+            SettingValues settingData = new SettingValues();
+            settingData.value_conveyorSpeed = IniFileManager.GetSetting_ConveyerSpeed();
+            settingData.value_XAxisDistance = IniFileManager.GetSetting_XXaisDistance();
+            settingData.value_ConvererRollerSpeed = IniFileManager.GetSetting_ConverterRollerSpeed();
 
-            DialogForm dialog = new DialogForm(values);
+            DialogForm dialog = new DialogForm(settingData);
             DialogResult dr = dialog.ShowDialog();
 
             if (dr == DialogResult.OK)
@@ -410,9 +446,13 @@ namespace TubeFeeder
                     + values.value_XAxisDistance 
                     + values.value_ConvererRollerSpeed );
 
-                IniFileManager.SetSetting_ConveyerSpeed(values.value_conveyorSpeed);
-                IniFileManager.SetSetting_XXaisDistance(values.value_XAxisDistance);
-                IniFileManager.SetSetting_ConverterRollerSpeed(values.value_ConvererRollerSpeed);
+                // initFile에 저장
+                IniFileManager.SetSetting_ConveyerSpeed(settingData.value_conveyorSpeed);
+                IniFileManager.SetSetting_XXaisDistance(settingData.value_XAxisDistance);
+                IniFileManager.SetSetting_ConverterRollerSpeed(settingData.value_ConvererRollerSpeed);
+
+                SendSettingValues(settingData);
+                
             }
             else if (dr == DialogResult.Cancel)
             {
@@ -422,7 +462,7 @@ namespace TubeFeeder
 
         private void btn_start_Click(object sender, EventArgs e)
         {
-            m_ControlBoard.SendMessage(MessageGenerator.Meesage_DeviceStart(m_isBarcodeReadMode_On));
+            m_ControlBoard.SendMessage(MessageGenerator.Meesage_DeviceStart(m_isBarcodeReadMode_On, m_isAutoStopMode_On));
             setIndicatorColor(Color.Green);
             btn_barcodeOnEnable(false);
             btn_barcodeOffEnable(false);
@@ -572,11 +612,25 @@ namespace TubeFeeder
         private void radioButton_BarcodeReadOn_Click(object sender, EventArgs e)
         {
             m_isBarcodeReadMode_On = true;
+            IniFileManager.SetMode_BarcodeRead(m_isBarcodeReadMode_On);
         }
 
         private void radioButton_BarcodeReadOff_Click(object sender, EventArgs e)
         {
             m_isBarcodeReadMode_On = false;
+            IniFileManager.SetMode_BarcodeRead(m_isBarcodeReadMode_On);
+        }
+
+        private void btn_AutoStopModeOn_Click(object sender, EventArgs e)
+        {
+            m_isAutoStopMode_On = true;
+            IniFileManager.SetMode_AutoStop(m_isAutoStopMode_On);
+        }
+
+        private void btn_AutoStopModeOff_Click(object sender, EventArgs e)
+        {
+            m_isAutoStopMode_On = false;
+            IniFileManager.SetMode_AutoStop(m_isAutoStopMode_On);
         }
 
         private void setComponentToStartedState(bool isStarted)    // start 도중 건들면 안되는 컴포넌트들 disable 용도

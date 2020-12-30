@@ -54,6 +54,10 @@
             this.btn_BarcodeReadOn = new SmartX.SmartButton();
             this.btn_BarcodeReadOff = new SmartX.SmartButton();
             this.smartLabel1 = new SmartX.SmartLabel();
+            this.smartLabel5 = new SmartX.SmartLabel();
+            this.btn_AutoStopModeOff = new SmartX.SmartButton();
+            this.btn_AutoStopModeOn = new SmartX.SmartButton();
+            this.smartLabel7 = new SmartX.SmartLabel();
             ((System.ComponentModel.ISupportInitialize)(this.smartForm1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -67,7 +71,7 @@
             this.smartLabel3.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.smartLabel3.InitVisible = true;
             this.smartLabel3.LineSpacing = 0F;
-            this.smartLabel3.Location = new System.Drawing.Point(252, 12);
+            this.smartLabel3.Location = new System.Drawing.Point(55, 58);
             this.smartLabel3.Name = "smartLabel3";
             this.smartLabel3.Size = new System.Drawing.Size(139, 81);
             this.smartLabel3.TabIndex = 1;
@@ -119,7 +123,7 @@
             this.buttonTest2.DownImage = null;
             this.buttonTest2.GroupID = 0;
             this.buttonTest2.InitVisible = true;
-            this.buttonTest2.Location = new System.Drawing.Point(195, 564);
+            this.buttonTest2.Location = new System.Drawing.Point(289, 12);
             this.buttonTest2.Mode = SmartX.SmartButton.BUTTONMODE.NORMAL;
             this.buttonTest2.Name = "buttonTest2";
             this.buttonTest2.NestedClickEventPrevent = false;
@@ -130,7 +134,7 @@
             this.buttonTest2.Size = new System.Drawing.Size(82, 29);
             this.buttonTest2.SpecialFunction = SmartX.SmartButton.SPECIALFUNC.NONE;
             this.buttonTest2.TabIndex = 47;
-            this.buttonTest2.Text = "Option";
+            this.buttonTest2.Text = "Setting";
             this.buttonTest2.TextColor = System.Drawing.Color.Black;
             this.buttonTest2.TextDownColor = System.Drawing.Color.White;
             this.buttonTest2.TextHAlign = SmartX.SmartButton.TextHorAlign.Middle;
@@ -162,7 +166,7 @@
             this.smartListBox_log.ItemOffsetGap = 0;
             this.smartListBox_log.ItemOffsetX = 0;
             this.smartListBox_log.ItemOffsetY = 0;
-            this.smartListBox_log.Location = new System.Drawing.Point(9, 96);
+            this.smartListBox_log.Location = new System.Drawing.Point(9, 182);
             this.smartListBox_log.MouseMoveEventSpace = 3;
             this.smartListBox_log.MouseMoveSpace = 10;
             this.smartListBox_log.Name = "smartListBox_log";
@@ -176,7 +180,7 @@
             this.smartListBox_log.SeparationLineStyle = SmartX.SmartListBox.SEPARATIONLINETYPES.FixedSingle;
             this.smartListBox_log.SeparationlineVisibleBottom = true;
             this.smartListBox_log.SeparationlineVisibleTop = true;
-            this.smartListBox_log.Size = new System.Drawing.Size(382, 462);
+            this.smartListBox_log.Size = new System.Drawing.Size(382, 411);
             this.smartListBox_log.TabIndex = 51;
             this.smartListBox_log.Text = "LogListBox";
             // 
@@ -184,7 +188,7 @@
             // 
             this.label2.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.label2.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.label2.Location = new System.Drawing.Point(9, 73);
+            this.label2.Location = new System.Drawing.Point(9, 159);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(94, 20);
             this.label2.Text = "DateTime";
@@ -427,7 +431,7 @@
             // 
             this.label1.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.label1.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(109, 73);
+            this.label1.Location = new System.Drawing.Point(109, 159);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(131, 20);
             this.label1.Text = "Data";
@@ -479,7 +483,7 @@
             this.btn_BarcodeReadOn.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.btn_BarcodeReadOn.GroupID = 3;
             this.btn_BarcodeReadOn.InitVisible = true;
-            this.btn_BarcodeReadOn.Location = new System.Drawing.Point(265, 35);
+            this.btn_BarcodeReadOn.Location = new System.Drawing.Point(68, 81);
             this.btn_BarcodeReadOn.Mode = SmartX.SmartButton.BUTTONMODE.RADIO;
             this.btn_BarcodeReadOn.Name = "btn_BarcodeReadOn";
             this.btn_BarcodeReadOn.NestedClickEventPrevent = false;
@@ -512,7 +516,7 @@
             this.btn_BarcodeReadOff.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.btn_BarcodeReadOff.GroupID = 3;
             this.btn_BarcodeReadOff.InitVisible = true;
-            this.btn_BarcodeReadOff.Location = new System.Drawing.Point(321, 35);
+            this.btn_BarcodeReadOff.Location = new System.Drawing.Point(124, 81);
             this.btn_BarcodeReadOff.Mode = SmartX.SmartButton.BUTTONMODE.RADIO;
             this.btn_BarcodeReadOff.Name = "btn_BarcodeReadOff";
             this.btn_BarcodeReadOff.NestedClickEventPrevent = false;
@@ -543,7 +547,7 @@
             this.smartLabel1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.smartLabel1.InitVisible = true;
             this.smartLabel1.LineSpacing = 0F;
-            this.smartLabel1.Location = new System.Drawing.Point(256, 16);
+            this.smartLabel1.Location = new System.Drawing.Point(59, 62);
             this.smartLabel1.Name = "smartLabel1";
             this.smartLabel1.Size = new System.Drawing.Size(132, 18);
             this.smartLabel1.TabIndex = 76;
@@ -552,12 +556,120 @@
             this.smartLabel1.TextVAlign = SmartX.SmartLabel.TextVerAlign.Top;
             this.smartLabel1.Wordwrap = false;
             // 
+            // smartLabel5
+            // 
+            this.smartLabel5.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.smartLabel5.BackPictureBox = null;
+            this.smartLabel5.BackPictureBox1 = null;
+            this.smartLabel5.BackPictureBox2 = null;
+            this.smartLabel5.BorderColor = System.Drawing.Color.Transparent;
+            this.smartLabel5.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.smartLabel5.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.smartLabel5.InitVisible = true;
+            this.smartLabel5.LineSpacing = 0F;
+            this.smartLabel5.Location = new System.Drawing.Point(228, 62);
+            this.smartLabel5.Name = "smartLabel5";
+            this.smartLabel5.Size = new System.Drawing.Size(132, 18);
+            this.smartLabel5.TabIndex = 84;
+            this.smartLabel5.Text = "Auto Stop Mode";
+            this.smartLabel5.TextHAlign = SmartX.SmartLabel.TextHorAlign.Middle;
+            this.smartLabel5.TextVAlign = SmartX.SmartLabel.TextVerAlign.Top;
+            this.smartLabel5.Wordwrap = false;
+            // 
+            // btn_AutoStopModeOff
+            // 
+            this.btn_AutoStopModeOff.BackPictureBox = null;
+            this.btn_AutoStopModeOff.BackPictureBox1 = null;
+            this.btn_AutoStopModeOff.BackPictureBox2 = null;
+            this.btn_AutoStopModeOff.ButtonColor = System.Drawing.Color.Gray;
+            this.btn_AutoStopModeOff.ButtonImageAutoSize = true;
+            this.btn_AutoStopModeOff.ColorKeySamplePosition = new System.Drawing.Point(0, 0);
+            this.btn_AutoStopModeOff.DisableImage = null;
+            this.btn_AutoStopModeOff.DownImage = null;
+            this.btn_AutoStopModeOff.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.btn_AutoStopModeOff.GroupID = 4;
+            this.btn_AutoStopModeOff.InitVisible = true;
+            this.btn_AutoStopModeOff.Location = new System.Drawing.Point(293, 81);
+            this.btn_AutoStopModeOff.Mode = SmartX.SmartButton.BUTTONMODE.RADIO;
+            this.btn_AutoStopModeOff.Name = "btn_AutoStopModeOff";
+            this.btn_AutoStopModeOff.NestedClickEventPrevent = false;
+            this.btn_AutoStopModeOff.OutlinePixel = 1;
+            this.btn_AutoStopModeOff.RepeatInterval = 200;
+            this.btn_AutoStopModeOff.RepeatIntervalAccelerate = null;
+            this.btn_AutoStopModeOff.SafeInterval = 200;
+            this.btn_AutoStopModeOff.Size = new System.Drawing.Size(56, 55);
+            this.btn_AutoStopModeOff.SpecialFunction = SmartX.SmartButton.SPECIALFUNC.NONE;
+            this.btn_AutoStopModeOff.TabIndex = 83;
+            this.btn_AutoStopModeOff.Text = "OFF";
+            this.btn_AutoStopModeOff.TextColor = System.Drawing.Color.Black;
+            this.btn_AutoStopModeOff.TextDownColor = System.Drawing.Color.White;
+            this.btn_AutoStopModeOff.TextHAlign = SmartX.SmartButton.TextHorAlign.Middle;
+            this.btn_AutoStopModeOff.TextLocation = new System.Drawing.Point(0, 0);
+            this.btn_AutoStopModeOff.TextVAlign = SmartX.SmartButton.TextVerAlign.Middle;
+            this.btn_AutoStopModeOff.UpImage = null;
+            this.btn_AutoStopModeOff.Click += new System.EventHandler(this.btn_AutoStopModeOff_Click);
+            // 
+            // btn_AutoStopModeOn
+            // 
+            this.btn_AutoStopModeOn.BackPictureBox = null;
+            this.btn_AutoStopModeOn.BackPictureBox1 = null;
+            this.btn_AutoStopModeOn.BackPictureBox2 = null;
+            this.btn_AutoStopModeOn.ButtonColor = System.Drawing.Color.Gray;
+            this.btn_AutoStopModeOn.ButtonImageAutoSize = true;
+            this.btn_AutoStopModeOn.ColorKeySamplePosition = new System.Drawing.Point(0, 0);
+            this.btn_AutoStopModeOn.DisableImage = null;
+            this.btn_AutoStopModeOn.DownImage = null;
+            this.btn_AutoStopModeOn.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.btn_AutoStopModeOn.GroupID = 4;
+            this.btn_AutoStopModeOn.InitVisible = true;
+            this.btn_AutoStopModeOn.Location = new System.Drawing.Point(237, 81);
+            this.btn_AutoStopModeOn.Mode = SmartX.SmartButton.BUTTONMODE.RADIO;
+            this.btn_AutoStopModeOn.Name = "btn_AutoStopModeOn";
+            this.btn_AutoStopModeOn.NestedClickEventPrevent = false;
+            this.btn_AutoStopModeOn.OutlinePixel = 1;
+            this.btn_AutoStopModeOn.RepeatInterval = 200;
+            this.btn_AutoStopModeOn.RepeatIntervalAccelerate = null;
+            this.btn_AutoStopModeOn.SafeInterval = 200;
+            this.btn_AutoStopModeOn.Size = new System.Drawing.Size(56, 55);
+            this.btn_AutoStopModeOn.SpecialFunction = SmartX.SmartButton.SPECIALFUNC.NONE;
+            this.btn_AutoStopModeOn.TabIndex = 82;
+            this.btn_AutoStopModeOn.Text = "ON";
+            this.btn_AutoStopModeOn.TextColor = System.Drawing.Color.Black;
+            this.btn_AutoStopModeOn.TextDownColor = System.Drawing.Color.White;
+            this.btn_AutoStopModeOn.TextHAlign = SmartX.SmartButton.TextHorAlign.Middle;
+            this.btn_AutoStopModeOn.TextLocation = new System.Drawing.Point(0, 0);
+            this.btn_AutoStopModeOn.TextVAlign = SmartX.SmartButton.TextVerAlign.Middle;
+            this.btn_AutoStopModeOn.UpImage = null;
+            this.btn_AutoStopModeOn.Click += new System.EventHandler(this.btn_AutoStopModeOn_Click);
+            // 
+            // smartLabel7
+            // 
+            this.smartLabel7.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.smartLabel7.BackPictureBox = null;
+            this.smartLabel7.BackPictureBox1 = null;
+            this.smartLabel7.BackPictureBox2 = null;
+            this.smartLabel7.BorderColor = System.Drawing.Color.Black;
+            this.smartLabel7.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.smartLabel7.InitVisible = true;
+            this.smartLabel7.LineSpacing = 0F;
+            this.smartLabel7.Location = new System.Drawing.Point(224, 58);
+            this.smartLabel7.Name = "smartLabel7";
+            this.smartLabel7.Size = new System.Drawing.Size(139, 81);
+            this.smartLabel7.TabIndex = 81;
+            this.smartLabel7.TextHAlign = SmartX.SmartLabel.TextHorAlign.Left;
+            this.smartLabel7.TextVAlign = SmartX.SmartLabel.TextVerAlign.Top;
+            this.smartLabel7.Wordwrap = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.smartLabel5);
+            this.Controls.Add(this.btn_AutoStopModeOff);
+            this.Controls.Add(this.btn_AutoStopModeOn);
+            this.Controls.Add(this.smartLabel7);
             this.Controls.Add(this.smartLabel1);
             this.Controls.Add(this.btn_BarcodeReadOff);
             this.Controls.Add(this.btn_BarcodeReadOn);
@@ -615,6 +727,10 @@
         private SmartX.SmartButton btn_BarcodeReadOn;
         private SmartX.SmartButton btn_BarcodeReadOff;
         private SmartX.SmartLabel smartLabel1;
+        private SmartX.SmartLabel smartLabel5;
+        private SmartX.SmartButton btn_AutoStopModeOff;
+        private SmartX.SmartButton btn_AutoStopModeOn;
+        private SmartX.SmartLabel smartLabel7;
     }
 }
 

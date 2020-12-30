@@ -27,7 +27,7 @@ namespace TubeFeeder
         }
 
         // 제어장치에게 시작 명령
-        public static byte[] Meesage_DeviceStart(bool isBarcodeOnMode)
+        public static byte[] Meesage_DeviceStart(bool isBarcodeOnMode, bool isAutoStopMode)
         {
             byte[] Message = new byte[7];
 
@@ -38,8 +38,12 @@ namespace TubeFeeder
                 Message[MessageProtocol.PROTOCOL_DATA1] = MessageProtocol.CMD_ORDER_START_BARCODE_ON;
             else
                 Message[MessageProtocol.PROTOCOL_DATA1] = MessageProtocol.CMD_ORDER_START_BARCODE_OFF;
+                
+            if(isAutoStopMode)                
+                Message[MessageProtocol.PROTOCOL_DATA2] = MessageProtocol.CMD_ORDER_START_AUTOSTOP_ON;
+            else
+                Message[MessageProtocol.PROTOCOL_DATA2] = MessageProtocol.CMD_ORDER_START_AUTOSTOP_OFF;
 
-            Message[MessageProtocol.PROTOCOL_DATA2] = 0x00;
             Message[MessageProtocol.PROTOCOL_CHECKSUM] = 0;
             for (int i = 0; i < MessageProtocol.PROTOCOL_CHECKSUM; i++)
                 Message[MessageProtocol.PROTOCOL_CHECKSUM] ^= Message[i];       // XOR

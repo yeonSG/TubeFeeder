@@ -38,9 +38,18 @@ namespace TubeFeeder
 
         public const byte CMD_ORDER_START_BARCODE_ON  = 0xF0;
         public const byte CMD_ORDER_START_BARCODE_OFF = 0x0F;
+        
+        public const byte CMD_ORDER_START_AUTOSTOP_ON  = 0xF0;
+        public const byte CMD_ORDER_START_AUTOSTOP_OFF = 0x0F;
 
-        public const byte CMD_WRITE_SPEED = (byte)'S';
-        public const byte CMD_READ_SPEED = (byte)'S';    
+        public const byte CMD_WRITE_BELTSPEED = (byte)'B';
+        public const byte CMD_READ_BELTSPEED = (byte)'B';    
+        
+        public const byte CMD_WRITE_XXAISDISTANCE = (byte)'X';
+        public const byte CMD_READ_XXAISDISTANCE = (byte)'X';    
+        
+        public const byte CMD_WRITE_ROLLERSPEED = (byte)'R';
+        public const byte CMD_READ_ROLLERSPEED = (byte)'R';    
         
         public const byte CMD_INFORM_SCANNED = (byte)'S';
         public const byte CMD_INFORM_ACK = (byte)'A';

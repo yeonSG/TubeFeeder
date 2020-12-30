@@ -9,12 +9,16 @@ namespace TubeFeeder
 
         public const string SECTION_COMPORT = "COMPORT";
         public const string SECTION_LOGFILE = "LOGFILE";
+        public const string SECTION_MODE = "MODE";
         public const string SECTION_SETTING = "SETTING";
         
         public const string SECTION_COMPORT_COM = "COM";
         public const string SECTION_COMPORT_BAUDRATE = "BAUDRATE";
 
         public const string SECTION_LOGFILE_DIR = "LOGFILE_DIR";
+
+        public const string SECTION_MODE_BARCODEREAD = "BARCODE_READ";
+        public const string SECTION_MODE_AUTOSTOP = "AUTO_STOP";
 
         public const string SECTION_SETTING_CONVEYERSPEED = "CONV_SPEED";
         public const string SECTION_SETTING_XXAIXDISTANCE = "X_DISTANCE";
@@ -25,6 +29,9 @@ namespace TubeFeeder
         public const int SECTION_COMPORT_BAUDRATE_DEFAULT = 115200;
 
         public const string SECTION_LOGFILE_DIR_DEFAULT = "\\Flash Disk\\ScanLog";
+
+        public const bool SECTION_MODE_BARCODEREAD_DEFAULT = true;
+        public const bool SECTION_MODE_AUTOSTOP_DEFAULT = true;
 
         public const int SECTION_SETTING_CONVEYERSPEED_DEFAULT = 3;
         public const int SECTION_SETTING_XXAIXDISTANCE_DEFAULT = 7;
@@ -42,6 +49,16 @@ namespace TubeFeeder
         public static string GetLogFIle_Dir()
         {
             return IniFile.ReadString(INIFILE_PATH, SECTION_LOGFILE, SECTION_LOGFILE_DIR, SECTION_LOGFILE_DIR_DEFAULT);
+        }
+
+        // Mode
+        public static bool GetMode_BarcodeRead()
+        {
+            return IniFile.ReadBool(INIFILE_PATH, SECTION_MODE, SECTION_MODE_BARCODEREAD, SECTION_MODE_BARCODEREAD_DEFAULT);
+        }
+        public static bool GetMode_AutoStop()
+        {
+            return IniFile.ReadBool(INIFILE_PATH, SECTION_MODE, SECTION_MODE_AUTOSTOP, SECTION_MODE_AUTOSTOP_DEFAULT);
         }
 
         // Settings
@@ -76,12 +93,25 @@ namespace TubeFeeder
 
             IniFile.WriteString(INIFILE_PATH, SECTION_LOGFILE, SECTION_LOGFILE_DIR, SECTION_LOGFILE_DIR_DEFAULT);
 
+            IniFile.WriteBool(INIFILE_PATH, SECTION_MODE, SECTION_MODE_BARCODEREAD, SECTION_MODE_BARCODEREAD_DEFAULT);
+            IniFile.WriteBool(INIFILE_PATH, SECTION_MODE, SECTION_MODE_AUTOSTOP, SECTION_MODE_AUTOSTOP_DEFAULT);
+
             IniFile.WriteInteger(INIFILE_PATH, SECTION_SETTING, SECTION_SETTING_CONVEYERSPEED, SECTION_SETTING_CONVEYERSPEED_DEFAULT);
             IniFile.WriteInteger(INIFILE_PATH, SECTION_SETTING, SECTION_SETTING_XXAIXDISTANCE, SECTION_SETTING_XXAIXDISTANCE_DEFAULT);
             IniFile.WriteInteger(INIFILE_PATH, SECTION_SETTING, SECTION_SETTING_ROLLERSPEED, SECTION_SETTING_ROLLERSPEED_DEFAULT);
 
         }
-        
+
+        // Mode
+        public static void SetMode_BarcodeRead(bool value)
+        {
+            IniFile.WriteBool(INIFILE_PATH, SECTION_MODE, SECTION_MODE_BARCODEREAD, value);
+        }
+        public static void SetMode_AutoStop(bool value)
+        {
+            IniFile.WriteBool(INIFILE_PATH, SECTION_MODE, SECTION_MODE_AUTOSTOP, value);
+        }
+
         // Settings
         public static void SetSetting_ConveyerSpeed(int value)
         {
