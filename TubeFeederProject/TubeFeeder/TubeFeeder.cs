@@ -375,20 +375,49 @@ namespace TubeFeeder
 
         private void buttonTest2_Click(object sender, EventArgs e)
         {
-            ValuesForSet values = new ValuesForSet();
-            values.value = 123;     // test Value
+
+            PasswordForm pwFrom = new PasswordForm();
+            DialogResult pwResult = pwFrom.ShowDialog();
+            if (pwResult == DialogResult.OK)
+            {
+                OptionSettingRuttin();
+                // 저장 메시지 전송함
+            }
+            else if (pwResult == DialogResult.No)
+            {
+                MessageBox.Show("password fail");
+            }
+            else if (pwResult == DialogResult.Cancel)
+            {
+                ;   // nothing do 
+            }
+        }
+
+        private void OptionSettingRuttin()
+        {
+            SettingValues values = new SettingValues();
+            values.value_conveyorSpeed = IniFileManager.GetSetting_ConveyerSpeed();
+            values.value_XAxisDistance = IniFileManager.GetSetting_XXaisDistance();
+            values.value_ConvererRollerSpeed = IniFileManager.GetSetting_ConverterRollerSpeed();
+
             DialogForm dialog = new DialogForm(values);
             DialogResult dr = dialog.ShowDialog();
 
             if (dr == DialogResult.OK)
             {
                 // 저장 메시지 전송함
+                MessageBox.Show( values.value_conveyorSpeed + " "
+                    + values.value_XAxisDistance 
+                    + values.value_ConvererRollerSpeed );
+
+                IniFileManager.SetSetting_ConveyerSpeed(values.value_conveyorSpeed);
+                IniFileManager.SetSetting_XXaisDistance(values.value_XAxisDistance);
+                IniFileManager.SetSetting_ConverterRollerSpeed(values.value_ConvererRollerSpeed);
             }
             else if (dr == DialogResult.Cancel)
             {
                 ;
             }
-
         }
 
         private void btn_start_Click(object sender, EventArgs e)
