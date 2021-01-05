@@ -174,7 +174,8 @@ namespace TubeFeeder
 
 
 
-            String sTempFile = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\IniTemp.ini";
+            // String sTempFile = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\IniTemp.ini";;
+            String sTempFile = "\\Flash Disk\\IniTemp.ini";
 
             if (fi.Exists == false)
             {
@@ -471,7 +472,8 @@ namespace TubeFeeder
             int nOffset1;
             int nOffset2;
 
-            String sTempFile = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\IniTemp.ini";
+            //String sTempFile = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\IniTemp.ini";
+            String sTempFile = "\\Flash Disk\\IniTemp.ini";
 
             FileStream fs = new FileStream(sFile, FileMode.OpenOrCreate);
             FileStream fs2 = new FileStream(sTempFile, FileMode.OpenOrCreate);
