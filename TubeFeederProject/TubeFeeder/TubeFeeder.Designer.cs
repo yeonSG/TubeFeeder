@@ -61,6 +61,9 @@
             this.smartLabel7 = new SmartX.SmartLabel();
             this.btn_logo_BIONIT = new SmartX.SmartButton();
             this.btn_logo_AutoFeeder = new SmartX.SmartButton();
+            this.smartUpdate1 = new SmartX.SmartUpdate(this.components);
+            this.smartTimer2 = new SmartX.SmartTimer(this.components);
+            this.smartLabel_VERSION = new SmartX.SmartLabel();
             ((System.ComponentModel.ISupportInitialize)(this.smartForm1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -725,12 +728,56 @@
             this.btn_logo_AutoFeeder.TextVAlign = SmartX.SmartButton.TextVerAlign.Middle;
             this.btn_logo_AutoFeeder.UpImage = ((System.Drawing.Image)(resources.GetObject("btn_logo_AutoFeeder.UpImage")));
             // 
+            // smartUpdate1
+            // 
+            this.smartUpdate1.BackImageFilePathName = null;
+            this.smartUpdate1.CompanyText = "BIONIT Co.";
+            this.smartUpdate1.CompanyTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.smartUpdate1.FromFilePath = "하드 디스크\\UpdateFiles";
+            this.smartUpdate1.MessageText = "응용프로그램을 업데이트 하고 있습니다. 잠시만 기다려 주시기 바랍니다....!!!";
+            this.smartUpdate1.MessageTextColor = System.Drawing.Color.Blue;
+            this.smartUpdate1.Restart = SmartX.SmartUpdate.RESTARTFLAG.REBOOTING;
+            this.smartUpdate1.SetStartInterval = ((uint)(3000u));
+            this.smartUpdate1.TitleText = "[[[ AutoFeeder Update ]]]";
+            this.smartUpdate1.TitleTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.smartUpdate1.ToFilePath = "Flash Disk\\Run";
+            // 
+            // smartTimer2
+            // 
+            this.smartTimer2.EndTime = ((long)(100000000000));
+            this.smartTimer2.Interval = 100;
+            this.smartTimer2.IntervalSeries = null;
+            this.smartTimer2.NowMillisecond = ((long)(0));
+            this.smartTimer2.StartTime = ((long)(0));
+            this.smartTimer2.Tick += new System.EventHandler(this.smartTimer2_Tick);
+            // 
+            // smartLabel_VERSION
+            // 
+            this.smartLabel_VERSION.BackColor = System.Drawing.Color.Silver;
+            this.smartLabel_VERSION.BackPictureBox = null;
+            this.smartLabel_VERSION.BackPictureBox1 = null;
+            this.smartLabel_VERSION.BackPictureBox2 = null;
+            this.smartLabel_VERSION.BorderColor = System.Drawing.Color.Transparent;
+            this.smartLabel_VERSION.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.smartLabel_VERSION.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.smartLabel_VERSION.InitVisible = true;
+            this.smartLabel_VERSION.LineSpacing = 0F;
+            this.smartLabel_VERSION.Location = new System.Drawing.Point(215, 579);
+            this.smartLabel_VERSION.Name = "smartLabel_VERSION";
+            this.smartLabel_VERSION.Size = new System.Drawing.Size(132, 18);
+            this.smartLabel_VERSION.TabIndex = 90;
+            this.smartLabel_VERSION.Text = "ver 1.0";
+            this.smartLabel_VERSION.TextHAlign = SmartX.SmartLabel.TextHorAlign.Left;
+            this.smartLabel_VERSION.TextVAlign = SmartX.SmartLabel.TextVerAlign.Middle;
+            this.smartLabel_VERSION.Wordwrap = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.smartLabel_VERSION);
             this.Controls.Add(this.btn_logo_AutoFeeder);
             this.Controls.Add(this.btn_logo_BIONIT);
             this.Controls.Add(this.smartLabel5);
@@ -800,6 +847,9 @@
         private SmartX.SmartLabel smartLabel7;
         private SmartX.SmartButton btn_logo_BIONIT;
         private SmartX.SmartButton btn_logo_AutoFeeder;
+        private SmartX.SmartUpdate smartUpdate1;
+        private SmartX.SmartTimer smartTimer2;
+        private SmartX.SmartLabel smartLabel_VERSION;
     }
 }
 

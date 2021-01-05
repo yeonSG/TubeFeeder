@@ -62,6 +62,8 @@ namespace TubeFeeder
 
             smartTimer1.Interval = 1000;    // 1000msec
             smartTimer1.Start();
+            smartTimer2.Interval = 1000;    // 1000msec
+            smartTimer2.Start();
         }
 
         private void ModeInit()
@@ -735,6 +737,32 @@ namespace TubeFeeder
                 {
                     setIndicatorColor(Color.Green);
                 }
+            }
+        }
+
+        private void smartTimer2_Tick(object sender, EventArgs e)
+        {
+            ////////////////////////////////////////////////////////////////
+            //                                                            //
+            // SmartUpdate 관련 설정 사항은 폼디자인 모드에서 SmartUpdate //
+            // 의 속성 값을 확인 하시기 바라며 또한 속성값 변경을 속성창  //
+            // 에서 직접 하셔도 됩니다. 본 예제에서는 속성 값을 따로 코드 //
+            // 로 정의 하지 않고 속성창 에서 설정 하였습니다.             //
+            //                                                            //
+            ////////////////////////////////////////////////////////////////
+
+
+            // 현재 응용프로그램이 종료된후 업데이트 모듈이 업데이트를 시작하기까지의 지연 시간을 설정 함
+            // 응용프로그램의 용량등(프로그램 복잡도)에 따라서 종료되는 지연시간을 감안 하여 시간을
+            // 충분한 값으로 설정 하시기 바랍니다. 단위 ms
+            smartUpdate1.SetStartInterval = 3000;  // 3초
+
+            // Update File을 확인 하며 업데이트 할 파일이 있을경우 업데이트 시작
+            // 리턴값 : 업데이트 할 파일이 있는경우 True, 업데이트 할 파일이 없는경우 False
+            if (smartUpdate1.Start() == true)
+            {
+                // ※※※[중요] 업데이트 할 파일이 있을경우 반드시 현재 응용프로그램을 종료 해야 합니다.!!! [중요]※※※
+                Application.Exit();
             }
         }
         // Ping

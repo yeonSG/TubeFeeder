@@ -503,6 +503,12 @@
         AA/m/2HAvLMNAAAAAElFTkSuQmCC
 </value>
   </data>
+  <metadata name="smartUpdate1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>366, 17</value>
+  </metadata>
+  <metadata name="smartTimer2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>496, 17</value>
+  </metadata>
   <metadata name="$this.FormFactorShadowProperty" xml:space="preserve">
     <value>WEBPAD</value>
   </metadata>
