@@ -140,7 +140,7 @@ namespace TubeFeeder
             {
                 smartListBox_log.AddItem("[" + DateTime.Now.ToLongTimeString() + "] " + value);
 
-                if (smartListBox_log.Items.Count() > 31)  // 리스트박스 아이탬 개수에 따라 다르게 설정해야함
+                if (smartListBox_log.Items.Count() > 29)  // 리스트박스 아이탬 개수에 따라 다르게 설정해야함
                     smartListBox_log.RemoveItem(0);
             }
         }

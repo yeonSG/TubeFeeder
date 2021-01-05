@@ -30,10 +30,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.mainMenu1 = new System.Windows.Forms.MainMenu();
             this.smartLabel3 = new SmartX.SmartLabel();
             this.buttonTest1 = new SmartX.SmartButton();
-            this.buttonTest2 = new SmartX.SmartButton();
+            this.btn_setting = new SmartX.SmartButton();
             this.label_keybuffer = new System.Windows.Forms.Label();
             this.smartListBox_log = new SmartX.SmartListBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -58,6 +59,8 @@
             this.btn_AutoStopModeOff = new SmartX.SmartButton();
             this.btn_AutoStopModeOn = new SmartX.SmartButton();
             this.smartLabel7 = new SmartX.SmartLabel();
+            this.btn_logo_BIONIT = new SmartX.SmartButton();
+            this.btn_logo_AutoFeeder = new SmartX.SmartButton();
             ((System.ComponentModel.ISupportInitialize)(this.smartForm1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -71,7 +74,7 @@
             this.smartLabel3.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.smartLabel3.InitVisible = true;
             this.smartLabel3.LineSpacing = 0F;
-            this.smartLabel3.Location = new System.Drawing.Point(55, 58);
+            this.smartLabel3.Location = new System.Drawing.Point(46, 68);
             this.smartLabel3.Name = "smartLabel3";
             this.smartLabel3.Size = new System.Drawing.Size(139, 81);
             this.smartLabel3.TabIndex = 1;
@@ -111,37 +114,37 @@
             this.buttonTest1.UpImage = null;
             this.buttonTest1.Click += new System.EventHandler(this.buttonTest1_Click);
             // 
-            // buttonTest2
+            // btn_setting
             // 
-            this.buttonTest2.BackPictureBox = null;
-            this.buttonTest2.BackPictureBox1 = null;
-            this.buttonTest2.BackPictureBox2 = null;
-            this.buttonTest2.ButtonColor = System.Drawing.Color.Gray;
-            this.buttonTest2.ButtonImageAutoSize = true;
-            this.buttonTest2.ColorKeySamplePosition = new System.Drawing.Point(0, 0);
-            this.buttonTest2.DisableImage = null;
-            this.buttonTest2.DownImage = null;
-            this.buttonTest2.GroupID = 0;
-            this.buttonTest2.InitVisible = true;
-            this.buttonTest2.Location = new System.Drawing.Point(289, 12);
-            this.buttonTest2.Mode = SmartX.SmartButton.BUTTONMODE.NORMAL;
-            this.buttonTest2.Name = "buttonTest2";
-            this.buttonTest2.NestedClickEventPrevent = false;
-            this.buttonTest2.OutlinePixel = 1;
-            this.buttonTest2.RepeatInterval = 200;
-            this.buttonTest2.RepeatIntervalAccelerate = null;
-            this.buttonTest2.SafeInterval = 200;
-            this.buttonTest2.Size = new System.Drawing.Size(82, 29);
-            this.buttonTest2.SpecialFunction = SmartX.SmartButton.SPECIALFUNC.NONE;
-            this.buttonTest2.TabIndex = 47;
-            this.buttonTest2.Text = "Setting";
-            this.buttonTest2.TextColor = System.Drawing.Color.Black;
-            this.buttonTest2.TextDownColor = System.Drawing.Color.White;
-            this.buttonTest2.TextHAlign = SmartX.SmartButton.TextHorAlign.Middle;
-            this.buttonTest2.TextLocation = new System.Drawing.Point(0, 0);
-            this.buttonTest2.TextVAlign = SmartX.SmartButton.TextVerAlign.Middle;
-            this.buttonTest2.UpImage = null;
-            this.buttonTest2.Click += new System.EventHandler(this.buttonTest2_Click);
+            this.btn_setting.BackPictureBox = null;
+            this.btn_setting.BackPictureBox1 = null;
+            this.btn_setting.BackPictureBox2 = null;
+            this.btn_setting.ButtonColor = System.Drawing.Color.Gray;
+            this.btn_setting.ButtonImageAutoSize = true;
+            this.btn_setting.ColorKeySamplePosition = new System.Drawing.Point(0, 0);
+            this.btn_setting.DisableImage = null;
+            this.btn_setting.DownImage = null;
+            this.btn_setting.GroupID = 0;
+            this.btn_setting.InitVisible = true;
+            this.btn_setting.Location = new System.Drawing.Point(284, 12);
+            this.btn_setting.Mode = SmartX.SmartButton.BUTTONMODE.NORMAL;
+            this.btn_setting.Name = "btn_setting";
+            this.btn_setting.NestedClickEventPrevent = false;
+            this.btn_setting.OutlinePixel = 1;
+            this.btn_setting.RepeatInterval = 200;
+            this.btn_setting.RepeatIntervalAccelerate = null;
+            this.btn_setting.SafeInterval = 200;
+            this.btn_setting.Size = new System.Drawing.Size(82, 29);
+            this.btn_setting.SpecialFunction = SmartX.SmartButton.SPECIALFUNC.NONE;
+            this.btn_setting.TabIndex = 47;
+            this.btn_setting.Text = "Setting";
+            this.btn_setting.TextColor = System.Drawing.Color.Black;
+            this.btn_setting.TextDownColor = System.Drawing.Color.White;
+            this.btn_setting.TextHAlign = SmartX.SmartButton.TextHorAlign.Middle;
+            this.btn_setting.TextLocation = new System.Drawing.Point(0, 0);
+            this.btn_setting.TextVAlign = SmartX.SmartButton.TextVerAlign.Middle;
+            this.btn_setting.UpImage = null;
+            this.btn_setting.Click += new System.EventHandler(this.buttonTest2_Click);
             // 
             // label_keybuffer
             // 
@@ -180,7 +183,7 @@
             this.smartListBox_log.SeparationLineStyle = SmartX.SmartListBox.SEPARATIONLINETYPES.FixedSingle;
             this.smartListBox_log.SeparationlineVisibleBottom = true;
             this.smartListBox_log.SeparationlineVisibleTop = true;
-            this.smartListBox_log.Size = new System.Drawing.Size(382, 411);
+            this.smartListBox_log.Size = new System.Drawing.Size(382, 378);
             this.smartListBox_log.TabIndex = 51;
             this.smartListBox_log.Text = "LogListBox";
             // 
@@ -205,7 +208,7 @@
             this.smartForm1.LCDSize = SmartX.SmartForm.LCDRESOLUTION.LCD800X600;
             this.smartForm1.Location = new System.Drawing.Point(0, 0);
             this.smartForm1.MainForm = null;
-            this.smartForm1.Mode = SmartX.SmartForm.RUNMODE.DEVELOPER;
+            this.smartForm1.Mode = SmartX.SmartForm.RUNMODE.RUNTIME;
             this.smartForm1.MouseCursor = SmartX.SmartForm.OnOff.OFF;
             this.smartForm1.Name = "smartForm1";
             this.smartForm1.Size = new System.Drawing.Size(800, 600);
@@ -233,7 +236,7 @@
             this.btn_start.RepeatInterval = 200;
             this.btn_start.RepeatIntervalAccelerate = null;
             this.btn_start.SafeInterval = 200;
-            this.btn_start.Size = new System.Drawing.Size(300, 300);
+            this.btn_start.Size = new System.Drawing.Size(300, 280);
             this.btn_start.SpecialFunction = SmartX.SmartButton.SPECIALFUNC.NONE;
             this.btn_start.TabIndex = 59;
             this.btn_start.Text = "START";
@@ -258,7 +261,7 @@
             this.btn_stop.Font = new System.Drawing.Font("Tahoma", 40F, System.Drawing.FontStyle.Bold);
             this.btn_stop.GroupID = 1;
             this.btn_stop.InitVisible = true;
-            this.btn_stop.Location = new System.Drawing.Point(400, 300);
+            this.btn_stop.Location = new System.Drawing.Point(400, 280);
             this.btn_stop.Mode = SmartX.SmartButton.BUTTONMODE.RADIO;
             this.btn_stop.Name = "btn_stop";
             this.btn_stop.NestedClickEventPrevent = false;
@@ -266,7 +269,7 @@
             this.btn_stop.RepeatInterval = 200;
             this.btn_stop.RepeatIntervalAccelerate = null;
             this.btn_stop.SafeInterval = 200;
-            this.btn_stop.Size = new System.Drawing.Size(300, 300);
+            this.btn_stop.Size = new System.Drawing.Size(300, 280);
             this.btn_stop.SpecialFunction = SmartX.SmartButton.SPECIALFUNC.NONE;
             this.btn_stop.TabIndex = 60;
             this.btn_stop.Text = "STOP";
@@ -290,7 +293,7 @@
             this.label_indicator.LineSpacing = 0F;
             this.label_indicator.Location = new System.Drawing.Point(700, 0);
             this.label_indicator.Name = "label_indicator";
-            this.label_indicator.Size = new System.Drawing.Size(100, 600);
+            this.label_indicator.Size = new System.Drawing.Size(100, 560);
             this.label_indicator.TabIndex = 61;
             this.label_indicator.TextHAlign = SmartX.SmartLabel.TextHorAlign.Left;
             this.label_indicator.TextVAlign = SmartX.SmartLabel.TextVerAlign.Top;
@@ -307,7 +310,7 @@
             this.smartLabel2.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.smartLabel2.InitVisible = true;
             this.smartLabel2.LineSpacing = 0F;
-            this.smartLabel2.Location = new System.Drawing.Point(9, 564);
+            this.smartLabel2.Location = new System.Drawing.Point(9, 527);
             this.smartLabel2.Name = "smartLabel2";
             this.smartLabel2.Size = new System.Drawing.Size(100, 29);
             this.smartLabel2.TabIndex = 62;
@@ -328,7 +331,7 @@
             this.label_scanCount.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.label_scanCount.InitVisible = true;
             this.label_scanCount.LineSpacing = 0F;
-            this.label_scanCount.Location = new System.Drawing.Point(115, 564);
+            this.label_scanCount.Location = new System.Drawing.Point(115, 527);
             this.label_scanCount.Name = "label_scanCount";
             this.label_scanCount.Size = new System.Drawing.Size(65, 29);
             this.label_scanCount.TabIndex = 63;
@@ -449,7 +452,7 @@
             this.btn_Exit.DownImage = null;
             this.btn_Exit.GroupID = 0;
             this.btn_Exit.InitVisible = true;
-            this.btn_Exit.Location = new System.Drawing.Point(306, 564);
+            this.btn_Exit.Location = new System.Drawing.Point(306, 527);
             this.btn_Exit.Mode = SmartX.SmartButton.BUTTONMODE.NORMAL;
             this.btn_Exit.Name = "btn_Exit";
             this.btn_Exit.NestedClickEventPrevent = false;
@@ -483,7 +486,7 @@
             this.btn_BarcodeReadOn.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.btn_BarcodeReadOn.GroupID = 3;
             this.btn_BarcodeReadOn.InitVisible = true;
-            this.btn_BarcodeReadOn.Location = new System.Drawing.Point(68, 81);
+            this.btn_BarcodeReadOn.Location = new System.Drawing.Point(59, 91);
             this.btn_BarcodeReadOn.Mode = SmartX.SmartButton.BUTTONMODE.RADIO;
             this.btn_BarcodeReadOn.Name = "btn_BarcodeReadOn";
             this.btn_BarcodeReadOn.NestedClickEventPrevent = false;
@@ -516,7 +519,7 @@
             this.btn_BarcodeReadOff.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.btn_BarcodeReadOff.GroupID = 3;
             this.btn_BarcodeReadOff.InitVisible = true;
-            this.btn_BarcodeReadOff.Location = new System.Drawing.Point(124, 81);
+            this.btn_BarcodeReadOff.Location = new System.Drawing.Point(115, 91);
             this.btn_BarcodeReadOff.Mode = SmartX.SmartButton.BUTTONMODE.RADIO;
             this.btn_BarcodeReadOff.Name = "btn_BarcodeReadOff";
             this.btn_BarcodeReadOff.NestedClickEventPrevent = false;
@@ -547,7 +550,7 @@
             this.smartLabel1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.smartLabel1.InitVisible = true;
             this.smartLabel1.LineSpacing = 0F;
-            this.smartLabel1.Location = new System.Drawing.Point(59, 62);
+            this.smartLabel1.Location = new System.Drawing.Point(50, 72);
             this.smartLabel1.Name = "smartLabel1";
             this.smartLabel1.Size = new System.Drawing.Size(132, 18);
             this.smartLabel1.TabIndex = 76;
@@ -567,7 +570,7 @@
             this.smartLabel5.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.smartLabel5.InitVisible = true;
             this.smartLabel5.LineSpacing = 0F;
-            this.smartLabel5.Location = new System.Drawing.Point(228, 62);
+            this.smartLabel5.Location = new System.Drawing.Point(219, 72);
             this.smartLabel5.Name = "smartLabel5";
             this.smartLabel5.Size = new System.Drawing.Size(132, 18);
             this.smartLabel5.TabIndex = 84;
@@ -589,7 +592,7 @@
             this.btn_AutoStopModeOff.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.btn_AutoStopModeOff.GroupID = 4;
             this.btn_AutoStopModeOff.InitVisible = true;
-            this.btn_AutoStopModeOff.Location = new System.Drawing.Point(293, 81);
+            this.btn_AutoStopModeOff.Location = new System.Drawing.Point(284, 91);
             this.btn_AutoStopModeOff.Mode = SmartX.SmartButton.BUTTONMODE.RADIO;
             this.btn_AutoStopModeOff.Name = "btn_AutoStopModeOff";
             this.btn_AutoStopModeOff.NestedClickEventPrevent = false;
@@ -622,7 +625,7 @@
             this.btn_AutoStopModeOn.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.btn_AutoStopModeOn.GroupID = 4;
             this.btn_AutoStopModeOn.InitVisible = true;
-            this.btn_AutoStopModeOn.Location = new System.Drawing.Point(237, 81);
+            this.btn_AutoStopModeOn.Location = new System.Drawing.Point(228, 91);
             this.btn_AutoStopModeOn.Mode = SmartX.SmartButton.BUTTONMODE.RADIO;
             this.btn_AutoStopModeOn.Name = "btn_AutoStopModeOn";
             this.btn_AutoStopModeOn.NestedClickEventPrevent = false;
@@ -652,7 +655,7 @@
             this.smartLabel7.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.smartLabel7.InitVisible = true;
             this.smartLabel7.LineSpacing = 0F;
-            this.smartLabel7.Location = new System.Drawing.Point(224, 58);
+            this.smartLabel7.Location = new System.Drawing.Point(215, 68);
             this.smartLabel7.Name = "smartLabel7";
             this.smartLabel7.Size = new System.Drawing.Size(139, 81);
             this.smartLabel7.TabIndex = 81;
@@ -660,12 +663,76 @@
             this.smartLabel7.TextVAlign = SmartX.SmartLabel.TextVerAlign.Top;
             this.smartLabel7.Wordwrap = false;
             // 
+            // btn_logo_BIONIT
+            // 
+            this.btn_logo_BIONIT.BackPictureBox = null;
+            this.btn_logo_BIONIT.BackPictureBox1 = null;
+            this.btn_logo_BIONIT.BackPictureBox2 = null;
+            this.btn_logo_BIONIT.ButtonColor = System.Drawing.Color.Gray;
+            this.btn_logo_BIONIT.ButtonImageAutoSize = true;
+            this.btn_logo_BIONIT.ColorKeySamplePosition = new System.Drawing.Point(0, 0);
+            this.btn_logo_BIONIT.DisableImage = ((System.Drawing.Image)(resources.GetObject("btn_logo_BIONIT.DisableImage")));
+            this.btn_logo_BIONIT.DownImage = null;
+            this.btn_logo_BIONIT.Enabled = false;
+            this.btn_logo_BIONIT.GroupID = 0;
+            this.btn_logo_BIONIT.InitVisible = true;
+            this.btn_logo_BIONIT.Location = new System.Drawing.Point(700, 562);
+            this.btn_logo_BIONIT.Mode = SmartX.SmartButton.BUTTONMODE.NORMAL;
+            this.btn_logo_BIONIT.Name = "btn_logo_BIONIT";
+            this.btn_logo_BIONIT.NestedClickEventPrevent = false;
+            this.btn_logo_BIONIT.OutlinePixel = 1;
+            this.btn_logo_BIONIT.RepeatInterval = 200;
+            this.btn_logo_BIONIT.RepeatIntervalAccelerate = null;
+            this.btn_logo_BIONIT.SafeInterval = 200;
+            this.btn_logo_BIONIT.Size = new System.Drawing.Size(95, 32);
+            this.btn_logo_BIONIT.SpecialFunction = SmartX.SmartButton.SPECIALFUNC.NONE;
+            this.btn_logo_BIONIT.TabIndex = 89;
+            this.btn_logo_BIONIT.TextColor = System.Drawing.Color.Black;
+            this.btn_logo_BIONIT.TextDownColor = System.Drawing.Color.White;
+            this.btn_logo_BIONIT.TextHAlign = SmartX.SmartButton.TextHorAlign.Middle;
+            this.btn_logo_BIONIT.TextLocation = new System.Drawing.Point(0, 0);
+            this.btn_logo_BIONIT.TextVAlign = SmartX.SmartButton.TextVerAlign.Middle;
+            this.btn_logo_BIONIT.UpImage = ((System.Drawing.Image)(resources.GetObject("btn_logo_BIONIT.UpImage")));
+            // 
+            // btn_logo_AutoFeeder
+            // 
+            this.btn_logo_AutoFeeder.BackPictureBox = null;
+            this.btn_logo_AutoFeeder.BackPictureBox1 = null;
+            this.btn_logo_AutoFeeder.BackPictureBox2 = null;
+            this.btn_logo_AutoFeeder.ButtonColor = System.Drawing.Color.Gray;
+            this.btn_logo_AutoFeeder.ButtonImageAutoSize = true;
+            this.btn_logo_AutoFeeder.ColorKeySamplePosition = new System.Drawing.Point(0, 0);
+            this.btn_logo_AutoFeeder.DisableImage = ((System.Drawing.Image)(resources.GetObject("btn_logo_AutoFeeder.DisableImage")));
+            this.btn_logo_AutoFeeder.DownImage = null;
+            this.btn_logo_AutoFeeder.Enabled = false;
+            this.btn_logo_AutoFeeder.GroupID = 0;
+            this.btn_logo_AutoFeeder.InitVisible = true;
+            this.btn_logo_AutoFeeder.Location = new System.Drawing.Point(9, 562);
+            this.btn_logo_AutoFeeder.Mode = SmartX.SmartButton.BUTTONMODE.NORMAL;
+            this.btn_logo_AutoFeeder.Name = "btn_logo_AutoFeeder";
+            this.btn_logo_AutoFeeder.NestedClickEventPrevent = false;
+            this.btn_logo_AutoFeeder.OutlinePixel = 1;
+            this.btn_logo_AutoFeeder.RepeatInterval = 200;
+            this.btn_logo_AutoFeeder.RepeatIntervalAccelerate = null;
+            this.btn_logo_AutoFeeder.SafeInterval = 200;
+            this.btn_logo_AutoFeeder.Size = new System.Drawing.Size(219, 35);
+            this.btn_logo_AutoFeeder.SpecialFunction = SmartX.SmartButton.SPECIALFUNC.NONE;
+            this.btn_logo_AutoFeeder.TabIndex = 89;
+            this.btn_logo_AutoFeeder.TextColor = System.Drawing.Color.Black;
+            this.btn_logo_AutoFeeder.TextDownColor = System.Drawing.Color.White;
+            this.btn_logo_AutoFeeder.TextHAlign = SmartX.SmartButton.TextHorAlign.Middle;
+            this.btn_logo_AutoFeeder.TextLocation = new System.Drawing.Point(0, 0);
+            this.btn_logo_AutoFeeder.TextVAlign = SmartX.SmartButton.TextVerAlign.Middle;
+            this.btn_logo_AutoFeeder.UpImage = ((System.Drawing.Image)(resources.GetObject("btn_logo_AutoFeeder.UpImage")));
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.btn_logo_AutoFeeder);
+            this.Controls.Add(this.btn_logo_BIONIT);
             this.Controls.Add(this.smartLabel5);
             this.Controls.Add(this.btn_AutoStopModeOff);
             this.Controls.Add(this.btn_AutoStopModeOn);
@@ -687,7 +754,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.smartListBox_log);
             this.Controls.Add(this.label_keybuffer);
-            this.Controls.Add(this.buttonTest2);
+            this.Controls.Add(this.btn_setting);
             this.Controls.Add(this.buttonTest1);
             this.Controls.Add(this.smartLabel3);
             this.Controls.Add(this.smartForm1);
@@ -706,7 +773,7 @@
 
         private SmartX.SmartLabel smartLabel3;
         private SmartX.SmartButton buttonTest1;
-        private SmartX.SmartButton buttonTest2;
+        private SmartX.SmartButton btn_setting;
         private System.Windows.Forms.Label label_keybuffer;
         private SmartX.SmartListBox smartListBox_log;
         private System.Windows.Forms.Label label2;
@@ -731,6 +798,8 @@
         private SmartX.SmartButton btn_AutoStopModeOff;
         private SmartX.SmartButton btn_AutoStopModeOn;
         private SmartX.SmartLabel smartLabel7;
+        private SmartX.SmartButton btn_logo_BIONIT;
+        private SmartX.SmartButton btn_logo_AutoFeeder;
     }
 }
 
