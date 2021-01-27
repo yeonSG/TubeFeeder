@@ -766,7 +766,7 @@
             this.smartLabel_VERSION.Name = "smartLabel_VERSION";
             this.smartLabel_VERSION.Size = new System.Drawing.Size(132, 18);
             this.smartLabel_VERSION.TabIndex = 90;
-            this.smartLabel_VERSION.Text = "ver 1.0";
+            this.smartLabel_VERSION.Text = "ver 1.1";
             this.smartLabel_VERSION.TextHAlign = SmartX.SmartLabel.TextHorAlign.Left;
             this.smartLabel_VERSION.TextVAlign = SmartX.SmartLabel.TextVerAlign.Middle;
             this.smartLabel_VERSION.Wordwrap = false;

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -108,19 +108,10 @@ namespace TubeFeeder
         private void ClearInputBuffer()
         {
             m_inputBuffer = "";
-            label_keybuffer.Text = m_inputBuffer;
         }
-        private void InsertBufferStr()
+        private void InsertBufferStrToLogFile()
         {
-            if (m_inputBuffer.Equals(m_insertedItem) == true)
-            {
-                // AddLog("(duplicated) " + m_insertedItem);   
-                return; //  Do not action, When Duplicated before Input value.
-            }
-            else
-            {
-                m_insertedItem = m_inputBuffer;
-            }
+            m_insertedItem = m_inputBuffer;
 
             AddLog(m_insertedItem);   
 
@@ -174,10 +165,31 @@ namespace TubeFeeder
 
         private void Form1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            //if (e.KeyChar == Convert.ToChar(Keys.Return))
-            //{
-            //    MessageBox.Show("Key pressed");
-            //}
+            if (e.KeyChar == (char)Keys.Return)
+            {
+                //MessageBox.Show("enter");// Enter key pressed
+
+                if (m_inputBuffer == "")
+                    return;
+
+
+                if (m_inputBuffer.Equals(m_insertedItem) == true)
+                {
+                    // AddLog("(duplicated) " + m_insertedItem);   
+                    ClearInputBuffer();
+                    return; //  Do not action, When Duplicated before Input value. (중복시 아무것도 하지 않음
+                }
+                else
+                {
+                    m_scanCount++;
+                    m_ControlBoard.SendMessage(MessageGenerator.Meesage_Infom(MessageProtocol.CMD_INFORM_SCANNED));
+                    InsertBufferStrToLogFile();
+                }
+            }
+            else
+            {
+                AppendInputBuffer(e.KeyChar.ToString());
+            }
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -185,148 +197,6 @@ namespace TubeFeeder
             //SmartX.SmartMessageBox.Show(e.ToString());
             //MessageBox.Show(e.KeyChar.ToString());
             //** 엔터를 여기서 받으려면 포커스가 엔터이벤트를 받지 않는 포커스에 있어야 함(추측임)(버튼같은?)
-
-            if (e.KeyCode == Keys.Enter)
-            {
-                //MessageBox.Show("enter");// Enter key pressed
-
-                // Check(); 버퍼내용이 바코드 형식에 부합하는지 검사
-                if (m_inputBuffer == "")
-                    return;
-
-                m_scanCount++;
-                InsertBufferStr();
-                m_ControlBoard.SendMessage( MessageGenerator.Meesage_Infom(MessageProtocol.CMD_INFORM_SCANNED) );
-            }
-            else
-            {
-                switch(e.KeyCode)
-                {
-                    case Keys.D1:
-                    case Keys.NumPad1:
-                        AppendInputBuffer("1");
-                        break;
-                    case Keys.D2:
-                    case Keys.NumPad2:
-                        AppendInputBuffer("2");
-                        break;
-                    case Keys.D3:
-                    case Keys.NumPad3:
-                        AppendInputBuffer("3");
-                        break;
-                    case Keys.D4:
-                    case Keys.NumPad4:
-                        AppendInputBuffer("4");
-                        break;
-                    case Keys.D5:
-                    case Keys.NumPad5:
-                        AppendInputBuffer("5");
-                        break;
-                    case Keys.D6:
-                    case Keys.NumPad6:
-                        AppendInputBuffer("6");
-                        break;
-                    case Keys.D7:
-                    case Keys.NumPad7:
-                        AppendInputBuffer("7");
-                        break;
-                    case Keys.D8:
-                    case Keys.NumPad8:
-                        AppendInputBuffer("8");
-                        break;
-                    case Keys.D9:
-                    case Keys.NumPad9:
-                        AppendInputBuffer("9");
-                        break;
-                    case Keys.D0:
-                    case Keys.NumPad0:
-                        AppendInputBuffer("0");
-                        break;
-                    case Keys.Q:
-                        AppendInputBuffer("Q");
-                        break;
-                    case Keys.W:
-                        AppendInputBuffer("W");
-                        break;
-                    case Keys.E:
-                        AppendInputBuffer("E");
-                        break;
-                    case Keys.R:
-                        AppendInputBuffer("R");
-                        break;
-                    case Keys.T:
-                        AppendInputBuffer("T");
-                        break;
-                    case Keys.Y:
-                        AppendInputBuffer("Y");
-                        break;
-                    case Keys.U:
-                        AppendInputBuffer("U");
-                        break;
-                    case Keys.I:
-                        AppendInputBuffer("I");
-                        break;
-                    case Keys.O:
-                        AppendInputBuffer("O");
-                        break;
-                    case Keys.P:
-                        AppendInputBuffer("P");
-                        break;
-                    case Keys.A:
-                        AppendInputBuffer("A");
-                        break;
-                    case Keys.S:
-                        AppendInputBuffer("S");
-                        break;
-                    case Keys.D:
-                        AppendInputBuffer("D");
-                        break;
-                    case Keys.F:
-                        AppendInputBuffer("F");
-                        break;
-                    case Keys.G:
-                        AppendInputBuffer("G");
-                        break;
-                    case Keys.H:
-                        AppendInputBuffer("H");
-                        break;
-                    case Keys.J:
-                        AppendInputBuffer("J");
-                        break;
-                    case Keys.K:
-                        AppendInputBuffer("K");
-                        break;
-                    case Keys.L:
-                        AppendInputBuffer("L");
-                        break;
-                    case Keys.Z:
-                        AppendInputBuffer("Z");
-                        break;
-                    case Keys.X:
-                        AppendInputBuffer("X");
-                        break;
-                    case Keys.C:
-                        AppendInputBuffer("C");
-                        break;
-                    case Keys.V:
-                        AppendInputBuffer("V");
-                        break;
-                    case Keys.B:
-                        AppendInputBuffer("B");
-                        break;
-                    case Keys.N:
-                        AppendInputBuffer("N");
-                        break;
-                    case Keys.M:
-                        AppendInputBuffer("M");
-                        break;
-                
-                    default:
-                        // ErrorInfo("Input is not number");
-                        ClearInputBuffer();
-                        break;                        
-                }
-            }
         }
 
         private void ErrorInfo(string errorMessage)
