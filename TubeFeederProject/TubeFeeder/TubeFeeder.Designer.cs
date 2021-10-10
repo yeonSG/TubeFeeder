@@ -83,6 +83,7 @@
             this.smartLabel3.TabIndex = 1;
             this.smartLabel3.TextHAlign = SmartX.SmartLabel.TextHorAlign.Left;
             this.smartLabel3.TextVAlign = SmartX.SmartLabel.TextVerAlign.Top;
+            this.smartLabel3.Visible = false;
             this.smartLabel3.Wordwrap = false;
             // 
             // buttonTest1
@@ -172,7 +173,7 @@
             this.smartListBox_log.ItemOffsetGap = 0;
             this.smartListBox_log.ItemOffsetX = 0;
             this.smartListBox_log.ItemOffsetY = 0;
-            this.smartListBox_log.Location = new System.Drawing.Point(9, 182);
+            this.smartListBox_log.Location = new System.Drawing.Point(9, 91);
             this.smartListBox_log.MouseMoveEventSpace = 3;
             this.smartListBox_log.MouseMoveSpace = 10;
             this.smartListBox_log.Name = "smartListBox_log";
@@ -186,7 +187,7 @@
             this.smartListBox_log.SeparationLineStyle = SmartX.SmartListBox.SEPARATIONLINETYPES.FixedSingle;
             this.smartListBox_log.SeparationlineVisibleBottom = true;
             this.smartListBox_log.SeparationlineVisibleTop = true;
-            this.smartListBox_log.Size = new System.Drawing.Size(382, 378);
+            this.smartListBox_log.Size = new System.Drawing.Size(382, 469);
             this.smartListBox_log.TabIndex = 51;
             this.smartListBox_log.Text = "LogListBox";
             // 
@@ -194,7 +195,7 @@
             // 
             this.label2.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.label2.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.label2.Location = new System.Drawing.Point(9, 159);
+            this.label2.Location = new System.Drawing.Point(9, 68);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(94, 20);
             this.label2.Text = "DateTime";
@@ -437,7 +438,7 @@
             // 
             this.label1.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.label1.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(109, 159);
+            this.label1.Location = new System.Drawing.Point(109, 68);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(131, 20);
             this.label1.Text = "Data";
@@ -507,6 +508,7 @@
             this.btn_BarcodeReadOn.TextLocation = new System.Drawing.Point(0, 0);
             this.btn_BarcodeReadOn.TextVAlign = SmartX.SmartButton.TextVerAlign.Middle;
             this.btn_BarcodeReadOn.UpImage = null;
+            this.btn_BarcodeReadOn.Visible = false;
             this.btn_BarcodeReadOn.Click += new System.EventHandler(this.radioButton_BarcodeReadOn_Click);
             // 
             // btn_BarcodeReadOff
@@ -540,6 +542,7 @@
             this.btn_BarcodeReadOff.TextLocation = new System.Drawing.Point(0, 0);
             this.btn_BarcodeReadOff.TextVAlign = SmartX.SmartButton.TextVerAlign.Middle;
             this.btn_BarcodeReadOff.UpImage = null;
+            this.btn_BarcodeReadOff.Visible = false;
             this.btn_BarcodeReadOff.Click += new System.EventHandler(this.radioButton_BarcodeReadOff_Click);
             // 
             // smartLabel1
@@ -560,6 +563,7 @@
             this.smartLabel1.Text = "Barcode Mode";
             this.smartLabel1.TextHAlign = SmartX.SmartLabel.TextHorAlign.Middle;
             this.smartLabel1.TextVAlign = SmartX.SmartLabel.TextVerAlign.Top;
+            this.smartLabel1.Visible = false;
             this.smartLabel1.Wordwrap = false;
             // 
             // smartLabel5
@@ -580,6 +584,7 @@
             this.smartLabel5.Text = "Auto Stop Mode";
             this.smartLabel5.TextHAlign = SmartX.SmartLabel.TextHorAlign.Middle;
             this.smartLabel5.TextVAlign = SmartX.SmartLabel.TextVerAlign.Top;
+            this.smartLabel5.Visible = false;
             this.smartLabel5.Wordwrap = false;
             // 
             // btn_AutoStopModeOff
@@ -613,6 +618,7 @@
             this.btn_AutoStopModeOff.TextLocation = new System.Drawing.Point(0, 0);
             this.btn_AutoStopModeOff.TextVAlign = SmartX.SmartButton.TextVerAlign.Middle;
             this.btn_AutoStopModeOff.UpImage = null;
+            this.btn_AutoStopModeOff.Visible = false;
             this.btn_AutoStopModeOff.Click += new System.EventHandler(this.btn_AutoStopModeOff_Click);
             // 
             // btn_AutoStopModeOn
@@ -646,6 +652,7 @@
             this.btn_AutoStopModeOn.TextLocation = new System.Drawing.Point(0, 0);
             this.btn_AutoStopModeOn.TextVAlign = SmartX.SmartButton.TextVerAlign.Middle;
             this.btn_AutoStopModeOn.UpImage = null;
+            this.btn_AutoStopModeOn.Visible = false;
             this.btn_AutoStopModeOn.Click += new System.EventHandler(this.btn_AutoStopModeOn_Click);
             // 
             // smartLabel7
@@ -664,6 +671,7 @@
             this.smartLabel7.TabIndex = 81;
             this.smartLabel7.TextHAlign = SmartX.SmartLabel.TextHorAlign.Left;
             this.smartLabel7.TextVAlign = SmartX.SmartLabel.TextVerAlign.Top;
+            this.smartLabel7.Visible = false;
             this.smartLabel7.Wordwrap = false;
             // 
             // btn_logo_BIONIT
@@ -766,7 +774,7 @@
             this.smartLabel_VERSION.Name = "smartLabel_VERSION";
             this.smartLabel_VERSION.Size = new System.Drawing.Size(132, 18);
             this.smartLabel_VERSION.TabIndex = 90;
-            this.smartLabel_VERSION.Text = "ver 1.1";
+            this.smartLabel_VERSION.Text = "ver 1.2";
             this.smartLabel_VERSION.TextHAlign = SmartX.SmartLabel.TextHorAlign.Left;
             this.smartLabel_VERSION.TextVAlign = SmartX.SmartLabel.TextVerAlign.Middle;
             this.smartLabel_VERSION.Wordwrap = false;
@@ -808,7 +816,7 @@
             this.KeyPreview = true;
             this.Menu = this.mainMenu1;
             this.Name = "Form1";
-            this.Text = "ver0.1_20201208";
+            this.Text = "ver1.2_20201010";
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form1_KeyPress);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.smartForm1)).EndInit();

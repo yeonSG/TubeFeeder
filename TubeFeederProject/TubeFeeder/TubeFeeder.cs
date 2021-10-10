@@ -35,8 +35,8 @@ namespace TubeFeeder
 
         private bool m_isRecivedFromCom = false;
         private bool m_isOnError = false;
-        private bool m_isBarcodeReadMode_On = true; // 바코드 읽기모드 On
-        private bool m_isAutoStopMode_On = true; // AutoStopMode On
+        private bool m_isBarcodeReadMode_On = false; // 바코드 읽기모드 On
+        private bool m_isAutoStopMode_On = false; // AutoStopMode On
 
         private SettingValues m_settingValues;
 
@@ -54,7 +54,7 @@ namespace TubeFeeder
             label_runTime.Text = m_runTime.ToLongTimeString();
 
             // ModeInit();
-            ModeInit();
+            // ModeInit();
 
             //SettingInit();
             SettingInit();
@@ -133,7 +133,7 @@ namespace TubeFeeder
             {
                 smartListBox_log.AddItem("[" + DateTime.Now.ToLongTimeString() + "] " + value);
 
-                if (smartListBox_log.Items.Count() > 29)  // 리스트박스 아이탬 개수에 따라 다르게 설정해야함
+                if (smartListBox_log.Items.Count() > 36)  // 리스트박스 아이탬 개수에 따라 다르게 설정해야함
                     smartListBox_log.RemoveItem(0);
             }
         }
