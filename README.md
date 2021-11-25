@@ -62,6 +62,8 @@
    - [단말기 통합 개요](https://hnsts.co.kr//ReferenceRoom/ProductRelated#product5)
    - [단말기 메뉴얼](https://hnsts.co.kr/UserFiles/attachment/data_down/1-iecseries.pdf)
    - [단말기 스타팅개발 가이드](https://hnsts.co.kr/UserFiles/attachment/data_down/%EC%8A%A4%ED%83%80%ED%8C%85%EB%94%94%EB%B2%A8%EB%A1%9C%ED%8D%BC%EA%B0%80%EC%9D%B4%EB%93%9C-C.pdf)
+
+   - [단말기 프로그래밍 가이드](https://hnsts.co.kr/UserFiles/attachment/data_down/SmartX%20Framework.pdf)
    - [단말기 하드웨어 개요](https://www.hnsts.co.kr/Hardware/Iec1000)   
    - [UI 디자인 가이드_(Step2 참고)](https://hnsts.co.kr/ReferenceRoom/SmartxRelated)
    - Windows CE 6.0
@@ -87,3 +89,24 @@
   - USBDisk에 \\UpdateFiles 폴더에 업데이트 할 파일 넣음 ("AutoFeeder.exe") *이름 변경하지 말 것.
   - USB 꽂으면 업데이트가 진행 되고 재부팅 됨.
   - * 재부팅 되는 것 확인 후 USB제거 (제거하지 않으면 프로그램이 멈추는 현상 발생+USB 재거 시 또다시 업데이트 되는데 Fail난 후 재부팅 되고 정상작동 함.)
+  
+
+
+## 2021.11.25 파일 전송 이슈
+  ### 1. 공유폴더 방식으로 접근
+  - LAN선 연결 후 부팅 (부팅때 뭔가 하는 것 같음.)
+  - 고정방식 IP로 할 경우 가이드 보고 IP 고정 방법 찾아서 적용해야함. (안하면 재부팅 시 유지안됨) [단말기 메뉴얼](https://hnsts.co.kr/UserFiles/attachment/data_down/1-iecseries.pdf)
+  - 레지스트리 만져서 공유폴더 설정함. (마찬가지로 가이드보고 설정 안하면 재부팅 시 유지안됨)
+  ### 1.1. 자료조사
+  	자료조사 키워드 : "Windows Embedded CE 6.0 공유폴더", "File Server windows ce 6.0"
+	   - [WinCE 폴더 공유하는 방법](https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=andro78&logNo=20040665509)
+	   - [스택오버플로 : SMB Filesharing on Windows CE 6](https://stackoverflow.com/questions/39689835/smb-filesharing-on-windows-ce-6)
+
+  ### 2. FTP 방식으로 접근
+   - 제공되는 smartFTP 추가 구현.
+   - 로컬경로: "\\Flash Disk\\ScanLog\\날짜.txt" 식으로 저장됨.
+   - 서버경로: "//날짜.txt" or "폴더//폴더2//날짜.txt"
+   - 1) "\\Flash Disk\\ScanLog"의 모든 파일 리스트 가져옴
+   - 2) 파일 하나씩 전송함
+  ### 2.2. 자료조사
+    	- 그냥 메뉴얼 참고 [단말기 프로그래밍 가이드](https://hnsts.co.kr/UserFiles/attachment/data_down/SmartX%20Framework.pdf)

@@ -305,7 +305,7 @@ namespace TubeFeeder
 
         private void OptionSettingRuttin()
         {
-            DialogForm dialog = new DialogForm(m_ControlBoard ,m_settingValues);
+            DialogForm dialog = new DialogForm(m_ControlBoard ,m_settingValues, smartFTP1);
             DialogResult dr = dialog.ShowDialog();
 
             if (dr == DialogResult.OK)
