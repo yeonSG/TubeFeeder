@@ -24,6 +24,8 @@ namespace TubeFeeder
 
         ScanLogFileManager m_ScanLogFileManager = new ScanLogFileManager();
         ControlBoard m_ControlBoard = null;
+        BarcodeSender m_barcodeSender = null;
+        FTPControl m_FTPContol = null;
 
         private string m_inputBuffer = "";
         private string m_insertedItem = "";
@@ -49,6 +51,8 @@ namespace TubeFeeder
             SetTextCallback logCallback = new SetTextCallback(AddLog_d);
             ReciveMsgCallback msgRecivCallback = new ReciveMsgCallback(msgRecive);
             m_ControlBoard = new ControlBoard(serialPort1, logCallback, msgRecivCallback);
+            m_barcodeSender = new BarcodeSender(serialPort2);
+            m_FTPContol = new FTPControl(smartFTP1);
 
             label_curTime.Text = DateTime.Now.ToLongTimeString();
             label_runTime.Text = m_runTime.ToLongTimeString();
@@ -117,6 +121,8 @@ namespace TubeFeeder
 
             if (m_ScanLogFileManager.WriteValue(m_insertedItem) == false)
                 ErrorInfo("로그파일 쓰기 error");
+
+            m_barcodeSender.SendMessage(Encoding.UTF8.GetBytes(m_insertedItem));
             
             ClearInputBuffer();
             
@@ -305,7 +311,7 @@ namespace TubeFeeder
 
         private void OptionSettingRuttin()
         {
-            DialogForm dialog = new DialogForm(m_ControlBoard ,m_settingValues, smartFTP1);
+            DialogForm dialog = new DialogForm(m_ControlBoard ,m_settingValues, m_FTPContol);
             DialogResult dr = dialog.ShowDialog();
 
             if (dr == DialogResult.OK)
@@ -356,6 +362,11 @@ namespace TubeFeeder
             
             m_isOnError = false;
             doStop();
+
+//            MessageBox.Show("isOpen :" + m_barcodeSender.isOpen());
+//            bool ret = m_barcodeSender.SendMessage(Encoding.UTF8.GetBytes("Test"));
+//            MessageBox.Show("send ret :" + ret);
+            
         }
         private void doStop()
         {
@@ -495,9 +506,31 @@ namespace TubeFeeder
                     btnStart_buttonUp();
                     doStop();
                     break;
+                case MessageProtocol.ReciveMessage.order_Error:
+                    m_isOnError = true;
+                    showRestartDialog();    // ysys
+                    break;
                 default:
                     break;
 
+            }
+        }
+
+        public void showRestartDialog()
+        {
+            RestartDialogForm restartDialog = new RestartDialogForm();
+            DialogResult dr = restartDialog.ShowDialog();
+
+            if (dr == DialogResult.OK)
+            {
+                m_ControlBoard.SendMessage(MessageGenerator.Meesage_DeviceReStart());
+                setIndicatorColor(Color.Green);
+                btn_barcodeOnEnable(false);
+                btn_barcodeOffEnable(false);
+                btn_autoStopModeOnEnable(false);
+                btn_autoStopModeOffEnable(false);
+                btn_SettingsEnable(false);
+                m_isOnError = false;
             }
         }
 

@@ -65,6 +65,7 @@
             this.smartUpdate1 = new SmartX.SmartUpdate(this.components);
             this.smartTimer2 = new SmartX.SmartTimer(this.components);
             this.smartLabel_VERSION = new SmartX.SmartLabel();
+            this.serialPort2 = new System.IO.Ports.SerialPort(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.smartForm1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -200,7 +201,12 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(94, 20);
             this.label2.Text = "DateTime";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;            // 
+            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // serialPort1
+            // 
+            this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_DataReceived);
+            // 
             // smartFTP1
             // 
             this.smartFTP1.PassiveMode = false;
@@ -208,10 +214,6 @@
             this.smartFTP1.PortNo = 0;
             this.smartFTP1.ServerFTPAddress = null;
             this.smartFTP1.UserID = null;
-            // 
-            // serialPort1
-            // 
-            this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_DataReceived);
             // 
             // smartForm1
             // 
@@ -782,7 +784,7 @@
             this.smartLabel_VERSION.Name = "smartLabel_VERSION";
             this.smartLabel_VERSION.Size = new System.Drawing.Size(132, 18);
             this.smartLabel_VERSION.TabIndex = 90;
-            this.smartLabel_VERSION.Text = "ver 1.2";
+            this.smartLabel_VERSION.Text = "ver 1.3";
             this.smartLabel_VERSION.TextHAlign = SmartX.SmartLabel.TextHorAlign.Left;
             this.smartLabel_VERSION.TextVAlign = SmartX.SmartLabel.TextVerAlign.Middle;
             this.smartLabel_VERSION.Wordwrap = false;
@@ -824,7 +826,7 @@
             this.KeyPreview = true;
             this.Menu = this.mainMenu1;
             this.Name = "Form1";
-            this.Text = "ver1.2_20201010";
+            this.Text = "ver1.3_20201010";
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form1_KeyPress);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.smartForm1)).EndInit();
@@ -867,6 +869,7 @@
         private SmartX.SmartUpdate smartUpdate1;
         private SmartX.SmartTimer smartTimer2;
         private SmartX.SmartLabel smartLabel_VERSION;
+        private System.IO.Ports.SerialPort serialPort2;
     }
 }
 

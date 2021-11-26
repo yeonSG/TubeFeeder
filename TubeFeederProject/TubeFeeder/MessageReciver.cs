@@ -58,6 +58,9 @@ namespace TubeFeeder
                             case MessageProtocol.CMD_ORDER_STOP:
                                 LogFunction("Recived : Order_Stop");
                                 return MessageProtocol.ReciveMessage.order_Stop;
+                            case MessageProtocol.CMD_ORDER_ERROR:
+                                LogFunction("Recived : Order_Error");
+                                return MessageProtocol.ReciveMessage.order_Error;
                         }
 
                     }

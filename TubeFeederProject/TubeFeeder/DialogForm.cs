@@ -13,15 +13,19 @@ namespace TubeFeeder
     public partial class DialogForm : Form
     {
         ControlBoard m_ControlBoard;
+        BarcodeSender m_barcodeSender;
         SettingValues m_values;
+        FTPControl m_FTPControl;
         SmartX.SmartFTP m_smartFTP;
+        
         string[] m_logFilePath;
 
-        public DialogForm(ControlBoard controlBoard, SettingValues values, SmartX.SmartFTP smartFTP)
+        public DialogForm(ControlBoard controlBoard, SettingValues values, FTPControl smartFTP)
         {
             m_ControlBoard = controlBoard;
             m_values = values;
-            m_smartFTP = smartFTP;
+            m_FTPControl = smartFTP;
+            m_smartFTP = m_FTPControl.getSmartFTP();
             InitializeComponent();
             SettingValuesToUI();            
             InitialDialog();
@@ -55,6 +59,10 @@ namespace TubeFeeder
             //if (trackBar_converterRollerSpeed.Minimum <= m_values.value_ConvererRollerSpeed
             //    && trackBar_converterRollerSpeed.Maximum >= m_values.value_ConvererRollerSpeed)
             //    trackBar_converterRollerSpeed.Value = m_values.value_ConvererRollerSpeed;
+            
+            textBox_IP.Text = m_smartFTP.ServerFTPAddress;
+            textBox_ftp_id.Text = m_smartFTP.UserID;
+            textBox_ftp_pw.Text = m_smartFTP.Password;
         }
 
         private void InitialDialog() {            
@@ -147,6 +155,23 @@ namespace TubeFeeder
 
         private void smartButton_sendAll_Click(object sender, EventArgs e)
         {
+            m_smartFTP.ServerFTPAddress = textBox_IP.Text;
+            m_smartFTP.PortNo = 21;
+            m_smartFTP.PassiveMode = true;
+            m_smartFTP.UserID = textBox_ftp_id.Text;
+            m_smartFTP.Password = textBox_ftp_pw.Text;
+
+            // FTP 연결 요청
+            if (m_smartFTP.Connect() == true)
+            {
+                MessageBox.Show("FTP 서버 연결됨, 전송을 시작합니다.");
+            }
+            else
+            {
+                MessageBox.Show("연결 실패...");
+                return;
+            }
+
             int successCount = 0;
             
             string filename = "";
@@ -164,7 +189,6 @@ namespace TubeFeeder
                     ;       // Upload Fail.
                 }
             }
-
             label_upload_result.Text = successCount.ToString() + "/" + m_logFilePath.Length.ToString();
         }
 
@@ -191,6 +215,46 @@ namespace TubeFeeder
                 }
             }
             InitialDialog();    // label 업데이트
+        }
+
+        private void smartButton_sendUSB_Click(object sender, EventArgs e)
+        {
+            bool result;
+            List<string> logFilePath_usb = new List<string>();
+            int successCount = 0;
+            
+            string filename = "";
+
+            try
+            {
+                for (int i = 0; i < m_logFilePath.Length; i++)
+                {
+                    filename = Path.GetFileName(m_logFilePath[i]);
+                    filename = "\\하드 디스크\\" + filename;
+                    logFilePath_usb.Add(filename);
+                }
+
+                for (int i = 0; i < logFilePath_usb.Count; i++)
+                {
+                    System.IO.File.Copy(m_logFilePath[i], logFilePath_usb[i], true);
+                }
+
+                for (int i = 0; i < m_logFilePath.Length; i++)
+                {
+                    result = File.Exists(logFilePath_usb[i]);
+                    if (result == true)
+                    {
+                        successCount++;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("실패 : " + ex.ToString());
+            }
+
+            MessageBox.Show("성공 : " + successCount.ToString() + "/" + m_logFilePath.Length.ToString());
+            label_upload_result.Text = successCount.ToString() + "/" + m_logFilePath.Length.ToString();
         }
     }
 }
