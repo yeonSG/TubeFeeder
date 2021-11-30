@@ -13,19 +13,14 @@ namespace TubeFeeder
     public partial class DialogForm : Form
     {
         ControlBoard m_ControlBoard;
-        BarcodeSender m_barcodeSender;
         SettingValues m_values;
-        FTPControl m_FTPControl;
-        SmartX.SmartFTP m_smartFTP;
         
         string[] m_logFilePath;
 
-        public DialogForm(ControlBoard controlBoard, SettingValues values, FTPControl smartFTP)
+        public DialogForm(ControlBoard controlBoard, SettingValues values)
         {
             m_ControlBoard = controlBoard;
             m_values = values;
-            m_FTPControl = smartFTP;
-            m_smartFTP = m_FTPControl.getSmartFTP();
             InitializeComponent();
             SettingValuesToUI();            
             InitialDialog();
@@ -60,9 +55,6 @@ namespace TubeFeeder
             //    && trackBar_converterRollerSpeed.Maximum >= m_values.value_ConvererRollerSpeed)
             //    trackBar_converterRollerSpeed.Value = m_values.value_ConvererRollerSpeed;
             
-            textBox_IP.Text = m_smartFTP.ServerFTPAddress;
-            textBox_ftp_id.Text = m_smartFTP.UserID;
-            textBox_ftp_pw.Text = m_smartFTP.Password;
         }
 
         private void InitialDialog() {            
@@ -115,81 +107,6 @@ namespace TubeFeeder
             // m_values.value_ConvererRollerSpeed = comboBox_converterRollerSpeed.SelectedIndex + 1;
             int selectValue = comboBox_converterRollerSpeed.SelectedIndex + 1;
             m_ControlBoard.SendMessage(MessageGenerator.Meesage_Write(MessageProtocol.CMD_WRITE_ROLLERSPEED, (short)selectValue));
-        }
-
-        private void smartButton_ftp_connect_Click(object sender, EventArgs e)
-        {
-            /* 예제 Code
-            m_smartFTP.ServerFTPAddress = "192.168.0.15";
-            m_smartFTP.PortNo = 21;
-            m_smartFTP.PassiveMode = true;
-            m_smartFTP.UserID = "hns";
-            m_smartFTP.Password = "hns";
-
-            // FTP 연결 요청
-            if (m_smartFTP.Connect() == true)
-            {
-                MessageBox.Show("연결 됨...!!!");
-            }
-            else
-            {
-                MessageBox.Show("연결 실패...");
-            }
-             * */
-            m_smartFTP.ServerFTPAddress = textBox_IP.Text;
-            m_smartFTP.PortNo = 21;
-            m_smartFTP.PassiveMode = true;
-            m_smartFTP.UserID = textBox_ftp_id.Text;
-            m_smartFTP.Password = textBox_ftp_pw.Text;
-
-            // FTP 연결 요청
-            if (m_smartFTP.Connect() == true)
-            {
-                MessageBox.Show("연결 됨...!!!");
-            }
-            else
-            {
-                MessageBox.Show("연결 실패...");
-            }
-        }
-
-        private void smartButton_sendAll_Click(object sender, EventArgs e)
-        {
-            m_smartFTP.ServerFTPAddress = textBox_IP.Text;
-            m_smartFTP.PortNo = 21;
-            m_smartFTP.PassiveMode = true;
-            m_smartFTP.UserID = textBox_ftp_id.Text;
-            m_smartFTP.Password = textBox_ftp_pw.Text;
-
-            // FTP 연결 요청
-            if (m_smartFTP.Connect() == true)
-            {
-                MessageBox.Show("FTP 서버 연결됨, 전송을 시작합니다.");
-            }
-            else
-            {
-                MessageBox.Show("연결 실패...");
-                return;
-            }
-
-            int successCount = 0;
-            
-            string filename = "";
-            for (int i = 0; i < m_logFilePath.Length; i++)
-            {
-                filename = Path.GetFileName(m_logFilePath[i]);
-                filename = "//" + filename;
-
-                if (m_smartFTP.FileUpload(m_logFilePath[i], filename) == true)
-                {
-                    successCount++;
-                }
-                else
-                {
-                    ;       // Upload Fail.
-                }
-            }
-            label_upload_result.Text = successCount.ToString() + "/" + m_logFilePath.Length.ToString();
         }
 
         private void smartButton_removeLogFile_Click(object sender, EventArgs e)

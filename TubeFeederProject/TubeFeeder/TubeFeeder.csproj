@@ -130,7 +130,6 @@
     <Compile Include="RestartDialogForm.Designer.cs">
       <DependentUpon>RestartDialogForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="FTPControl.cs" />
     <Compile Include="BarcodeSender.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CompactFramework.CSharp.targets" />

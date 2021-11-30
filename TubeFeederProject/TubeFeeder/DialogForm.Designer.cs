@@ -39,14 +39,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.smartButton_ftp_connect = new SmartX.SmartButton();
-            this.textBox_IP = new System.Windows.Forms.TextBox();
-            this.textBox_ftp_id = new System.Windows.Forms.TextBox();
-            this.textBox_ftp_pw = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.smartButton_sendAll = new SmartX.SmartButton();
             this.label10 = new System.Windows.Forms.Label();
             this.label_logFile_count = new System.Windows.Forms.Label();
             this.smartButton_removeLogFile = new SmartX.SmartButton();
@@ -217,128 +209,11 @@
             this.label6.Size = new System.Drawing.Size(16, 20);
             this.label6.Text = ":";
             // 
-            // smartButton_ftp_connect
-            // 
-            this.smartButton_ftp_connect.BackPictureBox = null;
-            this.smartButton_ftp_connect.BackPictureBox1 = null;
-            this.smartButton_ftp_connect.BackPictureBox2 = null;
-            this.smartButton_ftp_connect.ButtonColor = System.Drawing.Color.Gray;
-            this.smartButton_ftp_connect.ButtonImageAutoSize = true;
-            this.smartButton_ftp_connect.ColorKeySamplePosition = new System.Drawing.Point(0, 0);
-            this.smartButton_ftp_connect.DisableImage = null;
-            this.smartButton_ftp_connect.DownImage = null;
-            this.smartButton_ftp_connect.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold);
-            this.smartButton_ftp_connect.GroupID = 0;
-            this.smartButton_ftp_connect.InitVisible = true;
-            this.smartButton_ftp_connect.Location = new System.Drawing.Point(217, 242);
-            this.smartButton_ftp_connect.Mode = SmartX.SmartButton.BUTTONMODE.NORMAL;
-            this.smartButton_ftp_connect.Name = "smartButton_ftp_connect";
-            this.smartButton_ftp_connect.NestedClickEventPrevent = false;
-            this.smartButton_ftp_connect.OutlinePixel = 1;
-            this.smartButton_ftp_connect.RepeatInterval = 200;
-            this.smartButton_ftp_connect.RepeatIntervalAccelerate = null;
-            this.smartButton_ftp_connect.SafeInterval = 200;
-            this.smartButton_ftp_connect.Size = new System.Drawing.Size(161, 23);
-            this.smartButton_ftp_connect.SpecialFunction = SmartX.SmartButton.SPECIALFUNC.NONE;
-            this.smartButton_ftp_connect.TabIndex = 0;
-            this.smartButton_ftp_connect.Text = "ftp check";
-            this.smartButton_ftp_connect.TextColor = System.Drawing.Color.Black;
-            this.smartButton_ftp_connect.TextDownColor = System.Drawing.Color.White;
-            this.smartButton_ftp_connect.TextHAlign = SmartX.SmartButton.TextHorAlign.Middle;
-            this.smartButton_ftp_connect.TextLocation = new System.Drawing.Point(0, 0);
-            this.smartButton_ftp_connect.TextVAlign = SmartX.SmartButton.TextVerAlign.Middle;
-            this.smartButton_ftp_connect.UpImage = null;
-            this.smartButton_ftp_connect.Click += new System.EventHandler(this.smartButton_ftp_connect_Click);
-            // 
-            // textBox_IP
-            // 
-            this.textBox_IP.Location = new System.Drawing.Point(571, 64);
-            this.textBox_IP.Name = "textBox_IP";
-            this.textBox_IP.Size = new System.Drawing.Size(89, 23);
-            this.textBox_IP.TabIndex = 17;
-            this.textBox_IP.Text = "192.168.0.15";
-            // 
-            // textBox_ftp_id
-            // 
-            this.textBox_ftp_id.Location = new System.Drawing.Point(571, 93);
-            this.textBox_ftp_id.Name = "textBox_ftp_id";
-            this.textBox_ftp_id.Size = new System.Drawing.Size(89, 23);
-            this.textBox_ftp_id.TabIndex = 17;
-            this.textBox_ftp_id.Text = "admin";
-            // 
-            // textBox_ftp_pw
-            // 
-            this.textBox_ftp_pw.Location = new System.Drawing.Point(571, 122);
-            this.textBox_ftp_pw.Name = "textBox_ftp_pw";
-            this.textBox_ftp_pw.Size = new System.Drawing.Size(89, 23);
-            this.textBox_ftp_pw.TabIndex = 17;
-            this.textBox_ftp_pw.Text = "admin";
-            // 
-            // label7
-            // 
-            this.label7.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
-            this.label7.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label7.Location = new System.Drawing.Point(441, 65);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(130, 20);
-            this.label7.Text = "FTP Server IP";
-            // 
-            // label8
-            // 
-            this.label8.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
-            this.label8.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label8.Location = new System.Drawing.Point(441, 94);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(130, 20);
-            this.label8.Text = "FTP Server ID";
-            // 
-            // label9
-            // 
-            this.label9.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
-            this.label9.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label9.Location = new System.Drawing.Point(441, 124);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(130, 20);
-            this.label9.Text = "FTP Server PW";
-            // 
-            // smartButton_sendAll
-            // 
-            this.smartButton_sendAll.BackPictureBox = null;
-            this.smartButton_sendAll.BackPictureBox1 = null;
-            this.smartButton_sendAll.BackPictureBox2 = null;
-            this.smartButton_sendAll.ButtonColor = System.Drawing.Color.Gray;
-            this.smartButton_sendAll.ButtonImageAutoSize = true;
-            this.smartButton_sendAll.ColorKeySamplePosition = new System.Drawing.Point(0, 0);
-            this.smartButton_sendAll.DisableImage = null;
-            this.smartButton_sendAll.DownImage = null;
-            this.smartButton_sendAll.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold);
-            this.smartButton_sendAll.GroupID = 0;
-            this.smartButton_sendAll.InitVisible = true;
-            this.smartButton_sendAll.Location = new System.Drawing.Point(444, 155);
-            this.smartButton_sendAll.Mode = SmartX.SmartButton.BUTTONMODE.NORMAL;
-            this.smartButton_sendAll.Name = "smartButton_sendAll";
-            this.smartButton_sendAll.NestedClickEventPrevent = false;
-            this.smartButton_sendAll.OutlinePixel = 1;
-            this.smartButton_sendAll.RepeatInterval = 200;
-            this.smartButton_sendAll.RepeatIntervalAccelerate = null;
-            this.smartButton_sendAll.SafeInterval = 200;
-            this.smartButton_sendAll.Size = new System.Drawing.Size(216, 35);
-            this.smartButton_sendAll.SpecialFunction = SmartX.SmartButton.SPECIALFUNC.NONE;
-            this.smartButton_sendAll.TabIndex = 0;
-            this.smartButton_sendAll.Text = "Send to FTP Server";
-            this.smartButton_sendAll.TextColor = System.Drawing.Color.Black;
-            this.smartButton_sendAll.TextDownColor = System.Drawing.Color.White;
-            this.smartButton_sendAll.TextHAlign = SmartX.SmartButton.TextHorAlign.Middle;
-            this.smartButton_sendAll.TextLocation = new System.Drawing.Point(0, 0);
-            this.smartButton_sendAll.TextVAlign = SmartX.SmartButton.TextVerAlign.Middle;
-            this.smartButton_sendAll.UpImage = null;
-            this.smartButton_sendAll.Click += new System.EventHandler(this.smartButton_sendAll_Click);
-            // 
             // label10
             // 
             this.label10.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
             this.label10.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label10.Location = new System.Drawing.Point(430, 28);
+            this.label10.Location = new System.Drawing.Point(430, 32);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(94, 20);
             this.label10.Text = "LogFiles :";
@@ -347,7 +222,7 @@
             // 
             this.label_logFile_count.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
             this.label_logFile_count.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label_logFile_count.Location = new System.Drawing.Point(516, 29);
+            this.label_logFile_count.Location = new System.Drawing.Point(516, 33);
             this.label_logFile_count.Name = "label_logFile_count";
             this.label_logFile_count.Size = new System.Drawing.Size(36, 20);
             this.label_logFile_count.Text = "0";
@@ -365,7 +240,7 @@
             this.smartButton_removeLogFile.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold);
             this.smartButton_removeLogFile.GroupID = 0;
             this.smartButton_removeLogFile.InitVisible = true;
-            this.smartButton_removeLogFile.Location = new System.Drawing.Point(555, 28);
+            this.smartButton_removeLogFile.Location = new System.Drawing.Point(555, 32);
             this.smartButton_removeLogFile.Mode = SmartX.SmartButton.BUTTONMODE.NORMAL;
             this.smartButton_removeLogFile.Name = "smartButton_removeLogFile";
             this.smartButton_removeLogFile.NestedClickEventPrevent = false;
@@ -389,7 +264,7 @@
             // 
             this.label_upload_result.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
             this.label_upload_result.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label_upload_result.Location = new System.Drawing.Point(530, 242);
+            this.label_upload_result.Location = new System.Drawing.Point(530, 121);
             this.label_upload_result.Name = "label_upload_result";
             this.label_upload_result.Size = new System.Drawing.Size(61, 20);
             this.label_upload_result.Text = "0/0";
@@ -407,7 +282,7 @@
             this.smartButton_sendUSB.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold);
             this.smartButton_sendUSB.GroupID = 0;
             this.smartButton_sendUSB.InitVisible = true;
-            this.smartButton_sendUSB.Location = new System.Drawing.Point(444, 199);
+            this.smartButton_sendUSB.Location = new System.Drawing.Point(430, 68);
             this.smartButton_sendUSB.Mode = SmartX.SmartButton.BUTTONMODE.NORMAL;
             this.smartButton_sendUSB.Name = "smartButton_sendUSB";
             this.smartButton_sendUSB.NestedClickEventPrevent = false;
@@ -431,7 +306,7 @@
             // 
             this.label11.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
             this.label11.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label11.Location = new System.Drawing.Point(430, 242);
+            this.label11.Location = new System.Drawing.Point(430, 121);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(94, 20);
             this.label11.Text = "Success :";
@@ -446,9 +321,6 @@
             this.Controls.Add(this.label11);
             this.Controls.Add(this.smartButton_sendUSB);
             this.Controls.Add(this.label_upload_result);
-            this.Controls.Add(this.textBox_ftp_pw);
-            this.Controls.Add(this.textBox_ftp_id);
-            this.Controls.Add(this.textBox_IP);
             this.Controls.Add(this.comboBox_converterRollerSpeed);
             this.Controls.Add(this.comboBox_xXaisDistance);
             this.Controls.Add(this.comboBox_conveyorSpeed);
@@ -457,16 +329,11 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.label8);
             this.Controls.Add(this.label_logFile_count);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.label7);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btn_cancel);
             this.Controls.Add(this.smartButton_removeLogFile);
-            this.Controls.Add(this.smartButton_sendAll);
-            this.Controls.Add(this.smartButton_ftp_connect);
             this.Controls.Add(this.btn_OK);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Location = new System.Drawing.Point(50, 50);
@@ -489,14 +356,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private SmartX.SmartButton smartButton_ftp_connect;
-        private System.Windows.Forms.TextBox textBox_IP;
-        private System.Windows.Forms.TextBox textBox_ftp_id;
-        private System.Windows.Forms.TextBox textBox_ftp_pw;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-        private SmartX.SmartButton smartButton_sendAll;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label_logFile_count;
         private SmartX.SmartButton smartButton_removeLogFile;

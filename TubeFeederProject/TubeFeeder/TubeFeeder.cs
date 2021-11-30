@@ -25,7 +25,6 @@ namespace TubeFeeder
         ScanLogFileManager m_ScanLogFileManager = new ScanLogFileManager();
         ControlBoard m_ControlBoard = null;
         BarcodeSender m_barcodeSender = null;
-        FTPControl m_FTPContol = null;
 
         private string m_inputBuffer = "";
         private string m_insertedItem = "";
@@ -52,7 +51,7 @@ namespace TubeFeeder
             ReciveMsgCallback msgRecivCallback = new ReciveMsgCallback(msgRecive);
             m_ControlBoard = new ControlBoard(serialPort1, logCallback, msgRecivCallback);
             m_barcodeSender = new BarcodeSender(serialPort2);
-            m_FTPContol = new FTPControl(smartFTP1);
+            
 
             label_curTime.Text = DateTime.Now.ToLongTimeString();
             label_runTime.Text = m_runTime.ToLongTimeString();
@@ -311,7 +310,7 @@ namespace TubeFeeder
 
         private void OptionSettingRuttin()
         {
-            DialogForm dialog = new DialogForm(m_ControlBoard ,m_settingValues, m_FTPContol);
+            DialogForm dialog = new DialogForm(m_ControlBoard ,m_settingValues);
             DialogResult dr = dialog.ShowDialog();
 
             if (dr == DialogResult.OK)

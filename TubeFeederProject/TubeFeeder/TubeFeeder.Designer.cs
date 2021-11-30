@@ -39,7 +39,6 @@
             this.smartListBox_log = new SmartX.SmartListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
-            this.smartFTP1 = new SmartX.SmartFTP(this.components);
             this.smartForm1 = new SmartX.SmartForm();
             this.btn_start = new SmartX.SmartButton();
             this.btn_stop = new SmartX.SmartButton();
@@ -206,14 +205,6 @@
             // serialPort1
             // 
             this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_DataReceived);
-            // 
-            // smartFTP1
-            // 
-            this.smartFTP1.PassiveMode = false;
-            this.smartFTP1.Password = null;
-            this.smartFTP1.PortNo = 0;
-            this.smartFTP1.ServerFTPAddress = null;
-            this.smartFTP1.UserID = null;
             // 
             // smartForm1
             // 
@@ -843,7 +834,6 @@
         private SmartX.SmartListBox smartListBox_log;
         private System.Windows.Forms.Label label2;
         private System.IO.Ports.SerialPort serialPort1;
-        private SmartX.SmartFTP smartFTP1;
         private SmartX.SmartForm smartForm1;
         private SmartX.SmartButton btn_start;
         private SmartX.SmartButton btn_stop;
