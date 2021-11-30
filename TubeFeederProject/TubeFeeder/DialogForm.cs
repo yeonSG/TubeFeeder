@@ -14,13 +14,15 @@ namespace TubeFeeder
     {
         ControlBoard m_ControlBoard;
         SettingValues m_values;
+        MemoryManager m_memoryManger;
         
         string[] m_logFilePath;
 
-        public DialogForm(ControlBoard controlBoard, SettingValues values)
+        public DialogForm(ControlBoard controlBoard, SettingValues values, MemoryManager memoryManger)
         {
             m_ControlBoard = controlBoard;
             m_values = values;
+            m_memoryManger = memoryManger;
             InitializeComponent();
             SettingValuesToUI();            
             InitialDialog();
@@ -57,12 +59,14 @@ namespace TubeFeeder
             
         }
 
-        private void InitialDialog() {            
+        private void InitialDialog() {
             try
             {
                 // 참고 : https://docs.microsoft.com/ko-kr/dotnet/api/system.io.directory.getfiles?view=net-6.0
                 String path = IniFileManager.SECTION_LOGFILE_DIR_DEFAULT;
                 m_logFilePath = Directory.GetFiles(path);
+
+                label_memory.Text = m_memoryManger.getUsageString();
             }
             catch (Exception e)
             {

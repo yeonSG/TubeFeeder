@@ -50,6 +50,7 @@
             this.label_runTime = new SmartX.SmartLabel();
             this.smartLabel6 = new SmartX.SmartLabel();
             this.smartTimer1 = new SmartX.SmartTimer(this.components);
+            this.smartMemory1 = new SmartX.SmartMemory(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.btn_Exit = new SmartX.SmartButton();
             this.btn_BarcodeReadOn = new SmartX.SmartButton();
@@ -845,6 +846,7 @@
         private SmartX.SmartLabel label_runTime;
         private SmartX.SmartLabel smartLabel6;
         private SmartX.SmartTimer smartTimer1;
+        private SmartX.SmartMemory smartMemory1;
         private System.Windows.Forms.Label label1;
         private SmartX.SmartButton btn_Exit;
         private SmartX.SmartButton btn_BarcodeReadOn;

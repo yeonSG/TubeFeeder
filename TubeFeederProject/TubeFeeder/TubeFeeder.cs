@@ -25,6 +25,7 @@ namespace TubeFeeder
         ScanLogFileManager m_ScanLogFileManager = new ScanLogFileManager();
         ControlBoard m_ControlBoard = null;
         BarcodeSender m_barcodeSender = null;
+        MemoryManager m_memoryManger = null;
 
         private string m_inputBuffer = "";
         private string m_insertedItem = "";
@@ -51,6 +52,7 @@ namespace TubeFeeder
             ReciveMsgCallback msgRecivCallback = new ReciveMsgCallback(msgRecive);
             m_ControlBoard = new ControlBoard(serialPort1, logCallback, msgRecivCallback);
             m_barcodeSender = new BarcodeSender(serialPort2);
+            m_memoryManger = new MemoryManager(smartMemory1);
             
 
             label_curTime.Text = DateTime.Now.ToLongTimeString();
@@ -310,7 +312,7 @@ namespace TubeFeeder
 
         private void OptionSettingRuttin()
         {
-            DialogForm dialog = new DialogForm(m_ControlBoard ,m_settingValues);
+            DialogForm dialog = new DialogForm(m_ControlBoard, m_settingValues, m_memoryManger);
             DialogResult dr = dialog.ShowDialog();
 
             if (dr == DialogResult.OK)

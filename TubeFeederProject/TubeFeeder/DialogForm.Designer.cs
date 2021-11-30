@@ -45,6 +45,10 @@
             this.label_upload_result = new System.Windows.Forms.Label();
             this.smartButton_sendUSB = new SmartX.SmartButton();
             this.label11 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label_memory = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btn_OK
@@ -215,16 +219,16 @@
             this.label10.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label10.Location = new System.Drawing.Point(430, 32);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(94, 20);
-            this.label10.Text = "LogFiles :";
+            this.label10.Size = new System.Drawing.Size(135, 20);
+            this.label10.Text = "Log Files";
             // 
             // label_logFile_count
             // 
             this.label_logFile_count.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
             this.label_logFile_count.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label_logFile_count.Location = new System.Drawing.Point(516, 33);
+            this.label_logFile_count.Location = new System.Drawing.Point(576, 32);
             this.label_logFile_count.Name = "label_logFile_count";
-            this.label_logFile_count.Size = new System.Drawing.Size(36, 20);
+            this.label_logFile_count.Size = new System.Drawing.Size(82, 20);
             this.label_logFile_count.Text = "0";
             // 
             // smartButton_removeLogFile
@@ -240,7 +244,7 @@
             this.smartButton_removeLogFile.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold);
             this.smartButton_removeLogFile.GroupID = 0;
             this.smartButton_removeLogFile.InitVisible = true;
-            this.smartButton_removeLogFile.Location = new System.Drawing.Point(555, 32);
+            this.smartButton_removeLogFile.Location = new System.Drawing.Point(430, 100);
             this.smartButton_removeLogFile.Mode = SmartX.SmartButton.BUTTONMODE.NORMAL;
             this.smartButton_removeLogFile.Name = "smartButton_removeLogFile";
             this.smartButton_removeLogFile.NestedClickEventPrevent = false;
@@ -248,10 +252,10 @@
             this.smartButton_removeLogFile.RepeatInterval = 200;
             this.smartButton_removeLogFile.RepeatIntervalAccelerate = null;
             this.smartButton_removeLogFile.SafeInterval = 200;
-            this.smartButton_removeLogFile.Size = new System.Drawing.Size(105, 23);
+            this.smartButton_removeLogFile.Size = new System.Drawing.Size(217, 34);
             this.smartButton_removeLogFile.SpecialFunction = SmartX.SmartButton.SPECIALFUNC.NONE;
             this.smartButton_removeLogFile.TabIndex = 0;
-            this.smartButton_removeLogFile.Text = "Remove";
+            this.smartButton_removeLogFile.Text = "Remove LogFiles";
             this.smartButton_removeLogFile.TextColor = System.Drawing.Color.Black;
             this.smartButton_removeLogFile.TextDownColor = System.Drawing.Color.White;
             this.smartButton_removeLogFile.TextHAlign = SmartX.SmartButton.TextHorAlign.Middle;
@@ -264,7 +268,7 @@
             // 
             this.label_upload_result.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
             this.label_upload_result.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label_upload_result.Location = new System.Drawing.Point(530, 121);
+            this.label_upload_result.Location = new System.Drawing.Point(539, 202);
             this.label_upload_result.Name = "label_upload_result";
             this.label_upload_result.Size = new System.Drawing.Size(61, 20);
             this.label_upload_result.Text = "0/0";
@@ -282,7 +286,7 @@
             this.smartButton_sendUSB.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold);
             this.smartButton_sendUSB.GroupID = 0;
             this.smartButton_sendUSB.InitVisible = true;
-            this.smartButton_sendUSB.Location = new System.Drawing.Point(430, 68);
+            this.smartButton_sendUSB.Location = new System.Drawing.Point(430, 153);
             this.smartButton_sendUSB.Mode = SmartX.SmartButton.BUTTONMODE.NORMAL;
             this.smartButton_sendUSB.Name = "smartButton_sendUSB";
             this.smartButton_sendUSB.NestedClickEventPrevent = false;
@@ -293,7 +297,7 @@
             this.smartButton_sendUSB.Size = new System.Drawing.Size(217, 33);
             this.smartButton_sendUSB.SpecialFunction = SmartX.SmartButton.SPECIALFUNC.NONE;
             this.smartButton_sendUSB.TabIndex = 29;
-            this.smartButton_sendUSB.Text = "Send USB";
+            this.smartButton_sendUSB.Text = "Send LogFile to USB";
             this.smartButton_sendUSB.TextColor = System.Drawing.Color.Black;
             this.smartButton_sendUSB.TextDownColor = System.Drawing.Color.White;
             this.smartButton_sendUSB.TextHAlign = SmartX.SmartButton.TextHorAlign.Middle;
@@ -306,10 +310,46 @@
             // 
             this.label11.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
             this.label11.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label11.Location = new System.Drawing.Point(430, 121);
+            this.label11.Location = new System.Drawing.Point(439, 202);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(94, 20);
             this.label11.Text = "Success :";
+            // 
+            // label7
+            // 
+            this.label7.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
+            this.label7.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label7.Location = new System.Drawing.Point(430, 62);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(128, 20);
+            this.label7.Text = "Disk Memory";
+            // 
+            // label_memory
+            // 
+            this.label_memory.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
+            this.label_memory.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label_memory.Location = new System.Drawing.Point(576, 62);
+            this.label_memory.Name = "label_memory";
+            this.label_memory.Size = new System.Drawing.Size(82, 20);
+            this.label_memory.Text = "0";
+            // 
+            // label9
+            // 
+            this.label9.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
+            this.label9.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label9.Location = new System.Drawing.Point(549, 32);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(21, 20);
+            this.label9.Text = ":";
+            // 
+            // label12
+            // 
+            this.label12.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
+            this.label12.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label12.Location = new System.Drawing.Point(549, 62);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(21, 20);
+            this.label12.Text = ":";
             // 
             // DialogForm
             // 
@@ -329,6 +369,10 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.label_memory);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.label_logFile_count);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label1);
@@ -362,5 +406,9 @@
         private System.Windows.Forms.Label label_upload_result;
         private SmartX.SmartButton smartButton_sendUSB;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label_memory;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label12;
     }
 }
