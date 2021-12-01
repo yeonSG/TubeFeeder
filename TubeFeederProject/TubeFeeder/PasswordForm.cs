@@ -14,7 +14,6 @@ namespace TubeFeeder
 
         const string PASSWORD = "0507";
         string m_insertedPassword = "";
-        int m_inputIndex = 0;
 
         public PasswordForm()
         {

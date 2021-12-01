@@ -69,6 +69,23 @@ namespace TubeFeeder
             return Message;
         }
 
+        public static byte[] Meesage_DeviceReStart()
+        {
+            byte[] Message = new byte[7];
+
+            Message[MessageProtocol.PROTOCOL_HEADER] = MessageProtocol.HEADER;
+            Message[MessageProtocol.PROTOCOL_CMD] = MessageProtocol.CMD_ORDER;
+            Message[MessageProtocol.PROTOCOL_CMD_SUB] = MessageProtocol.CMD_ORDER_RESTART;
+            Message[MessageProtocol.PROTOCOL_DATA1] = 0x00;
+            Message[MessageProtocol.PROTOCOL_DATA2] = 0x00;
+            Message[MessageProtocol.PROTOCOL_CHECKSUM] = 0;
+            for (int i = 0; i < MessageProtocol.PROTOCOL_CHECKSUM; i++)
+                Message[MessageProtocol.PROTOCOL_CHECKSUM] ^= Message[i];       // XOR
+            Message[MessageProtocol.PROTOCOL_TAIL] = MessageProtocol.TAIL;
+
+            return Message;
+        }
+
         // 제어장치에게 알림
         public static byte[] Meesage_Infom(byte inform)
         {

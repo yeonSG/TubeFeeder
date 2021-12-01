@@ -26,7 +26,7 @@ namespace TubeFeeder
         public const byte TAIL = 0xFE;
 
         // CMD
-        public const byte CMD_PING   = (byte)'P';    // 제어장치에게 Ping~     
+        public const byte CMD_PING   = (byte)'P';    // 제어장치에게 Ping~
         public const byte CMD_ORDER  = (byte)'O';    // 제어장치에게 명령함
         public const byte CMD_WRITE  = (byte)'W';    // 제어장치에게 특정 값 저장 요청
         public const byte CMD_READ   = (byte)'R';    // 제어장치에게 특정 값 읽기 요청
@@ -35,6 +35,8 @@ namespace TubeFeeder
         // CMD_SUB
         public const byte CMD_ORDER_START = (byte)'S';
         public const byte CMD_ORDER_STOP = (byte)'T';
+        public const byte CMD_ORDER_RESTART = (byte)'R';
+        public const byte CMD_ORDER_ERROR = (byte)'E';
 
         public const byte CMD_ORDER_START_BARCODE_ON  = 0xF0;
         public const byte CMD_ORDER_START_BARCODE_OFF = 0x0F;
@@ -53,7 +55,7 @@ namespace TubeFeeder
         
         public const byte CMD_INFORM_SCANNED = (byte)'S';
         public const byte CMD_INFORM_ACK = (byte)'A';
-        public const byte CMD_INFORM_ERROR = (byte)'E';        
+        public const byte CMD_INFORM_ERROR = (byte)'E';    
         public const byte CMD_INFORM_SETTING_CLOSE = (byte)'C';
 
         // 에러코드
@@ -68,6 +70,7 @@ namespace TubeFeeder
             order,
             order_Start,
             order_Stop,
+            order_Error,
             inform_Ack,
             inform_Scanned,
             inform_Error,

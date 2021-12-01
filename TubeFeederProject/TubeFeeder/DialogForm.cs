@@ -14,14 +14,15 @@ namespace TubeFeeder
     {
         ControlBoard m_ControlBoard;
         SettingValues m_values;
-        SmartX.SmartFTP m_smartFTP;
+        MemoryManager m_memoryManger;
+        
         string[] m_logFilePath;
 
-        public DialogForm(ControlBoard controlBoard, SettingValues values, SmartX.SmartFTP smartFTP)
+        public DialogForm(ControlBoard controlBoard, SettingValues values, MemoryManager memoryManger)
         {
             m_ControlBoard = controlBoard;
             m_values = values;
-            m_smartFTP = smartFTP;
+            m_memoryManger = memoryManger;
             InitializeComponent();
             SettingValuesToUI();            
             InitialDialog();
@@ -55,14 +56,17 @@ namespace TubeFeeder
             //if (trackBar_converterRollerSpeed.Minimum <= m_values.value_ConvererRollerSpeed
             //    && trackBar_converterRollerSpeed.Maximum >= m_values.value_ConvererRollerSpeed)
             //    trackBar_converterRollerSpeed.Value = m_values.value_ConvererRollerSpeed;
+            
         }
 
-        private void InitialDialog() {            
+        private void InitialDialog() {
             try
             {
                 // 참고 : https://docs.microsoft.com/ko-kr/dotnet/api/system.io.directory.getfiles?view=net-6.0
                 String path = IniFileManager.SECTION_LOGFILE_DIR_DEFAULT;
                 m_logFilePath = Directory.GetFiles(path);
+
+                label_memory.Text = m_memoryManger.getUsageString();
             }
             catch (Exception e)
             {
@@ -109,65 +113,6 @@ namespace TubeFeeder
             m_ControlBoard.SendMessage(MessageGenerator.Meesage_Write(MessageProtocol.CMD_WRITE_ROLLERSPEED, (short)selectValue));
         }
 
-        private void smartButton_ftp_connect_Click(object sender, EventArgs e)
-        {
-            /* 예제 Code
-            m_smartFTP.ServerFTPAddress = "192.168.0.15";
-            m_smartFTP.PortNo = 21;
-            m_smartFTP.PassiveMode = true;
-            m_smartFTP.UserID = "hns";
-            m_smartFTP.Password = "hns";
-
-            // FTP 연결 요청
-            if (m_smartFTP.Connect() == true)
-            {
-                MessageBox.Show("연결 됨...!!!");
-            }
-            else
-            {
-                MessageBox.Show("연결 실패...");
-            }
-             * */
-            m_smartFTP.ServerFTPAddress = textBox_IP.Text;
-            m_smartFTP.PortNo = 21;
-            m_smartFTP.PassiveMode = true;
-            m_smartFTP.UserID = textBox_ftp_id.Text;
-            m_smartFTP.Password = textBox_ftp_pw.Text;
-
-            // FTP 연결 요청
-            if (m_smartFTP.Connect() == true)
-            {
-                MessageBox.Show("연결 됨...!!!");
-            }
-            else
-            {
-                MessageBox.Show("연결 실패...");
-            }
-        }
-
-        private void smartButton_sendAll_Click(object sender, EventArgs e)
-        {
-            int successCount = 0;
-            
-            string filename = "";
-            for (int i = 0; i < m_logFilePath.Length; i++)
-            {
-                filename = Path.GetFileName(m_logFilePath[i]);
-                filename = "//" + filename;
-
-                if (m_smartFTP.FileUpload(m_logFilePath[i], filename) == true)
-                {
-                    successCount++;
-                }
-                else
-                {
-                    ;       // Upload Fail.
-                }
-            }
-
-            label_upload_result.Text = successCount.ToString() + "/" + m_logFilePath.Length.ToString();
-        }
-
         private void smartButton_removeLogFile_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult = MessageBox.Show("정말 로그파일을 삭제할까요?", "경고",MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
@@ -191,6 +136,46 @@ namespace TubeFeeder
                 }
             }
             InitialDialog();    // label 업데이트
+        }
+
+        private void smartButton_sendUSB_Click(object sender, EventArgs e)
+        {
+            bool result;
+            List<string> logFilePath_usb = new List<string>();
+            int successCount = 0;
+            
+            string filename = "";
+
+            try
+            {
+                for (int i = 0; i < m_logFilePath.Length; i++)
+                {
+                    filename = Path.GetFileName(m_logFilePath[i]);
+                    filename = "\\하드 디스크\\" + filename;
+                    logFilePath_usb.Add(filename);
+                }
+
+                for (int i = 0; i < logFilePath_usb.Count; i++)
+                {
+                    System.IO.File.Copy(m_logFilePath[i], logFilePath_usb[i], true);
+                }
+
+                for (int i = 0; i < m_logFilePath.Length; i++)
+                {
+                    result = File.Exists(logFilePath_usb[i]);
+                    if (result == true)
+                    {
+                        successCount++;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("실패 : " + ex.ToString());
+            }
+
+            MessageBox.Show("성공 : " + successCount.ToString() + "/" + m_logFilePath.Length.ToString());
+            label_upload_result.Text = successCount.ToString() + "/" + m_logFilePath.Length.ToString();
         }
     }
 }

@@ -39,7 +39,6 @@
             this.smartListBox_log = new SmartX.SmartListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
-            this.smartFTP1 = new SmartX.SmartFTP(this.components);
             this.smartForm1 = new SmartX.SmartForm();
             this.btn_start = new SmartX.SmartButton();
             this.btn_stop = new SmartX.SmartButton();
@@ -51,6 +50,7 @@
             this.label_runTime = new SmartX.SmartLabel();
             this.smartLabel6 = new SmartX.SmartLabel();
             this.smartTimer1 = new SmartX.SmartTimer(this.components);
+            this.smartMemory1 = new SmartX.SmartMemory(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.btn_Exit = new SmartX.SmartButton();
             this.btn_BarcodeReadOn = new SmartX.SmartButton();
@@ -65,6 +65,9 @@
             this.smartUpdate1 = new SmartX.SmartUpdate(this.components);
             this.smartTimer2 = new SmartX.SmartTimer(this.components);
             this.smartLabel_VERSION = new SmartX.SmartLabel();
+            this.serialPort2 = new System.IO.Ports.SerialPort(this.components);
+            this.label_memory = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.smartForm1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -131,7 +134,7 @@
             this.btn_setting.DownImage = null;
             this.btn_setting.GroupID = 0;
             this.btn_setting.InitVisible = true;
-            this.btn_setting.Location = new System.Drawing.Point(284, 12);
+            this.btn_setting.Location = new System.Drawing.Point(309, 12);
             this.btn_setting.Mode = SmartX.SmartButton.BUTTONMODE.NORMAL;
             this.btn_setting.Name = "btn_setting";
             this.btn_setting.NestedClickEventPrevent = false;
@@ -200,14 +203,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(94, 20);
             this.label2.Text = "DateTime";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;            // 
-            // smartFTP1
-            // 
-            this.smartFTP1.PassiveMode = false;
-            this.smartFTP1.Password = null;
-            this.smartFTP1.PortNo = 0;
-            this.smartFTP1.ServerFTPAddress = null;
-            this.smartFTP1.UserID = null;
+            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // serialPort1
             // 
@@ -441,6 +437,11 @@
             this.smartTimer1.NowMillisecond = ((long)(0));
             this.smartTimer1.StartTime = ((long)(0));
             this.smartTimer1.Tick += new System.EventHandler(this.smartTimer1_Tick);
+            // 
+            // smartMemory1
+            // 
+            this.smartMemory1.AutoFreeProMemoryAlarmPercent = 0;
+            this.smartMemory1.ParentWindow = null;
             // 
             // label1
             // 
@@ -782,10 +783,28 @@
             this.smartLabel_VERSION.Name = "smartLabel_VERSION";
             this.smartLabel_VERSION.Size = new System.Drawing.Size(132, 18);
             this.smartLabel_VERSION.TabIndex = 90;
-            this.smartLabel_VERSION.Text = "ver 1.2";
+            this.smartLabel_VERSION.Text = "ver 1.4";
             this.smartLabel_VERSION.TextHAlign = SmartX.SmartLabel.TextHorAlign.Left;
             this.smartLabel_VERSION.TextVAlign = SmartX.SmartLabel.TextVerAlign.Middle;
             this.smartLabel_VERSION.Wordwrap = false;
+            // 
+            // label_memory
+            // 
+            this.label_memory.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
+            this.label_memory.ForeColor = System.Drawing.Color.Black;
+            this.label_memory.Location = new System.Drawing.Point(539, 574);
+            this.label_memory.Name = "label_memory";
+            this.label_memory.Size = new System.Drawing.Size(123, 20);
+            this.label_memory.Text = "--.-/123Mb(--%)";
+            // 
+            // label3
+            // 
+            this.label3.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(450, 574);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(90, 20);
+            this.label3.Text = "메모리 사용량 : ";
             // 
             // Form1
             // 
@@ -793,6 +812,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label_memory);
             this.Controls.Add(this.smartLabel_VERSION);
             this.Controls.Add(this.btn_logo_AutoFeeder);
             this.Controls.Add(this.btn_logo_BIONIT);
@@ -824,7 +845,7 @@
             this.KeyPreview = true;
             this.Menu = this.mainMenu1;
             this.Name = "Form1";
-            this.Text = "ver1.2_20201010";
+            this.Text = "ver1.4_20201201";
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form1_KeyPress);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.smartForm1)).EndInit();
@@ -841,7 +862,6 @@
         private SmartX.SmartListBox smartListBox_log;
         private System.Windows.Forms.Label label2;
         private System.IO.Ports.SerialPort serialPort1;
-        private SmartX.SmartFTP smartFTP1;
         private SmartX.SmartForm smartForm1;
         private SmartX.SmartButton btn_start;
         private SmartX.SmartButton btn_stop;
@@ -853,6 +873,7 @@
         private SmartX.SmartLabel label_runTime;
         private SmartX.SmartLabel smartLabel6;
         private SmartX.SmartTimer smartTimer1;
+        private SmartX.SmartMemory smartMemory1;
         private System.Windows.Forms.Label label1;
         private SmartX.SmartButton btn_Exit;
         private SmartX.SmartButton btn_BarcodeReadOn;
@@ -867,6 +888,9 @@
         private SmartX.SmartUpdate smartUpdate1;
         private SmartX.SmartTimer smartTimer2;
         private SmartX.SmartLabel smartLabel_VERSION;
+        private System.IO.Ports.SerialPort serialPort2;
+        private System.Windows.Forms.Label label_memory;
+        private System.Windows.Forms.Label label3;
     }
 }
 
