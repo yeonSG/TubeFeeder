@@ -244,7 +244,7 @@
             this.smartButton_removeLogFile.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold);
             this.smartButton_removeLogFile.GroupID = 0;
             this.smartButton_removeLogFile.InitVisible = true;
-            this.smartButton_removeLogFile.Location = new System.Drawing.Point(430, 100);
+            this.smartButton_removeLogFile.Location = new System.Drawing.Point(430, 90);
             this.smartButton_removeLogFile.Mode = SmartX.SmartButton.BUTTONMODE.NORMAL;
             this.smartButton_removeLogFile.Name = "smartButton_removeLogFile";
             this.smartButton_removeLogFile.NestedClickEventPrevent = false;
@@ -326,12 +326,12 @@
             // 
             // label_memory
             // 
-            this.label_memory.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
+            this.label_memory.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
             this.label_memory.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label_memory.Location = new System.Drawing.Point(576, 62);
+            this.label_memory.Location = new System.Drawing.Point(576, 67);
             this.label_memory.Name = "label_memory";
-            this.label_memory.Size = new System.Drawing.Size(82, 20);
-            this.label_memory.Text = "0";
+            this.label_memory.Size = new System.Drawing.Size(110, 20);
+            this.label_memory.Text = "12.3/123Mb(10%)";
             // 
             // label9
             // 
@@ -357,7 +357,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.Maroon;
-            this.ClientSize = new System.Drawing.Size(698, 291);
+            this.ClientSize = new System.Drawing.Size(698, 255);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.smartButton_sendUSB);
             this.Controls.Add(this.label_upload_result);

@@ -490,6 +490,23 @@ namespace TubeFeeder
                 label_scanCount.Text = value;
             }
         }
+        
+        private void setMemoryLabelText(string value)
+        {
+            if (this.label_memory.InvokeRequired)
+            {
+                SetTextCallback dp = new SetTextCallback(setMemoryLabelText);
+                this.Invoke(dp, new object[] { value });
+            }
+            else
+            {
+                label_memory.Text = value;
+                if (m_memoryManger.getMemoryUseagePercent() > 90)
+                    label_memory.ForeColor = System.Drawing.Color.Red;
+                else
+                    label_memory.ForeColor = System.Drawing.Color.Black;
+            }
+        }
 
         public void msgRecive(MessageProtocol.ReciveMessage reciveMsg)
         {
@@ -642,6 +659,19 @@ namespace TubeFeeder
                     setIndicatorColor(Color.Green);
                 }
             }
+
+            try
+            {
+                if (runTime.Seconds == 0)
+                {
+                    setMemoryLabelText(m_memoryManger.getUsageString());
+                }
+            }
+            catch (Exception ex)
+            {
+                ;
+            }
+
         }
 
         private void smartTimer2_Tick(object sender, EventArgs e)

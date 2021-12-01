@@ -11,6 +11,7 @@ namespace TubeFeeder
     {
         private SmartX.SmartMemory m_smartMemory = null;
 
+        private double m_memoryUsePercent = 0;
 
         public MemoryManager(SmartX.SmartMemory smartMemory)
         {
@@ -34,10 +35,15 @@ namespace TubeFeeder
 
             double use_Mb = System.Math.Round(use_Kb / 1024.0, 1);
             double total_Mb = System.Math.Round(totla_Kb / 1024.0, 1);
-            double percent = System.Math.Round(use_Kb * 100.0 / totla_Kb, 1);
+            m_memoryUsePercent = System.Math.Round(use_Kb * 100.0 / totla_Kb, 1);
 
             return use_Mb.ToString() + "/" + total_Mb.ToString()
-                + "Mb (" + percent.ToString() + ")";
+                + "Mb (" + m_memoryUsePercent.ToString() + ")";
+        }
+
+        public double getMemoryUseagePercent()
+        {
+            return m_memoryUsePercent;
         }
     }
 }
