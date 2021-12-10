@@ -36,6 +36,7 @@ namespace TubeFeeder
         public const byte CMD_ORDER_START = (byte)'S';
         public const byte CMD_ORDER_STOP = (byte)'T';
         public const byte CMD_ORDER_RESTART = (byte)'R';
+        public const byte CMD_ORDER_RESTARTCLICK = (byte)'R';
         public const byte CMD_ORDER_ERROR = (byte)'E';
 
         public const byte CMD_ORDER_START_BARCODE_ON  = 0xF0;
@@ -71,6 +72,7 @@ namespace TubeFeeder
             order_Start,
             order_Stop,
             order_Error,
+            order_RestartClick,
             inform_Ack,
             inform_Scanned,
             inform_Error,

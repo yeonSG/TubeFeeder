@@ -42,6 +42,8 @@ namespace TubeFeeder
 
         private SettingValues m_settingValues;
 
+        RestartDialogForm restartDialog;
+
         private Queue<byte> reciveQueue = new Queue<byte>();
 
         public Form1()
@@ -528,6 +530,9 @@ namespace TubeFeeder
                     m_isOnError = true;
                     showRestartDialog();    // ysys
                     break;
+                case MessageProtocol.ReciveMessage.order_RestartClick:
+                    closeRestartDialog();
+                    break;
                 default:
                     break;
 
@@ -536,10 +541,10 @@ namespace TubeFeeder
 
         public void showRestartDialog()
         {
-            RestartDialogForm restartDialog = new RestartDialogForm();
-            DialogResult dr = restartDialog.ShowDialog();
+            restartDialog = new RestartDialogForm();
+            DialogResult result = restartDialog.ShowDialog();
 
-            if (dr == DialogResult.OK)
+            if (result == DialogResult.OK)
             {
                 m_ControlBoard.SendMessage(MessageGenerator.Meesage_DeviceReStart());
                 setIndicatorColor(Color.Green);
@@ -549,6 +554,15 @@ namespace TubeFeeder
                 btn_autoStopModeOffEnable(false);
                 btn_SettingsEnable(false);
                 m_isOnError = false;
+            }
+        }
+
+        public void closeRestartDialog()
+        {
+            if (restartDialog != null)
+            {
+                restartDialog.DialogResult = DialogResult.OK;
+                restartDialog.Close();
             }
         }
 
@@ -636,7 +650,10 @@ namespace TubeFeeder
 
             if(m_isOnError==true)
             {
-                MessageBeep(64);
+                if ((runTime.Seconds/3) != 0)    // 3초 중 2초 소리냄 ( 삑-삑-X ... )
+                {
+                    MessageBeep(48);
+                }
                 if (label_indicator.BackColor == Color.Red) // 1초간격 점멸 
                 {
                     setIndicatorColor(Color.Black);
@@ -662,7 +679,7 @@ namespace TubeFeeder
 
             try
             {
-                if (runTime.Seconds == 0)
+                if (runTime.Seconds == 10)  // x분 10초마다 메모리 상태 업데이트
                 {
                     setMemoryLabelText(m_memoryManger.getUsageString());
                 }

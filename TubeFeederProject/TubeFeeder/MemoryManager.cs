@@ -38,7 +38,7 @@ namespace TubeFeeder
             m_memoryUsePercent = System.Math.Round(use_Kb * 100.0 / totla_Kb, 1);
 
             return use_Mb.ToString() + "/" + total_Mb.ToString()
-                + "Mb (" + m_memoryUsePercent.ToString() + ")";
+                + "Mb (" + m_memoryUsePercent.ToString() + "%)";
         }
 
         public double getMemoryUseagePercent()
