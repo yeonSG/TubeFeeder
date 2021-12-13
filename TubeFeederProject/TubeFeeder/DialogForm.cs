@@ -115,7 +115,7 @@ namespace TubeFeeder
 
         private void smartButton_removeLogFile_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("정말 로그파일을 삭제할까요?", "경고",MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+            DialogResult dialogResult = MessageBox.Show("정말 로그파일을 삭제할까요?", "경고", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
 
             if (dialogResult != DialogResult.OK) {
                 return;

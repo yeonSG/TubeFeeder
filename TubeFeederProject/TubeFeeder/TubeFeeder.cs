@@ -37,6 +37,7 @@ namespace TubeFeeder
 
         private bool m_isRecivedFromCom = false;
         private bool m_isOnError = false;
+        private bool m_isShowRestart = false;
         private bool m_isBarcodeReadMode_On = false; // 바코드 읽기모드 On
         private bool m_isAutoStopMode_On = false; // AutoStopMode On
 
@@ -528,14 +529,15 @@ namespace TubeFeeder
                     break;
                 case MessageProtocol.ReciveMessage.order_Error:
                     m_isOnError = true;
-                    showRestartDialog();    // ysys
+                    m_isShowRestart = true;
+                    // showRestartDialog();    // ysys
                     break;
                 case MessageProtocol.ReciveMessage.order_RestartClick:
-                    closeRestartDialog();
+                    m_isShowRestart = false;
+                    // closeRestartDialog();
                     break;
                 default:
                     break;
-
             }
         }
 
@@ -555,6 +557,8 @@ namespace TubeFeeder
                 btn_SettingsEnable(false);
                 m_isOnError = false;
             }
+            m_isShowRestart = false;
+            restartDialog = null;
         }
 
         public void closeRestartDialog()
@@ -648,7 +652,7 @@ namespace TubeFeeder
             setCurtimeLabelText(strCurTime);
             setScanCountLabelText(m_scanCount + "개");
 
-            if(m_isOnError==true)
+            if (m_isOnError == true)
             {
                 if ((runTime.Seconds/3) != 0)    // 3초 중 2초 소리냄 ( 삑-삑-X ... )
                 {
@@ -689,6 +693,15 @@ namespace TubeFeeder
                 ;
             }
 
+
+            if (m_isShowRestart == true && restartDialog == null) 
+            {
+                showRestartDialog();
+            } 
+            else if(m_isShowRestart == false)
+            {
+                closeRestartDialog();
+            }
         }
 
         private void smartTimer2_Tick(object sender, EventArgs e)
