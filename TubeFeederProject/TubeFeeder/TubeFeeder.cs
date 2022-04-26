@@ -40,6 +40,7 @@ namespace TubeFeeder
         private bool m_isShowRestart = false;
         private bool m_isBarcodeReadMode_On = false; // 바코드 읽기모드 On
         private bool m_isAutoStopMode_On = false; // AutoStopMode On
+        private bool m_isStarted = false;
 
         private SettingValues m_settingValues;
 
@@ -346,6 +347,7 @@ namespace TubeFeeder
             SendSettingValues(m_settingValues);     // setting값 보냄
 
             m_ControlBoard.SendMessage(MessageGenerator.Meesage_DeviceStart(m_isBarcodeReadMode_On, m_isAutoStopMode_On));
+            m_isStarted = true;
             setIndicatorColor(Color.Green);
             btn_barcodeOnEnable(false);
             btn_barcodeOffEnable(false);
@@ -358,6 +360,7 @@ namespace TubeFeeder
         private void btn_stop_Click(object sender, EventArgs e)
         {
             m_ControlBoard.SendMessage(MessageGenerator.Meesage_DeviceStop());
+            m_isStarted = false;
             btn_barcodeOnEnable(true);
             btn_barcodeOffEnable(true);
             btn_autoStopModeOnEnable(true);
@@ -693,6 +696,14 @@ namespace TubeFeeder
                 ;
             }
 
+            // 10초마다 start/stop 상태 업데이트신호 보냄.
+            if (runTime.Seconds % 10 == 0) 
+            {
+                if (m_isStarted) 
+                {
+                    m_ControlBoard.SendMessage(MessageGenerator.Meesage_Infom(MessageProtocol.CMD_INFORM_STARTED));
+                }
+            }
 
             if (m_isShowRestart == true && restartDialog == null) 
             {
